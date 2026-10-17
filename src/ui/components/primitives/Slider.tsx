@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { PanResponder, Text, View, type LayoutChangeEvent } from 'react-native';
 
 import { cn } from '@/shared/lib/cn';
@@ -44,11 +44,6 @@ export function RangeSlider({
   useEffect(() => {
     widthRef.current = width;
   }, [width]);
-
-  const snap = (raw: number): number => {
-    const stepped = Math.round(raw / step) * step;
-    return Math.max(min, Math.min(max, stepped));
-  };
 
   const propsRef = useRef({ onChange, min, max, step });
 
