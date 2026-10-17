@@ -9,13 +9,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   icon: './assets/images/icon.png',
   scheme: 'pornhwadb',
   userInterfaceStyle: 'dark',
-  newArchEnabled: true,
   assetBundlePatterns: ['**/*'],
-  splash: {
-    image: './assets/images/splash.png',
-    resizeMode: 'contain',
-    backgroundColor: '#000000',
-  },
   ios: {
     supportsTablet: false,
     bundleIdentifier: 'com.pornhwadb.mobile',
@@ -29,7 +23,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       foregroundImage: './assets/images/adaptive-icon.png',
       backgroundColor: '#000000',
     },
-    edgeToEdgeEnabled: true,
   },
   web: {
     bundler: 'metro',
@@ -39,6 +32,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   plugins: [
     'expo-router',
     'expo-secure-store',
+    [
+      'expo-splash-screen',
+      {
+        image: './assets/images/splash.png',
+        resizeMode: 'contain',
+        backgroundColor: '#000000',
+      },
+    ],
     [
       'expo-font',
       {

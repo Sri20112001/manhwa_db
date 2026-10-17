@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { PanResponder, Text, View, type LayoutChangeEvent } from 'react-native';
 
 import { cn } from '@/shared/lib/cn';
@@ -35,59 +35,76 @@ export function RangeSlider({
   const colors = useThemeColors();
   const [width, setWidth] = useState(0);
   const valueRef = useRef(value);
-  valueRef.current = value;
   const widthRef = useRef(0);
-  widthRef.current = width;
+
+  useEffect(() => {
+    valueRef.current = value;
+  }, [value]);
+
+  useEffect(() => {
+    widthRef.current = width;
+  }, [width]);
 
   const snap = (raw: number): number => {
     const stepped = Math.round(raw / step) * step;
     return Math.max(min, Math.min(max, stepped));
   };
 
-  const toX = (v: number): number => {
-    if (max === min) return 0;
-    return ((v - min) / (max - min)) * widthRef.current;
-  };
+  const propsRef = useRef({ onChange, min, max, step });
 
-  const fromX = (x: number): number => {
-    if (widthRef.current === 0) return min;
-    return snap(min + (x / widthRef.current) * (max - min));
-  };
+  useEffect(() => {
+    propsRef.current = { onChange, min, max, step };
+  }, [onChange, min, max, step]);
 
-  const minResponder = useMemo(
-    () =>
-      PanResponder.create({
-        onStartShouldSetPanResponder: () => true,
-        onMoveShouldSetPanResponder: () => true,
-        onPanResponderMove: (_event, gesture) => {
-          const next = Math.min(fromX(toX(valueRef.current.min) + gesture.dx), valueRef.current.max);
-          onChange({ min: next, max: valueRef.current.max });
-        },
-      }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onChange, min, max, step],
+  // eslint-disable-next-line react-hooks/refs
+  const [minResponder] = useState(() =>
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderMove: (_event, gesture) => {
+        const { onChange: onChg, min: mn, max: mx, step: stp } = propsRef.current;
+        const w = widthRef.current;
+        if (w === 0 || mx === mn) return;
+        const currentX = ((valueRef.current.min - mn) / (mx - mn)) * w;
+        const targetX = currentX + gesture.dx;
+        const stepped = Math.round((mn + (targetX / w) * (mx - mn)) / stp) * stp;
+        const targetVal = Math.max(mn, Math.min(mx, stepped));
+        const next = Math.min(targetVal, valueRef.current.max);
+        onChg({ min: next, max: valueRef.current.max });
+      },
+    }),
   );
 
-  const maxResponder = useMemo(
-    () =>
-      PanResponder.create({
-        onStartShouldSetPanResponder: () => true,
-        onMoveShouldSetPanResponder: () => true,
-        onPanResponderMove: (_event, gesture) => {
-          const next = Math.max(fromX(toX(valueRef.current.max) + gesture.dx), valueRef.current.min);
-          onChange({ min: valueRef.current.min, max: next });
-        },
-      }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onChange, min, max, step],
+  // eslint-disable-next-line react-hooks/refs
+  const [maxResponder] = useState(() =>
+    PanResponder.create({
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetPanResponder: () => true,
+      onPanResponderMove: (_event, gesture) => {
+        const { onChange: onChg, min: mn, max: mx, step: stp } = propsRef.current;
+        const w = widthRef.current;
+        if (w === 0 || mx === mn) return;
+        const currentX = ((valueRef.current.max - mn) / (mx - mn)) * w;
+        const targetX = currentX + gesture.dx;
+        const stepped = Math.round((mn + (targetX / w) * (mx - mn)) / stp) * stp;
+        const targetVal = Math.max(mn, Math.min(mx, stepped));
+        const next = Math.max(targetVal, valueRef.current.min);
+        onChg({ min: valueRef.current.min, max: next });
+      },
+    }),
   );
 
   const onLayout = (event: LayoutChangeEvent) => setWidth(event.nativeEvent.layout.width);
 
-  const minLeft = Math.max(0, toX(value.min) - THUMB / 2);
-  const maxLeft = Math.max(0, toX(value.max) - THUMB / 2);
-  const fillLeft = toX(value.min);
-  const fillWidth = Math.max(0, toX(value.max) - toX(value.min));
+  const valueToX = (v: number): number => {
+    if (max === min) return 0;
+    return ((v - min) / (max - min)) * width;
+  };
+
+  const minLeft = Math.max(0, valueToX(value.min) - THUMB / 2);
+  const maxLeft = Math.max(0, valueToX(value.max) - THUMB / 2);
+  const fillLeft = valueToX(value.min);
+  const fillWidth = Math.max(0, valueToX(value.max) - valueToX(value.min));
 
   return (
     <View className={cn('gap-sm', className)}>
