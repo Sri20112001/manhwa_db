@@ -38,7 +38,8 @@ pipeline {
         CI = 'true'
         EXPO_PUBLIC_API_BASE_URL = "${params.EXPO_API_URL}"
         EXPO_NO_TELEMETRY = '1'
-        GRADLE_OPTS = '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2048m -XX:MaxMetaspaceSize=512m"'
+        NODE_OPTIONS = '--max-old-space-size=1536'
+        GRADLE_OPTS = '-Dorg.gradle.daemon=false -Dorg.gradle.parallel=false -Dorg.gradle.workers.max=2 -Dorg.gradle.jvmargs="-Xmx1536m -XX:MaxMetaspaceSize=384m"'
     }
 
     options {
@@ -148,9 +149,9 @@ pipeline {
                             }
 
                             if (params.BUILD_TYPE == 'release') {
-                                sh './gradlew assembleRelease --no-daemon'
+                                sh './gradlew assembleRelease --no-daemon --max-workers=2'
                             } else {
-                                sh './gradlew assembleDebug --no-daemon'
+                                sh './gradlew assembleDebug --no-daemon --max-workers=2'
                             }
                         }
                     } else {
@@ -160,9 +161,9 @@ pipeline {
                                 writeFile file: 'local.properties', text: "sdk.dir=${sdkPath.replace('\\', '/')}\n"
                             }
                             if (params.BUILD_TYPE == 'release') {
-                                bat 'gradlew.bat assembleRelease --no-daemon'
+                                bat 'gradlew.bat assembleRelease --no-daemon --max-workers=2'
                             } else {
-                                bat 'gradlew.bat assembleDebug --no-daemon'
+                                bat 'gradlew.bat assembleDebug --no-daemon --max-workers=2'
                             }
                         }
                     }
