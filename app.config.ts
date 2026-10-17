@@ -54,10 +54,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   experiments: {
     typedRoutes: false,
   },
+  updates: {
+    enabled: false,
+    checkAutomatically: 'NEVER',
+  },
   extra: {
     apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? 'https://pornhwadb.com/api/v1',
-    eas: {
-      projectId: '00000000-0000-0000-0000-000000000000',
-    },
+    ...(process.env.EAS_PROJECT_ID
+      ? {
+          eas: {
+            projectId: process.env.EAS_PROJECT_ID,
+          },
+        }
+      : {}),
   },
 });
