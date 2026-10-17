@@ -34,13 +34,12 @@ pipeline {
         NODE_ENV = 'production'
         EXPO_PUBLIC_API_BASE_URL = "${params.EXPO_API_URL}"
         EXPO_NO_TELEMETRY = '1'
-        GRADLE_OPTS = '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx4096m -XX:MaxMetaspaceSize=1024m"'
+        GRADLE_OPTS = '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2048m -XX:MaxMetaspaceSize=512m"'
     }
 
     options {
         timeout(time: 45, unit: 'MINUTES')
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '5'))
-        ansiColor('xterm')
         disableConcurrentBuilds()
     }
 
@@ -154,7 +153,13 @@ pipeline {
             echo "❌ Pipeline failed! Please inspect logs above."
         }
         always {
-            cleanWs deleteDirs: true, notFailBuild: true, patterns: [[pattern: 'android/.gradle', type: 'EXCLUDE']]
+            script {
+                try {
+                    cleanWs deleteDirs: true, notFailBuild: true
+                } catch (Throwable t) {
+                    echo "Notice: Workspace Cleanup plugin not installed (${t.message}), skipping cleanWs."
+                }
+            }
         }
     }
 }
