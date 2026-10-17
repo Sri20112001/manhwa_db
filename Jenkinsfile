@@ -31,7 +31,6 @@ pipeline {
 
     environment {
         CI = 'true'
-        NODE_ENV = 'production'
         EXPO_PUBLIC_API_BASE_URL = "${params.EXPO_API_URL}"
         EXPO_NO_TELEMETRY = '1'
         GRADLE_OPTS = '-Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2048m -XX:MaxMetaspaceSize=512m"'
@@ -53,11 +52,11 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    echo "📦 Installing npm dependencies..."
+                    echo "📦 Installing npm dependencies (including devDependencies)..."
                     if (isUnix()) {
-                        sh 'npm ci --legacy-peer-deps || npm install --legacy-peer-deps'
+                        sh 'npm ci --legacy-peer-deps --include=dev || npm install --legacy-peer-deps --include=dev'
                     } else {
-                        bat 'npm ci --legacy-peer-deps || npm install --legacy-peer-deps'
+                        bat 'npm ci --legacy-peer-deps --include=dev || npm install --legacy-peer-deps --include=dev'
                     }
                 }
             }
