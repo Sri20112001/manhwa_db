@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Manga &amp; Webtoon Database - Search</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Container Queries and Forms plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-high": "#30282a",
+            "on-tertiary": "#432647",
+            "on-primary-fixed": "#3e001f",
+            "surface-variant": "#3b3335",
+            "secondary-fixed": "#ffd9e3",
+            "on-secondary-fixed-variant": "#5a3f48",
+            "on-primary": "#600c35",
+            "surface-container-low": "#211a1c",
+            "secondary-fixed-dim": "#e2bdc7",
+            "outline-variant": "#544247",
+            "inverse-on-surface": "#362e31",
+            "background": "#181214",
+            "secondary": "#e2bdc7",
+            "surface-tint": "#ffb0ca",
+            "surface-dim": "#181214",
+            "surface-container-highest": "#3b3335",
+            "secondary-container": "#5a3f48",
+            "primary": "#ffb0ca",
+            "on-surface-variant": "#d9c0c6",
+            "tertiary-container": "#745378",
+            "on-secondary": "#422a31",
+            "primary-container": "#9b3e64",
+            "error-container": "#93000a",
+            "surface-container": "#251e20",
+            "primary-fixed-dim": "#ffb0ca",
+            "on-tertiary-fixed": "#2c1031",
+            "on-surface": "#eddfe2",
+            "on-background": "#eddfe2",
+            "error": "#ffb4ab",
+            "tertiary": "#e2bae4",
+            "on-error-container": "#ffdad6",
+            "on-primary-container": "#ffccdb",
+            "on-error": "#690005",
+            "outline": "#a18b91",
+            "on-secondary-fixed": "#2a151c",
+            "surface-container-lowest": "#130c0f",
+            "surface-bright": "#40373a",
+            "primary-fixed": "#ffd9e3",
+            "surface": "#181214",
+            "inverse-surface": "#eddfe2",
+            "tertiary-fixed-dim": "#e2bae4",
+            "tertiary-fixed": "#fed6ff",
+            "on-secondary-container": "#d0acb6",
+            "on-tertiary-fixed-variant": "#5b3c5f",
+            "on-tertiary-container": "#f5cbf6",
+            "on-primary-fixed-variant": "#7d264c",
+            "inverse-primary": "#9b3e64"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-sm": "0.5rem",
+            "space-lg": "1rem",
+            "gutter-tablet": "1rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "gutter": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-md": "0.75rem"
+          },
+          fontFamily: {
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body-md": ["Inter"],
+            "overline": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          fontSize: {
+            "caption": ["0.8125rem", { lineHeight: "1.125rem", fontWeight: "400" }],
+            "display": ["1.75rem", { lineHeight: "2.25rem", fontWeight: "700" }],
+            "body-md": ["1rem", { lineHeight: "1.5rem", fontWeight: "400" }],
+            "overline": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.05em", fontWeight: "600" }],
+            "headline-md": ["1.25rem", { lineHeight: "1.75rem", fontWeight: "700" }],
+            "headline-sm": ["1rem", { lineHeight: "1.5rem", fontWeight: "600" }],
+            "headline-lg": ["1.5rem", { lineHeight: "2rem", fontWeight: "700" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      background-color: #000000;
+      color: #eddfe2;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      font-feature-settings: 'liga';
+    }
+    /* Hide scrollbar for clean horizontal chip list */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black text-on-surface min-h-screen pb-24 selection:bg-primary-container selection:text-white">
+<!-- Mobile View Container -->
+<div class="max-w-md mx-auto relative min-h-screen bg-black">
+<!-- Sticky Glass Top Header with Search input -->
+<header class="sticky top-0 z-40 bg-surface-container-lowest/80 dark:bg-surface-container-lowest/80 backdrop-blur-md px-gutter-mobile py-2.5 flex items-center gap-space-sm border-b border-outline-variant/30">
+<div class="flex-1 flex items-center bg-surface-container-low rounded-xl px-3 py-2 border border-outline-variant/40 focus-within:border-primary-container transition-colors duration-150 shadow-inner">
+<span class="material-symbols-outlined text-primary mr-2 flex-shrink-0" data-icon="search">search</span>
+<input class="bg-transparent border-0 p-0 text-on-surface font-body-md text-body-md w-full focus:ring-0 focus:outline-none placeholder-outline placeholder:text-caption" placeholder="Search series, authors, characters..." type="text" value="secret"/>
+<button aria-label="Clear query" class="flex items-center justify-center text-outline hover:text-on-surface transition-colors p-0.5 rounded-full hover:bg-surface-container-highest" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+<button class="text-primary font-headline-sm text-headline-sm font-semibold px-2 py-1 active:scale-95 transition-transform duration-100 hover:text-on-primary-container" type="button">
+        Cancel
+      </button>
+</header>
+<!-- Sub-header Area: Segmented Filter Control -->
+<div class="px-gutter-mobile pt-3 pb-2">
+<div class="grid grid-cols-2 p-1 bg-surface-container-low rounded-xl border border-outline-variant/30 gap-1">
+<button class="bg-primary-container text-white py-1.5 px-3 rounded-lg font-headline-sm text-headline-sm text-center shadow-sm flex items-center justify-center gap-1.5 transition-all" type="button">
+<span class="material-symbols-outlined text-base" data-icon="auto_stories">auto_stories</span>
+<span>Series</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface py-1.5 px-3 rounded-lg font-caption text-caption font-medium text-center flex items-center justify-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-base" data-icon="person">person</span>
+<span>Characters</span>
+</button>
+</div>
+</div>
+<!-- Recent Searches Section -->
+<section class="px-gutter-mobile pt-2 pb-3">
+<div class="flex items-center justify-between mb-2">
+<span class="font-overline text-overline text-outline tracking-wider uppercase">Recent searches</span>
+<button class="font-caption text-caption text-primary hover:underline hover:text-primary-fixed-dim" type="button">
+          Clear all
+        </button>
+</div>
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+<!-- Dismissible Chip 1 -->
+<div class="flex items-center bg-surface-container-low border border-outline-variant/40 rounded-full px-3 py-1 gap-1.5 flex-shrink-0 group hover:border-primary-container/60 transition-colors">
+<span class="font-caption text-caption text-on-surface-variant group-hover:text-on-surface">landlord</span>
+<button aria-label="Remove landlord from recent searches" class="text-outline hover:text-primary transition-colors flex items-center" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+<!-- Dismissible Chip 2 -->
+<div class="flex items-center bg-surface-container-low border border-outline-variant/40 rounded-full px-3 py-1 gap-1.5 flex-shrink-0 group hover:border-primary-container/60 transition-colors">
+<span class="font-caption text-caption text-on-surface-variant group-hover:text-on-surface">milf hunter</span>
+<button aria-label="Remove milf hunter from recent searches" class="text-outline hover:text-primary transition-colors flex items-center" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+<!-- Dismissible Chip 3 -->
+<div class="flex items-center bg-surface-container-low border border-outline-variant/40 rounded-full px-3 py-1 gap-1.5 flex-shrink-0 group hover:border-primary-container/60 transition-colors">
+<span class="font-caption text-caption text-on-surface-variant group-hover:text-on-surface">love quest</span>
+<button aria-label="Remove love quest from recent searches" class="text-outline hover:text-primary transition-colors flex items-center" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Main Results Container -->
+<main class="px-gutter-mobile space-y-5 mt-1">
+<!-- Series Results Section -->
+<section>
+<div class="flex items-baseline justify-between mb-3 border-b border-outline-variant/20 pb-2">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface flex items-center gap-1.5">
+<span>Series</span>
+<span class="font-caption text-caption font-normal text-outline">(24 results)</span>
+</h2>
+<span class="font-caption text-caption text-outline flex items-center gap-0.5">
+            Relevance <span class="material-symbols-outlined text-xs" data-icon="expand_more">expand_more</span>
+</span>
+</div>
+<!-- Series Result Cards Stack -->
+<div class="space-y-3">
+<!-- Card 1: Secret Class -->
+<article class="flex bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-2.5 gap-3 hover:border-primary-container/50 transition-all duration-200">
+<!-- 2:3 Cover Aspect Ratio -->
+<div class="w-20 h-[120px] rounded-lg overflow-hidden flex-shrink-0 relative border border-outline-variant/20 bg-surface-container">
+<img alt="Secret Class Cover" class="w-full h-full object-cover" data-alt="An abstract graphic composition featuring subtle interlocking dark geometric silhouettes and soft rose glowing gradients over pure charcoal black. The atmosphere is minimalist, sleek, and dramatic with soft ambient backlighting in crimson pink. The visual style is an elegant vector illustration for a high-end webtoon catalogue cover with rich contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKguRMpka0VrY86u3wTezOqv7P_d2748-Ghx5AXvcvs_M1ghF2Di8Eo5vD_WCjHIdnRYxrrzvTsW9SeLfILdrgAS7XRJlX3K7BzhqAqUDDHXlbFVQGOYZ2zaZfDD2zqEvCUMrASuIgSb-zrdKABQlPmq1rHaMpL5nJbBGtpyhfbJijQBViuKNA7e_R5sji2-TslE2zPn27SZhlbaI5R9IPVr_kgfQYucVthAV_ZQ0My6C8nj_ccqd20xjJuif9kBr5h-Mzf-jv-ZU"/>
+<span class="absolute top-1 left-1 bg-surface-container-lowest/80 backdrop-blur-sm text-primary font-overline text-overline px-1 rounded border border-primary/20">MANHWA</span>
+</div>
+<!-- Content Meta Stack -->
+<div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold truncate">Secret Class</h3>
+<p class="font-caption text-caption text-outline truncate mt-0.5">by Min-woo &amp; G-Bro</p>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-sm text-amber-400" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-caption text-caption font-semibold text-on-surface">3.5</span>
+<span class="font-caption text-caption text-outline">(53)</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5">
+<span class="font-caption text-caption px-2 py-0.5 bg-primary-container/20 text-primary rounded-full border border-primary-container/40">Drama</span>
+<span class="font-caption text-caption px-2 py-0.5 bg-surface-container text-on-surface-variant rounded-full border border-outline-variant/30">Romance</span>
+<span class="font-caption text-caption px-2 py-0.5 bg-surface-container text-on-surface-variant rounded-full border border-outline-variant/30">Campus</span>
+</div>
+<p class="font-caption text-caption text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+<span>Ch. 182 • Ongoing</span>
+</p>
+</div>
+</div>
+</article>
+<!-- Card 2: The Secret Room -->
+<article class="flex bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-2.5 gap-3 hover:border-primary-container/50 transition-all duration-200">
+<!-- 2:3 Cover Aspect Ratio -->
+<div class="w-20 h-[120px] rounded-lg overflow-hidden flex-shrink-0 relative border border-outline-variant/20 bg-surface-container">
+<img alt="The Secret Room Cover" class="w-full h-full object-cover" data-alt="An abstract architectural visual with dark corridor depth, sleek metallic frames, and deep magenta ambient reflections on pitch black surfaces. The lighting evokes mystery and quiet tension with sharp geometric perspectives. The composition aligns with a modern editorial comic cover with sophisticated typography vibes and high shadow depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA65dm-hnXyWvcu1S_HVOGn-512rThMKfeefVE7LI-G1vrh_fV-blsXYBSPKpSem5aFAZVBpoWIBnmBqjQ9W9r5RG-Iv2k8iahHRNgz95TFUHUVbY_aQgxEY0D9tQTioWLDcpicSBUf8qfdZi2rT05Gzn9yhLe2yZECERkeFY26imho3DhrZXDiZxR-5pu7JtVgDIBL1Eh3ialvp31sDixqHFnxrc1jkHGAoLAWJrZKgCNEmKA_MGdHG7_i0hrznrI4tzrzh5iXtVQ"/>
+<span class="absolute top-1 left-1 bg-surface-container-lowest/80 backdrop-blur-sm text-primary font-overline text-overline px-1 rounded border border-primary/20">WEBTOON</span>
+</div>
+<!-- Content Meta Stack -->
+<div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold truncate">The Secret Room</h3>
+<p class="font-caption text-caption text-outline truncate mt-0.5">by K-Studio &amp; Aeri</p>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-sm text-amber-400" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-caption text-caption font-semibold text-on-surface">4.8</span>
+<span class="font-caption text-caption text-outline">(1.2k)</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5">
+<span class="font-caption text-caption px-2 py-0.5 bg-primary-container/20 text-primary rounded-full border border-primary-container/40">Mystery</span>
+<span class="font-caption text-caption px-2 py-0.5 bg-surface-container text-on-surface-variant rounded-full border border-outline-variant/30">Psychological</span>
+</div>
+<p class="font-caption text-caption text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+<span>Ch. 64 • Ongoing</span>
+</p>
+</div>
+</div>
+</article>
+<!-- Card 3: Secret Campus Life -->
+<article class="flex bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-2.5 gap-3 hover:border-primary-container/50 transition-all duration-200">
+<!-- 2:3 Cover Aspect Ratio -->
+<div class="w-20 h-[120px] rounded-lg overflow-hidden flex-shrink-0 relative border border-outline-variant/20 bg-surface-container">
+<img alt="Secret Campus Life Cover" class="w-full h-full object-cover" data-alt="An artistic abstract wallpaper featuring layered prism refractions in rose pink, deep burgundy, and dark charcoal grey. The overall mood is youthful yet atmospheric, composed of clean diagonals and soft blur zones. The visual is rendered in premium dark mode fidelity, suitable for modern Korean drama publication catalog art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS-YxywLwvJbU9F6gTzZfO-B3Edy6dWCIK6ZW9aOI4WdHWh3c8LVwRlGcnDzouEEY0hWa0yvcw8Im6VUjYmTzxWTCuMDIxpJ_u21YUEJPz0t41dnyzyVLNLGn2OLV_xU-CN1oSbNbadoQe9kq6gC0oLe33SL0NGyYgnhhSM-H2At-T6vlLFobzgVHMrM1haPoNHyCLCswKGX-h6Jyrn1vYPuRtTc0IyiRY3_OmMlePnL39W5vS9UAvsb7dzhkdvxcWUvSxr8sU0Rc"/>
+<span class="absolute top-1 left-1 bg-surface-container-lowest/80 backdrop-blur-sm text-primary font-overline text-overline px-1 rounded border border-primary/20">MANGA</span>
+</div>
+<!-- Content Meta Stack -->
+<div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-white font-semibold truncate">Secret Campus Life</h3>
+<p class="font-caption text-caption text-outline truncate mt-0.5">by J.H. Lee</p>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-sm text-amber-400" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-caption text-caption font-semibold text-on-surface">4.1</span>
+<span class="font-caption text-caption text-outline">(210)</span>
+</div>
+</div>
+<div class="mt-2">
+<div class="flex flex-wrap items-center gap-1.5 mb-1.5">
+<span class="font-caption text-caption px-2 py-0.5 bg-primary-container/20 text-primary rounded-full border border-primary-container/40">Slice of Life</span>
+<span class="font-caption text-caption px-2 py-0.5 bg-surface-container text-on-surface-variant rounded-full border border-outline-variant/30">College</span>
+</div>
+<p class="font-caption text-caption text-outline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline inline-block"></span>
+<span>Ch. 95 • Completed</span>
+</p>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Characters Result Section -->
+<section class="pt-2">
+<div class="flex items-center justify-between mb-3 border-b border-outline-variant/20 pb-2">
+<h2 class="font-headline-sm text-headline-sm font-semibold text-on-surface flex items-center gap-1.5">
+<span>Characters</span>
+<span class="font-caption text-caption font-normal text-outline">(8)</span>
+</h2>
+<button class="font-caption text-caption text-primary hover:text-primary-fixed-dim flex items-center gap-0.5" type="button">
+            View all
+            <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Horizontal Character Cards Row -->
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Character 1: Dae-ho -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-3 flex flex-col items-center text-center hover:border-primary-container/50 transition-colors">
+<div class="w-14 h-14 rounded-full overflow-hidden mb-2 border-2 border-primary-container/60 relative bg-surface-container">
+<img alt="Dae-ho Avatar" class="w-full h-full object-cover" data-alt="A stylized character profile avatar silhouette cast in dramatic monochrome noir lighting with subtle rim lights in vivid rose pink. The backdrop features abstract muted geometric noise on deep slate. The composition conveys modern comic character card quality without explicit facial details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDclLvN0WWK5g4IU9t6SCRezxMmgloOmuTPs-f7sO6Gv_fzWEKwf8XErp3nPbx4r2RwJJp9dq1iuZ2w4auCcyfcJY7rSB9YCGLrgw9CXUbeTn7s0NqmAl9w2BJq1CcMDMBbijdp44D3oBnZjU-y8_mY7Fuab6nsm0qgeLoe-uFNAqs1vzZfKdHfCU1Uz6ni49JOu3q8_Ejlrl5nboUVHCpR85Us1vb6xxRtJn1Q5mfrX6riaCZhqr4oGq4SDGXA3aliUesqAU2mQJs"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-white font-semibold truncate w-full">Dae-ho</h4>
+<p class="font-caption text-caption text-outline truncate w-full text-[11px] mt-0.5">from Secret Class</p>
+</div>
+<!-- Character 2: Soo-ah -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-3 flex flex-col items-center text-center hover:border-primary-container/50 transition-colors">
+<div class="w-14 h-14 rounded-full overflow-hidden mb-2 border-2 border-primary-container/60 relative bg-surface-container">
+<img alt="Soo-ah Avatar" class="w-full h-full object-cover" data-alt="An abstract circular graphic portrait in soft-focus dark pastels, deep violet shadows, and subtle rose gold edges against a pure black canvas. The mood is delicate, modern, and aesthetic, designed for comic profile art with high artistic polish and neutral abstraction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6MA0sYiidCGp3HPMvUBp6-gtO8qNI7Z2eDadIp8yJQI2zDh-6KxnKD3PQTpdVA2vdKi8_IvsWoLvu9IM9L2NWeQ2PaKdOICHCKfOgbO38J336VbTgdwL35m4oshCtIYI7PN9HMPNF_XIlPqT407JxA3QdgtVqQn3vpj2eZe8cBoOiPGhP2JEtsdMRXOGW7SUampEYYYSh-Ezhb89JZh-5LbWCH-xxfBT7mSYIQmV6OHHZde0NqcRbX_P0QY6kV6wgooNU9vgbtPc"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-white font-semibold truncate w-full">Soo-ah</h4>
+<p class="font-caption text-caption text-outline truncate w-full text-[11px] mt-0.5">from Secret Class</p>
+</div>
+<!-- Character 3: Yura -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-3 flex flex-col items-center text-center hover:border-primary-container/50 transition-colors">
+<div class="w-14 h-14 rounded-full overflow-hidden mb-2 border-2 border-primary-container/60 relative bg-surface-container">
+<img alt="Yura Avatar" class="w-full h-full object-cover" data-alt="An elegant abstract profile avatar rendering featuring fluid smoke filaments in rich magenta and charcoal grey swirling in circular frame. High contrast dark-mode lighting, polished reflections, and refined minimalist aesthetic for webtoon cast member portrayal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeRPNnNNjeU1eSVUCNvDYwES6VOgbmzlYAmegiiAqHOxHfvu7YA-FlE3zWOnRBlKjTS1R4v3Ova-CW_yOkgrmVV8OIIgSVGI2fLPXgfg3i6BDmAK9LQrRxIWrz02TGUY3ric4jLKs7DoprBvtoTpe62HO1bdD6PfH8k82hQZz5kKW7mTOoDBSTZ1_T1zirelF7nE-ubfD9aPi9575ngAn-sIVOYjJ3nyk023i4Rvo3v54KhZVozSwZAC-NFCH1EsQ6OP8SNxgx9X8"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-white font-semibold truncate w-full">Yura</h4>
+<p class="font-caption text-caption text-outline truncate w-full text-[11px] mt-0.5">from Secret Class</p>
+</div>
+</div>
+</section>
+<!-- Advanced Filters Quick Strip -->
+<section class="pt-1 pb-4">
+<div class="bg-surface-container-low rounded-xl p-3 border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="tune">tune</span>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface">Need refined filters?</p>
+<p class="font-caption text-caption text-outline">Filter by status, chapters, tags &amp; demographic</p>
+</div>
+</div>
+<button class="bg-surface-container-highest hover:bg-surface-container-high text-on-surface px-3 py-1.5 rounded-lg font-caption text-caption font-medium border border-outline-variant/40 transition-colors" type="button">
+            Filters
+          </button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mandatory Shared Component: 5 Tabs with Search Active) -->
+<!-- Destination count: 5 | Labels: Library, Browse, Search, Updates, Settings -->
+<!-- Active State: Search (Index 2) styled with bg-primary-container/20 text-primary rounded-full px-space-md py-space-xs font-semibold -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-gutter-mobile bg-surface-container-lowest/90 dark:bg-surface-container-lowest/90 backdrop-blur-lg border-t border-outline-variant/30">
+<!-- Destination 1: Library -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:text-on-surface transition-colors duration-150 active:scale-90" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="auto_stories">auto_stories</span>
+<span class="font-caption text-caption text-[11px] mt-0.5">Library</span>
+</button>
+<!-- Destination 2: Browse -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:text-on-surface transition-colors duration-150 active:scale-90" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="explore">explore</span>
+<span class="font-caption text-caption text-[11px] mt-0.5">Browse</span>
+</button>
+<!-- Destination 3: Search (ACTIVE) -->
+<button class="flex flex-col items-center justify-center bg-primary-container/20 text-primary dark:text-primary rounded-full px-space-md py-space-xs font-semibold active:scale-90 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="search" data-weight="fill" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-caption text-caption text-[11px] mt-0.5">Search</span>
+</button>
+<!-- Destination 4: Updates -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:text-on-surface transition-colors duration-150 active:scale-90 relative" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<!-- Optional notification dot badge -->
+<span class="absolute top-1 right-2.5 w-1.5 h-1.5 bg-primary rounded-full"></span>
+<span class="font-caption text-caption text-[11px] mt-0.5">Updates</span>
+</button>
+<!-- Destination 5: Settings -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:text-on-surface transition-colors duration-150 active:scale-90" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+<span class="font-caption text-caption text-[11px] mt-0.5">Settings</span>
+</button>
+</nav>
+</div>
+</body></html>

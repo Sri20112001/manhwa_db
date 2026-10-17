@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pornhwa DB - Connect Account</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#5b3c5f",
+            "tertiary-fixed-dim": "#e2bae4",
+            "secondary-container": "#5a3f48",
+            "on-tertiary-fixed": "#2c1031",
+            "surface-tint": "#ffb0ca",
+            "on-error": "#690005",
+            "primary-container": "#9b3e64",
+            "background": "#181214",
+            "tertiary-container": "#745378",
+            "surface-variant": "#3b3335",
+            "surface-container-low": "#211a1c",
+            "surface": "#181214",
+            "on-secondary-container": "#d0acb6",
+            "inverse-surface": "#eddfe2",
+            "on-error-container": "#ffdad6",
+            "on-surface": "#eddfe2",
+            "on-secondary-fixed-variant": "#5a3f48",
+            "on-secondary-fixed": "#2a151c",
+            "secondary-fixed": "#ffd9e3",
+            "secondary-fixed-dim": "#e2bdc7",
+            "on-secondary": "#422a31",
+            "outline-variant": "#544247",
+            "on-primary": "#600c35",
+            "surface-container-high": "#30282a",
+            "surface-container-lowest": "#130c0f",
+            "on-primary-container": "#ffccdb",
+            "primary-fixed": "#ffd9e3",
+            "tertiary-fixed": "#fed6ff",
+            "on-primary-fixed-variant": "#7d264c",
+            "error-container": "#93000a",
+            "error": "#ffb4ab",
+            "on-surface-variant": "#d9c0c6",
+            "inverse-on-surface": "#362e31",
+            "secondary": "#e2bdc7",
+            "on-primary-fixed": "#3e001f",
+            "surface-bright": "#40373a",
+            "on-background": "#eddfe2",
+            "surface-container-highest": "#3b3335",
+            "primary-fixed-dim": "#ffb0ca",
+            "tertiary": "#e2bae4",
+            "surface-dim": "#181214",
+            "surface-container": "#251e20",
+            "outline": "#a18b91",
+            "inverse-primary": "#9b3e64",
+            "on-tertiary": "#432647",
+            "primary": "#ffb0ca",
+            "on-tertiary-container": "#f5cbf6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "0.75rem",
+            "space-lg": "1rem",
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "space-2xl": "2rem",
+            "gutter-tablet": "1rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Inter", "sans-serif"],
+            "display": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "headline-md": ["Inter", "sans-serif"],
+            "overline": ["Inter", "sans-serif"],
+            "caption": ["Inter", "sans-serif"],
+            "headline-lg": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-sm": [
+              "1rem",
+              {
+                "lineHeight": "1.5rem",
+                "fontWeight": "600"
+              }
+            ],
+            "display": [
+              "1.75rem",
+              {
+                "lineHeight": "2.25rem",
+                "fontWeight": "700"
+              }
+            ],
+            "body-md": [
+              "1rem",
+              {
+                "lineHeight": "1.5rem",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-md": [
+              "1.25rem",
+              {
+                "lineHeight": "1.75rem",
+                "fontWeight": "700"
+              }
+            ],
+            "overline": [
+              "0.75rem",
+              {
+                "lineHeight": "1rem",
+                "letterSpacing": "0.05em",
+                "fontWeight": "600"
+              }
+            ],
+            "caption": [
+              "0.8125rem",
+              {
+                "lineHeight": "1.125rem",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-lg": [
+              "1.5rem",
+              {
+                "lineHeight": "2rem",
+                "fontWeight": "700"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Custom AMOLED styling overrides */
+    body {
+      background-color: #000000;
+      color: #fafafa;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black text-on-surface flex justify-center min-h-screen">
+<!-- Mobile Viewport Container (390px) -->
+<main class="w-full max-w-[390px] min-h-screen bg-black flex flex-col justify-between relative shadow-2xl selection:bg-primary-container selection:text-white">
+<!-- Top Level Wrapper -->
+<div class="w-full flex flex-col">
+<!-- Shared TopAppBar Component -->
+<!-- Rendered according to style_bg_color, style_typography, style_component_shape, and style_shell_layout from Shared JSON -->
+<header class="docked full-width top-0 sticky z-40 bg-surface/60 backdrop-blur-md dark:bg-surface/60 border-b border-outline-variant/30 flex justify-between items-center w-full px-margin py-space-sm" style="background-color: rgba(0, 0, 0, 0.65); border-color: #27272a;">
+<button aria-label="Go back" class="p-2 -ml-2 rounded-xl text-on-surface-variant hover:bg-surface-variant/50 active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px] align-middle" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-headline-sm font-headline-sm tracking-tight text-on-surface font-semibold text-center">
+          Connect Account
+        </h1>
+<button aria-label="Help" class="p-2 -mr-2 rounded-xl text-on-surface-variant hover:bg-surface-variant/50 active:scale-95 transition-all text-on-surface" type="button">
+<span class="material-symbols-outlined text-[20px] align-middle" data-icon="help_outline">help_outline</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<section class="px-margin pt-space-xl flex flex-col items-center">
+<!-- Abstract Rose Geometric Logo Mark & Wordmark -->
+<div class="flex flex-col items-center mb-8">
+<div class="relative w-16 h-16 rounded-2xl flex items-center justify-center p-3 mb-3.5 bg-[#141414] border border-[#27272a] shadow-inner">
+<!-- Geometric Rose SVG Motif -->
+<svg class="w-10 h-10 text-primary-container" fill="none" viewbox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 4L27.5 11.5L20 19L12.5 11.5L20 4Z" fill="currentColor" fill-opacity="0.85"></path>
+<path d="M28.5 12.5L36 20L28.5 27.5L21 20L28.5 12.5Z" fill="currentColor" fill-opacity="0.7"></path>
+<path d="M11.5 12.5L19 20L11.5 27.5L4 20L11.5 12.5Z" fill="currentColor" fill-opacity="0.7"></path>
+<path d="M20 21L27.5 28.5L20 36L12.5 28.5L20 21Z" fill="currentColor" fill-opacity="0.95"></path>
+<circle cx="20" cy="20" fill="#ffffff" r="3"></circle>
+</svg>
+<div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/10 pointer-events-none"></div>
+</div>
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-white flex items-center gap-1.5">
+            Pornhwa DB
+          </span>
+<span class="text-overline font-overline text-outline uppercase tracking-widest mt-1 text-[10px]">
+            API Engine v2.4
+          </span>
+</div>
+<!-- Middle Section: Headings and Form -->
+<div class="w-full text-left mb-6">
+<h2 class="text-[24px] leading-8 font-bold text-[#fafafa] tracking-tight">
+            Connect your account
+          </h2>
+<p class="text-caption font-caption text-[#a1a1aa] mt-1.5 leading-relaxed">
+            Paste your API key to sync your reading library.
+          </p>
+</div>
+<!-- API Key Input Field -->
+<div class="w-full flex flex-col gap-2 mb-4">
+<label class="text-overline font-overline text-on-surface-variant font-medium text-[11px] uppercase tracking-wider flex justify-between items-center" for="api_key_input">
+<span>Personal API Key</span>
+<span class="text-[#a1a1aa] text-[10px] lowercase">format: phdb_live_*</span>
+</label>
+<div class="relative w-full rounded-xl bg-[#141414] border border-[#27272a] focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all flex items-center">
+<input autocomplete="off" class="w-full bg-transparent py-3.5 pl-4 pr-11 text-caption font-caption font-mono text-on-surface placeholder-[#544247] focus:outline-none focus:ring-0 border-none rounded-xl" id="api_key_input" placeholder="phdb_live_................................" spellcheck="false" type="password"/>
+<button aria-label="Toggle API key visibility" class="absolute right-3 p-1.5 text-outline-variant hover:text-on-surface active:scale-95 transition-colors flex items-center justify-center rounded-lg" id="toggle_visibility_btn" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility" id="visibility_icon">visibility</span>
+</button>
+</div>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full py-3.5 px-4 rounded-xl bg-primary-container text-white font-headline-sm text-headline-sm font-semibold tracking-wide hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary-container/20 mt-1 cursor-pointer" id="validate_btn" type="button">
+<span>Validate &amp; continue</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Scope Pills Row -->
+<div class="w-full mt-4 flex items-center justify-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-[#141414] border border-[#27272a] text-[#a1a1aa] flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500/80"></span>
+            catalogue:read
+          </span>
+<span class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-[#141414] border border-[#27272a] text-[#a1a1aa] flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500/80"></span>
+            library:read
+          </span>
+<span class="text-[11px] font-mono px-2.5 py-1 rounded-full bg-[#141414] border border-[#27272a] text-[#a1a1aa] flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container/90"></span>
+            library:write
+          </span>
+</div>
+</section>
+</div>
+<!-- Bottom Guidance & Footnote Area with Safe Area Padding -->
+<footer class="w-full px-margin pb-8 pt-6 flex flex-col items-center text-center gap-3">
+<!-- Obtainment link -->
+<a class="text-caption font-caption text-[#a1a1aa] hover:text-primary transition-colors underline underline-offset-4 decoration-[#27272a] hover:decoration-primary flex items-center gap-1 font-medium" href="#get-key">
+<span>Get a key ↗</span>
+</a>
+<!-- Security / Encryption Footnote -->
+<p class="text-[11px] leading-4 text-outline max-w-[290px] font-caption">
+        Keys are encrypted on-device. Revoke anytime in account settings.
+      </p>
+<!-- Bottom Home Indicator Bar (Mobile Shell styling) -->
+<div class="w-32 h-1 bg-white/20 rounded-full mt-2"></div>
+</footer>
+</main>
+<!-- Interactive script for showing/hiding key -->
+<script>
+    const input = document.getElementById('api_key_input');
+    const toggleBtn = document.getElementById('toggle_visibility_btn');
+    const icon = document.getElementById('visibility_icon');
+
+    toggleBtn.addEventListener('click', () => {
+      const isPassword = input.getAttribute('type') === 'password';
+      input.setAttribute('type', isPassword ? 'text' : 'password');
+      icon.textContent = isPassword ? 'visibility_off' : 'visibility';
+      icon.setAttribute('data-icon', isPassword ? 'visibility_off' : 'visibility');
+    });
+  </script>
+</body></html>

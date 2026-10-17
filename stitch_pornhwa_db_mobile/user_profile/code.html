@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>User Profile - Pornhwa DB</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#5a3f48",
+            "on-tertiary-container": "#f5cbf6",
+            "on-surface": "#eddfe2",
+            "surface-container-highest": "#3b3335",
+            "on-tertiary": "#432647",
+            "inverse-surface": "#eddfe2",
+            "secondary-fixed": "#ffd9e3",
+            "on-tertiary-fixed-variant": "#5b3c5f",
+            "surface-tint": "#ffb0ca",
+            "surface-container": "#251e20",
+            "tertiary-container": "#745378",
+            "on-secondary": "#422a31",
+            "outline-variant": "#27272a",
+            "on-surface-variant": "#a1a1aa",
+            "secondary": "#e2bdc7",
+            "on-primary-fixed": "#3e001f",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#000000",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed": "#2c1031",
+            "on-error": "#690005",
+            "surface-container-low": "#0b0b0b",
+            "surface-bright": "#40373a",
+            "on-primary-fixed-variant": "#7d264c",
+            "on-secondary-container": "#d0acb6",
+            "on-secondary-fixed": "#2a151c",
+            "surface-container-high": "#141414",
+            "primary-container": "#9b3e64",
+            "tertiary": "#e2bae4",
+            "tertiary-fixed-dim": "#e2bae4",
+            "on-background": "#eddfe2",
+            "secondary-fixed-dim": "#e2bdc7",
+            "surface-dim": "#000000",
+            "primary": "#ffb0ca",
+            "surface": "#000000",
+            "tertiary-fixed": "#fed6ff",
+            "on-primary": "#600c35",
+            "primary-fixed": "#ffd9e3",
+            "inverse-primary": "#9b3e64",
+            "on-primary-container": "#ffccdb",
+            "surface-variant": "#141414",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#000000",
+            "on-secondary-fixed-variant": "#5a3f48",
+            "outline": "#27272a",
+            "inverse-on-surface": "#362e31",
+            "error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "gutter": "0.75rem",
+            "gutter-tablet": "1rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "overline": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "overline": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-sm": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "700" }],
+            "caption": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "400" }],
+            "display": ["1.75rem", { "lineHeight": "2.25rem", "fontWeight": "700" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #000000;
+      color: #eddfe2;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<meta content="mobile_tab" name="shell-type"/>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black text-on-surface font-body-md text-body-md antialiased min-h-screen selection:bg-primary-container selection:text-white">
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col bg-black">
+<!-- Sticky Glass Top App Bar -->
+<header class="fixed top-0 left-0 right-0 max-w-md mx-auto z-50 bg-black/60 backdrop-blur-md border-b border-[#27272a]">
+<div class="flex items-center justify-between px-4 h-14">
+<div class="flex items-center gap-3">
+<!-- 28px Squircle Brand Mark with Rose Letter P -->
+<div class="w-7 h-7 rounded-lg bg-[#0b0b0b] border border-[#27272a] flex items-center justify-center flex-shrink-0 shadow-inner shadow-primary-container/20">
+<span class="font-headline-md text-[16px] font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container leading-none select-none">P</span>
+</div>
+<span class="text-headline-sm font-bold text-on-surface tracking-tight truncate">User Profile</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button aria-label="Filter" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95 relative" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Slot with pt matching header h-14 -->
+<main class="flex-1 w-full pt-14 pb-24">
+<div class="flex flex-col w-full px-4 pt-2 pb-6 space-y-5">
+<!-- Profile Header Card & Identity -->
+<section class="flex flex-col items-center text-center pt-2">
+<!-- 80px Avatar with Glowing Rose Ring Accent -->
+<div class="relative group cursor-pointer mb-3.5">
+<div class="w-20 h-20 rounded-full p-[2px] bg-gradient-to-tr from-primary-container via-primary to-primary-container shadow-[0_0_16px_rgba(155,62,100,0.45)]">
+<div class="w-full h-full rounded-full overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover object-center" data-alt="Digital anime-styled portrait avatar of a stylish young male manhwa protagonist with undercut black hair, piercing rose-pink eyes, and subtle cinematic rim lighting against a pure dark backdrop, 8k resolution webtoon digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEVTrG2FUY2F_J8i39VfVCm9vG6RRH1_bO5GQ-upMSz0fEYpJ9chkCjrVKLA2OtzFzgOqAYYE4IgEZfMGV-uF3Ibce7keFu_Y7DVVu7oW-ZyEBvZw91XyNJfQWVQBoH_JYTEs3nv-0llkcyLm0e4NBOiwYlQjQWQUshN2o74w9zIEgWRb-atTzO0A3YpEcTTXMSV3uWcb_SxplCIQyrym67xUObO8G157gcR-pydUqkpppn2wV9Bre"/>
+</div>
+</div>
+<!-- Verified Badge Icon Overlay -->
+<span class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-primary-container text-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</div>
+<!-- Username & Status Tagline -->
+<div class="flex items-center gap-1.5 justify-center">
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Alex_Hunter</h1>
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;" title="VIP Reader">workspace_premium</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant mt-0.5 font-medium">
+      Member since 2021 • <span class="text-primary-container font-semibold">Top Reviewer</span>
+</p>
+<!-- Bio Statement -->
+<p class="font-caption text-caption text-on-surface max-w-xs mt-2 leading-relaxed">
+      Dedicated manhwa archivist &amp; drama enthusiast. Reading across 30+ ongoing series with a focus on art direction.
+    </p>
+<!-- Quick Badges -->
+<div class="flex items-center gap-2 mt-3">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-overline text-overline flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Level 42 Curator
+      </span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-overline text-overline flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">bolt</span> Daily Streak: 218d
+      </span>
+</div>
+</section>
+<!-- Key Statistics Grid -->
+<section class="grid grid-cols-3 gap-2 w-full">
+<div class="bg-surface-container-high rounded-xl py-3 px-2 text-center transition-transform active:scale-95 cursor-pointer">
+<span class="block font-headline-sm text-headline-sm font-bold text-on-surface">142</span>
+<span class="block font-overline text-overline text-on-surface-variant tracking-wide mt-0.5">Following</span>
+</div>
+<div class="bg-surface-container-high rounded-xl py-3 px-2 text-center transition-transform active:scale-95 cursor-pointer">
+<span class="block font-headline-sm text-headline-sm font-bold text-primary">1.8k</span>
+<span class="block font-overline text-overline text-on-surface-variant tracking-wide mt-0.5">Followers</span>
+</div>
+<div class="bg-surface-container-high rounded-xl py-3 px-2 text-center transition-transform active:scale-95 cursor-pointer">
+<span class="block font-headline-sm text-headline-sm font-bold text-on-surface">368</span>
+<span class="block font-overline text-overline text-on-surface-variant tracking-wide mt-0.5">Contributions</span>
+</div>
+</section>
+<!-- Interactive Action Buttons -->
+<section class="flex items-center gap-2.5 w-full">
+<!-- Primary Follow Toggle Button -->
+<button class="flex-1 bg-primary-container hover:bg-[#903c5f] text-white font-headline-sm text-headline-sm font-semibold py-2.5 px-6 rounded-full flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm shadow-primary-container/30" id="follow-btn" onclick="toggleFollow(this)" type="button">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>Follow</span>
+</button>
+<!-- Message Icon Action -->
+<button aria-label="Send direct message" class="w-11 h-11 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-secondary-container hover:text-white transition-all active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+</button>
+<!-- Share Profile Action -->
+<button aria-label="Share profile link" class="w-11 h-11 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-secondary-container hover:text-white transition-all active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</section>
+<!-- Segmented Profile Content Navigation -->
+<nav aria-label="Profile Sections" class="w-full pt-1">
+<div class="flex items-center gap-6 overflow-x-auto no-scrollbar pb-2">
+<!-- Active Tab: Tracking -->
+<button class="flex flex-col items-center gap-1.5 flex-shrink-0 group cursor-pointer" type="button">
+<span class="font-headline-sm text-headline-sm font-bold text-primary transition-colors">Tracking</span>
+<span class="w-full h-0.5 rounded-full bg-primary-container"></span>
+</button>
+<!-- Tab: Reviews -->
+<button class="flex flex-col items-center gap-1.5 flex-shrink-0 group cursor-pointer" type="button">
+<span class="font-headline-sm text-headline-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Reviews</span>
+<span class="w-full h-0.5 rounded-full bg-transparent"></span>
+</button>
+<!-- Tab: Ratings -->
+<button class="flex flex-col items-center gap-1.5 flex-shrink-0 group cursor-pointer" type="button">
+<span class="font-headline-sm text-headline-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Ratings</span>
+<span class="w-full h-0.5 rounded-full bg-transparent"></span>
+</button>
+<!-- Tab: Lists -->
+<button class="flex flex-col items-center gap-1.5 flex-shrink-0 group cursor-pointer" type="button">
+<span class="font-headline-sm text-headline-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Lists</span>
+<span class="w-full h-0.5 rounded-full bg-transparent"></span>
+</button>
+<!-- Tab: Contributions -->
+<button class="flex flex-col items-center gap-1.5 flex-shrink-0 group cursor-pointer" type="button">
+<span class="font-headline-sm text-headline-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Contributions</span>
+<span class="w-full h-0.5 rounded-full bg-transparent"></span>
+</button>
+</div>
+</nav>
+<!-- Filter & Summary Bar for Current Tab -->
+<div class="flex items-center justify-between text-caption font-caption text-on-surface-variant pt-0.5">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-on-surface">Currently Reading</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-high text-[11px] font-bold text-primary">4</span>
+</div>
+<div class="flex items-center gap-1 text-[12px] cursor-pointer hover:text-on-surface transition-colors">
+<span>Recently Read</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</div>
+</div>
+<!-- Tracking Tab Content: 2-Column Compact Cover Grid -->
+<section class="grid grid-cols-2 gap-3 w-full">
+<!-- Card 1: Secret Class -->
+<article class="flex flex-col bg-surface-container-high rounded-xl overflow-hidden group transition-all duration-200 active:scale-[0.98]">
+<!-- 2:3 Cover Poster Wrapper -->
+<div class="relative w-full aspect-[2/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Abstract aesthetic manhwa cover illustration showing soft moonlight streaming through sheer curtains onto modern interior architecture with rose-tinted shadows, moody atmospheric digital art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCowvVxiZaVBkmJDqYlE5a_i_kYmaS9hVBelxjSlr5ffzeSgrYU9hIQbUh67jQGVABFn9lGxrWB5ap2NMWZPDO0qS-Gw43k7j7-ej8Fzvu1n8bwQdFXYcoQBK8JRYu33EONzGemeI2dzZbMqbNwMoz3WABd58pLQiobOSI4zk5FllaxmxnP_lYSFya--bjVHDLb9rrSEXgk8aDYI2TBXpIg5_6I9yFr2qc_C6ZJXWDVmzSSAqRw4RbN"/>
+<!-- Gradient scrim overlay for readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high via-transparent to-black/30"></div>
+<!-- Status Badge (Top-Right) -->
+<div class="absolute top-2 right-2">
+<span class="px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-sm text-primary font-overline text-[10px] uppercase font-bold tracking-wider">
+            Ongoing
+          </span>
+</div>
+<!-- Rating indicator overlay -->
+<div class="absolute bottom-2 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[11px] font-semibold text-on-surface">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>9.4</span>
+</div>
+</div>
+<!-- Card Metadata -->
+<div class="p-2.5 flex flex-col justify-between flex-1 space-y-2">
+<div>
+<h2 class="font-headline-sm text-[14px] leading-tight font-bold text-on-surface line-clamp-1 group-hover:text-primary transition-colors">
+            Secret Class
+          </h2>
+<span class="font-caption text-[11px] text-on-surface-variant flex items-center gap-1 mt-0.5">
+            Drama • Romance
+          </span>
+</div>
+<!-- Progress Tracking Bar -->
+<div class="space-y-1">
+<div class="flex items-center justify-between text-[11px] font-caption">
+<span class="text-on-surface font-medium">Ch. 182</span>
+<span class="text-on-surface-variant text-[10px]">191</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-low overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2: Boarding Diary -->
+<article class="flex flex-col bg-surface-container-high rounded-xl overflow-hidden group transition-all duration-200 active:scale-[0.98]">
+<div class="relative w-full aspect-[2/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Digital webtoon key visual portraying a warm sunset reflecting over a modern high-rise apartment balcony overlooking Seoul cityscape, warm rose and amber tones, minimal anime aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOc1p0RWYUf_5f2wY5ajmh3DFgvSgTUETKVUDwmHdLHPogX1D_H9AbUyatqTJdPUxCoeMwaAoXqzjg3Gle-H02nsL9kQyxOfwOnbvh3-WyhISPRLmefBJhMHkexbAStk0cmee__AYA2i_rz8QqoEaVi3ZGBzMvesJVE_H-Tqxfzt1zMrvpvS-hyrWGjypva-uSCNmIBbyaU-QG_GVLyTAiqAHL23kv17qk1COF2jJ7jkSO4XdK8LMR"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high via-transparent to-black/30"></div>
+<div class="absolute top-2 right-2">
+<span class="px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-sm text-primary font-overline text-[10px] uppercase font-bold tracking-wider">
+            Ongoing
+          </span>
+</div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[11px] font-semibold text-on-surface">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>9.1</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1 space-y-2">
+<div>
+<h2 class="font-headline-sm text-[14px] leading-tight font-bold text-on-surface line-clamp-1 group-hover:text-primary transition-colors">
+            Boarding Diary
+          </h2>
+<span class="font-caption text-[11px] text-on-surface-variant flex items-center gap-1 mt-0.5">
+            Slice of Life • Comedy
+          </span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between text-[11px] font-caption">
+<span class="text-on-surface font-medium">Ch. 140</span>
+<span class="text-on-surface-variant text-[10px]">148</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-low overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 94%;"></div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3: Silent War -->
+<article class="flex flex-col bg-surface-container-high rounded-xl overflow-hidden group transition-all duration-200 active:scale-[0.98]">
+<div class="relative w-full aspect-[2/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Graphic manhwa cover featuring a dramatic shadowed silhouette of a figure standing before neon city reflections in puddles of rain at midnight, dark noir atmosphere, intense rim lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0URoL-K2zzqZc_-1Gt6P-_iqx6uiMEsSHWkfMNjyu8F1CMIbUewoOoHWheMZhwjaCfW2bpS6YOoAhIX2QlguNKNph2QB9iWP7hboIahNKY-lZ4oRjeLD065BFpUcWQc5uwvPz2uKbvnV9tsKFWvATZnZgJuu3sMTU6e9qSZaMcOEiFZpU6crR2Y89xrFu6_LRFmqLrTYh8rXwu1LkH-kVN6VsF7LjWn-IgnMDW1lZxCdNviHjt5nc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high via-transparent to-black/30"></div>
+<!-- Completed Chip Overlay (Emerald Green Accent) -->
+<div class="absolute top-2 right-2">
+<span class="px-2 py-0.5 rounded-full bg-emerald-950/80 backdrop-blur-sm text-emerald-400 font-overline text-[10px] uppercase font-bold tracking-wider">
+            Completed
+          </span>
+</div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[11px] font-semibold text-on-surface">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>9.8</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1 space-y-2">
+<div>
+<h2 class="font-headline-sm text-[14px] leading-tight font-bold text-on-surface line-clamp-1 group-hover:text-primary transition-colors">
+            Silent War
+          </h2>
+<span class="font-caption text-[11px] text-on-surface-variant flex items-center gap-1 mt-0.5">
+            Psychological • Action
+          </span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between text-[11px] font-caption">
+<span class="text-emerald-400 font-medium">Ch. 120</span>
+<span class="text-emerald-400 text-[10px] font-bold">Done</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-low overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4: Touch to Unlock -->
+<article class="flex flex-col bg-surface-container-high rounded-xl overflow-hidden group transition-all duration-200 active:scale-[0.98]">
+<div class="relative w-full aspect-[2/3] overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="Minimalist abstract digital art of a glowing smartphone lockscreen display casting pale magenta illumination on a sleek dark surface, clean and stylish manhwa cover aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRxdr_dWjWJOju3v5TPIDi_UIdor_ARFTn0_tw1R5SHvoKstai2uSKmstmm7VWRI6_fOLPkW09WHqOo9sAiwqVyWbBS7UcBCipVslqAA47cuPbvECfPHz0Lr-X_JAZUaPSYAOLA1tZQWqberkODO7AI6PhM_prmR_NSIc_9wJm_MVKeaTVOkNVchIYOJj8RDuvEuCAvi7fQgDai3lvaa_Mb1CuC8cYdJQTV8CQjKPjyFkAfZFa8ibi"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-high via-transparent to-black/30"></div>
+<div class="absolute top-2 right-2">
+<span class="px-2 py-0.5 rounded-full bg-black/70 backdrop-blur-sm text-primary font-overline text-[10px] uppercase font-bold tracking-wider">
+            Ongoing
+          </span>
+</div>
+<div class="absolute bottom-2 left-2 flex items-center gap-1 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[11px] font-semibold text-on-surface">
+<span class="material-symbols-outlined text-primary text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>8.9</span>
+</div>
+</div>
+<div class="p-2.5 flex flex-col justify-between flex-1 space-y-2">
+<div>
+<h2 class="font-headline-sm text-[14px] leading-tight font-bold text-on-surface line-clamp-1 group-hover:text-primary transition-colors">
+            Touch to Unlock
+          </h2>
+<span class="font-caption text-[11px] text-on-surface-variant flex items-center gap-1 mt-0.5">
+            Supernatural • Drama
+          </span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between text-[11px] font-caption">
+<span class="text-on-surface font-medium">Ch. 64</span>
+<span class="text-on-surface-variant text-[10px]">104</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-low overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 61.5%;"></div>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Community Activity Preview Drawer -->
+<section class="mt-4 p-3.5 bg-surface-container-high rounded-xl space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">rate_review</span>
+<h3 class="font-headline-sm text-[14px] font-bold text-on-surface">Latest Public Review</h3>
+</div>
+<span class="font-caption text-[11px] text-on-surface-variant">2h ago</span>
+</div>
+<div class="flex items-start gap-2.5">
+<div class="w-10 h-14 rounded-md overflow-hidden bg-surface-container-low flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Vertical thumbnail of an anime webtoon hero with intense eyes, clean linework and deep shadow contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZdqLAaSn-GYe1WJcwRtazEHH-dgqFSVmJfCC534g7f6TNxrZDWwrB1sPQdFiULbu3zecouKFNa056CMXxNYeIqVl9r-Cat5vj23D_7EZgEeoTJIjwL0N2bYB_yk86ko8e2f6ub7vrgqw-_6KcRzQB8Y84ZtkezyqVfW0UPdwpwU7WDueKPy24-QAiaC5e4U1C04FNhlfHr6XASTAf0HgtpxFBBZERDrtABSr_29tsexOMDCtCimlF"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1 text-primary text-[12px]">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+<span class="text-on-surface font-semibold ml-1 text-[11px]">4.5</span>
+</div>
+<p class="font-caption text-[12px] text-on-surface mt-1 line-clamp-2 leading-snug">
+          "The panel flow in Chapter 180 completely recontextualizes the family rivalry arc. Absolutely top-tier illustration work."
+        </p>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Micro-interaction for profile follow state
+  function toggleFollow(btn) {
+    const isFollowing = btn.getAttribute('data-following') === 'true';
+    if (!isFollowing) {
+      btn.setAttribute('data-following', 'true');
+      btn.className = "flex-1 bg-surface-container-high text-on-surface font-headline-sm text-headline-sm font-semibold py-2.5 px-6 rounded-full flex items-center justify-center gap-2 transition-all active:scale-[0.98]";
+      btn.innerHTML = `
+        <span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">check</span>
+        <span>Following</span>
+      `;
+    } else {
+      btn.setAttribute('data-following', 'false');
+      btn.className = "flex-1 bg-primary-container hover:bg-[#903c5f] text-white font-headline-sm text-headline-sm font-semibold py-2.5 px-6 rounded-full flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm shadow-primary-container/30";
+      btn.innerHTML = `
+        <span class="material-symbols-outlined text-[18px]">person_add</span>
+        <span>Follow</span>
+      `;
+    }
+  }
+
+  // Activate bottom tab: Profile icon
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll('nav[data-active-classes] a');
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === '#profile') {
+        link.classList.remove('text-[#a1a1aa]');
+        link.classList.add('bg-[rgba(155,62,100,0.18)]', 'text-[#ffb0ca]', 'border', 'border-primary-container/30');
+      }
+    });
+  });
+</script>
+</main>
+<!-- Docked Icon-First Bottom Navigation Bar (No Text Labels) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 flex items-center justify-around px-3 h-16 pb-safe bg-black border-t border-[#27272a]" data-active-classes="bg-[rgba(155,62,100,0.18)] text-[#ffb0ca] border border-primary-container/30">
+<!-- 1. Home -->
+<a aria-label="Home" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="home-feed" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</a>
+<!-- 2. Browse -->
+<a aria-label="Browse" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="browse-catalogue" href="#browse">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+</a>
+<!-- 3. Search -->
+<a aria-label="Search" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="search-explore" href="#search">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</a>
+<!-- 4. Library (with rose numeric badge) -->
+<a aria-label="Library" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90 relative" data-path="library" href="#library">
+<span class="material-symbols-outlined text-[24px]">auto_stories</span>
+<span class="absolute top-1 right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-primary-container text-white text-[10px] font-bold flex items-center justify-center leading-none border border-black">3</span>
+</a>
+<!-- 5. Profile -->
+<a aria-label="Profile" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="profile" href="#profile">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</a>
+</nav>
+</div>
+</body></html>

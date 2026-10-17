@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Series Details - Pornhwa DB</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#5a3f48",
+            "on-tertiary-container": "#f5cbf6",
+            "on-surface": "#eddfe2",
+            "surface-container-highest": "#3b3335",
+            "on-tertiary": "#432647",
+            "inverse-surface": "#eddfe2",
+            "secondary-fixed": "#ffd9e3",
+            "on-tertiary-fixed-variant": "#5b3c5f",
+            "surface-tint": "#ffb0ca",
+            "surface-container": "#251e20",
+            "tertiary-container": "#745378",
+            "on-secondary": "#422a31",
+            "outline-variant": "#27272a",
+            "on-surface-variant": "#a1a1aa",
+            "secondary": "#e2bdc7",
+            "on-primary-fixed": "#3e001f",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#000000",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed": "#2c1031",
+            "on-error": "#690005",
+            "surface-container-low": "#0b0b0b",
+            "surface-bright": "#40373a",
+            "on-primary-fixed-variant": "#7d264c",
+            "on-secondary-container": "#d0acb6",
+            "on-secondary-fixed": "#2a151c",
+            "surface-container-high": "#141414",
+            "primary-container": "#9b3e64",
+            "tertiary": "#e2bae4",
+            "tertiary-fixed-dim": "#e2bae4",
+            "on-background": "#eddfe2",
+            "secondary-fixed-dim": "#e2bdc7",
+            "surface-dim": "#000000",
+            "primary": "#ffb0ca",
+            "surface": "#000000",
+            "tertiary-fixed": "#fed6ff",
+            "on-primary": "#600c35",
+            "primary-fixed": "#ffd9e3",
+            "inverse-primary": "#9b3e64",
+            "on-primary-container": "#ffccdb",
+            "surface-variant": "#141414",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#000000",
+            "on-secondary-fixed-variant": "#5a3f48",
+            "outline": "#27272a",
+            "inverse-on-surface": "#362e31",
+            "error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "gutter": "0.75rem",
+            "gutter-tablet": "1rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "overline": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "overline": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-sm": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "700" }],
+            "caption": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "400" }],
+            "display": ["1.75rem", { "lineHeight": "2.25rem", "fontWeight": "700" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #000000;
+      color: #eddfe2;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<meta content="mobile_stack" name="shell-type"/>
+</head>
+<body class="bg-black text-on-surface font-body-md text-body-md antialiased min-h-screen selection:bg-primary-container selection:text-white">
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col bg-black">
+<!-- Sticky Glass Stack Header (Back Navigation + Title + Trailing Controls) -->
+<header class="fixed top-0 left-0 right-0 max-w-md mx-auto z-50 bg-black/60 backdrop-blur-md border-b border-[#27272a]">
+<div class="flex items-center justify-between px-3 h-14">
+<div class="flex items-center gap-2 min-w-0 pr-2">
+<button aria-label="Go Back" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95 flex-shrink-0" onclick="history.back()" type="button">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<h1 class="text-headline-sm font-bold text-on-surface tracking-tight truncate">Series Details</h1>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<button aria-label="Bookmark" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">bookmark_border</span>
+</button>
+<button aria-label="Share" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+<button aria-label="More options" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Stack Content Slot with pt matching header h-14 -->
+<main class="flex-1 w-full pt-14 pb-12">
+<div class="flex flex-col w-full pb-24">
+<!-- Series Quick Stats & Status Banner -->
+<div class="px-4 py-3 bg-surface-container-low mb-3 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-16 rounded-lg bg-surface-container-high overflow-hidden flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Aesthetic dark mood manhwa comic cover art depicting dramatic silhouettes against a deep crimson and charcoal backdrop with subtle neon rose glows, cinematic lighting, vertical 2:3 aspect composition" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc6I47p2hCq_0jp3_PSwPDqLfY_dFwDdN9uHo6d8sBv_EXP4UmQg9jfuUn9_yNn-xmw6NEmFYSirgYkbs1vVHFooAp9ukw6sk9s05uV9AMEYnxhJeVITkMD8kywYE8wgyHVFXMIkJiZbQhXos8spq64tdBhbUHf-JKwFZbW4GcZOhd7Qk8emkkmVlgwTj7GuzjssmRX9cCgjvnz1HdfpKGC9Z1WXlC_LZEQstQuLm7l30e9qxS7_ct"/>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full text-caption font-caption bg-primary-container/20 text-primary uppercase tracking-wider font-semibold">Ongoing</span>
+<span class="text-caption font-caption text-on-surface-variant">Weekly</span>
+</div>
+<p class="text-headline-sm font-headline-sm text-on-surface truncate mt-0.5">Secret Class</p>
+<p class="text-caption font-caption text-on-surface-variant truncate">Author: Min-woo • Studio Ro</p>
+</div>
+</div>
+<div class="flex flex-col items-end flex-shrink-0 pl-2">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-caption font-caption font-bold text-on-surface">4.89</span>
+</div>
+<span class="text-overline font-overline text-on-surface-variant uppercase mt-1">191 Chapters</span>
+</div>
+</div>
+<!-- Segmented Control Tabs (Chapters vs Scenes) -->
+<div class="px-4 mb-4">
+<div class="p-1 bg-surface-container-low rounded-xl flex items-center gap-1" id="tab-container" role="tablist">
+<button aria-selected="true" class="flex-1 py-2 rounded-lg text-caption font-caption font-semibold flex items-center justify-center gap-2 transition-all bg-primary-container text-white shadow-sm" id="tab-btn-chapters" onclick="switchView('chapters')" role="tab" type="button">
+<span class="material-symbols-outlined text-[18px]">format_list_bulleted</span>
+<span>Chapters (191)</span>
+</button>
+<button aria-selected="false" class="flex-1 py-2 rounded-lg text-caption font-caption font-semibold flex items-center justify-center gap-2 transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high" id="tab-btn-scenes" onclick="switchView('scenes')" role="tab" type="button">
+<span class="material-symbols-outlined text-[18px]">photo_library</span>
+<span>Key Scenes (42)</span>
+</button>
+</div>
+</div>
+<!-- CHAPTERS VIEW CONTAINER -->
+<div class="flex flex-col w-full px-4" id="view-chapters">
+<!-- Filter, Sort & Volume Quick Bar -->
+<div class="flex items-center justify-between pb-3 text-caption font-caption text-on-surface-variant">
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">swap_vert</span>
+<span class="font-medium">Descending</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">download_for_offline</span>
+<span>Downloaded</span>
+</button>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+</button>
+</div>
+<!-- Chapter Row 1 (Latest, Unread) -->
+<div class="w-full bg-surface-container-high rounded-xl p-3.5 mb-2.5 flex items-center justify-between gap-3 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-start gap-3 min-w-0">
+<div class="flex flex-col items-center justify-center px-2.5 py-1.5 rounded-lg bg-primary-container/20 flex-shrink-0">
+<span class="text-caption font-caption font-bold text-primary">Ch. 191</span>
+<span class="text-[9px] leading-tight font-overline uppercase tracking-wider text-primary/80 mt-0.5">NEW</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="text-caption font-caption font-bold text-on-surface truncate">191 — Final Confrontation</h2>
+</div>
+<p class="text-overline font-overline text-on-surface-variant truncate mt-0.5">Released 2 days ago • 24 pages</p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-full text-overline font-overline bg-surface-container text-primary font-semibold">Uncensored</span>
+<span class="px-2 py-0.5 rounded-full text-overline font-overline bg-surface-container text-on-surface-variant">Color</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<button aria-label="Download Chapter 191" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+<button aria-label="Read Chapter 191" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant group-hover:text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Chapter Row 2 -->
+<div class="w-full bg-surface-container-high rounded-xl p-3.5 mb-2.5 flex items-center justify-between gap-3 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-start gap-3 min-w-0">
+<div class="flex flex-col items-center justify-center px-2.5 py-1.5 rounded-lg bg-surface-container flex-shrink-0">
+<span class="text-caption font-caption font-bold text-on-surface">Ch. 190</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h2 class="text-caption font-caption font-bold text-on-surface truncate">190 — Deepening Bounds</h2>
+<p class="text-overline font-overline text-on-surface-variant truncate mt-0.5">Released 1 week ago • 22 pages</p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-full text-overline font-overline bg-surface-container text-on-surface-variant">Color</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<button aria-label="Download Chapter 190" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+<button aria-label="Read Chapter 190" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant group-hover:text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Chapter Row 3 -->
+<div class="w-full bg-surface-container-high rounded-xl p-3.5 mb-2.5 flex items-center justify-between gap-3 group hover:bg-surface-container-highest transition-all">
+<div class="flex items-start gap-3 min-w-0">
+<div class="flex flex-col items-center justify-center px-2.5 py-1.5 rounded-lg bg-surface-container flex-shrink-0">
+<span class="text-caption font-caption font-bold text-on-surface">Ch. 189</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h2 class="text-caption font-caption font-bold text-on-surface truncate">189 — Summer Festival</h2>
+<p class="text-overline font-overline text-on-surface-variant truncate mt-0.5">Released 2 weeks ago • 20 pages</p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-full text-overline font-overline bg-surface-container text-on-surface-variant">Color</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<button aria-label="Download Chapter 189" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]">download</span>
+</button>
+<button aria-label="Read Chapter 189" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant group-hover:text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Chapter Row 4 (Last Read Marker) -->
+<div class="w-full bg-surface-container-high rounded-xl p-3.5 mb-2.5 flex items-center justify-between gap-3 relative overflow-hidden group hover:bg-surface-container-highest transition-all">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start gap-3 min-w-0 pl-1.5">
+<div class="flex flex-col items-center justify-center px-2.5 py-1.5 rounded-lg bg-primary-container/30 flex-shrink-0">
+<span class="text-caption font-caption font-bold text-primary">Ch. 182</span>
+<span class="text-[9px] leading-tight font-overline uppercase tracking-wider text-primary mt-0.5">PAGE 18</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<h2 class="text-caption font-caption font-bold text-on-surface truncate">182 — Secret Promise</h2>
+<span class="px-1.5 py-0.2 rounded bg-primary-container text-[10px] font-bold text-white uppercase tracking-wider">Last Read</span>
+</div>
+<p class="text-overline font-overline text-on-surface-variant truncate mt-0.5">Read yesterday • 75% completed</p>
+<!-- Mini Progress Bar -->
+<div class="w-32 h-1 bg-surface-container rounded-full overflow-hidden mt-2">
+<div class="w-3/4 h-full bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<button aria-label="Download Chapter 182" class="w-9 h-9 rounded-full flex items-center justify-center text-primary hover:bg-surface-container transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<button aria-label="Resume Chapter 182" class="w-9 h-9 rounded-full flex items-center justify-center text-primary group-hover:text-primary hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Chapter Row 5 (Archived) -->
+<div class="w-full bg-surface-container-high/60 rounded-xl p-3.5 mb-2.5 flex items-center justify-between gap-3 group hover:bg-surface-container-highest transition-all opacity-80">
+<div class="flex items-start gap-3 min-w-0">
+<div class="flex flex-col items-center justify-center px-2.5 py-1.5 rounded-lg bg-surface-container flex-shrink-0">
+<span class="text-caption font-caption font-bold text-on-surface-variant">Ch. 181</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h2 class="text-caption font-caption font-bold text-on-surface truncate">181 — Unspoken Rules</h2>
+<p class="text-overline font-overline text-on-surface-variant truncate mt-0.5">Completed 3 weeks ago • 26 pages</p>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="px-2 py-0.5 rounded-full text-overline font-overline bg-surface-container text-on-surface-variant">Completed</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">check</span>
+</div>
+</div>
+</div>
+<!-- SCENES HIGHLIGHT PREVIEW SECTION -->
+<div class="px-4 mt-6">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_awesome</span>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface">Memorable Scenes</h3>
+</div>
+<button class="text-caption font-caption font-semibold text-primary hover:text-on-surface transition-colors flex items-center" onclick="switchView('scenes')" type="button">
+<span>View all</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- 3-Column Preview Grid (2:3 aspect ratio thumbnails) -->
+<div class="grid grid-cols-3 gap-2.5">
+<!-- Scene Thumbnail 1 -->
+<div class="flex flex-col group cursor-pointer" onclick="openSceneModal('Ch. 182', 'Moonlight Terrace Encounter')">
+<div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-high group-hover:opacity-90 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Aesthetic manhwa background panel art of a midnight balcony terrace with deep violet and midnight black gradients, soft pink ambient glow from paper lanterns, dramatic cinematic perspective" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYu42Bfokcaa44zC70ysjonwsRQZtO-I4_fhS11wFlutXg0_ACPvc6h2QvoyKNwxgRfrNtguuhJvzTBRXSBoSY0Ztwk6Yu9BU9IgFZHJen2b5qgC-unRAn-akscTqz-v5BoU2jQ-Es4_cTj7R0WfnWKbE7Fqb4IV2jcOlFK35fSm_5LcIqvk5cvHicoCNriXjRzupPUJbyq70wFVqouPQ_aooo1Q_j6IuK2i2anLHAU8QX6KMXptCm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] font-bold text-white">Ch. 182</span>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between text-white">
+<span class="material-symbols-outlined text-[14px]">favorite</span>
+<span class="text-[10px] font-medium">1.4k</span>
+</div>
+</div>
+<p class="text-overline font-overline text-on-surface truncate mt-1">Terrace Whisper</p>
+</div>
+<!-- Scene Thumbnail 2 -->
+<div class="flex flex-col group cursor-pointer" onclick="openSceneModal('Ch. 175', 'Rainy Night Reunion')">
+<div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-high group-hover:opacity-90 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Dark dramatic manhwa panel illustration with neon city reflections in puddles during heavy night rain, deep burgundy shadows and soft crimson umbrella silhouette highlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv878vAXPI_MOLg5-O5Htw9rkhMIU1WdznT2wATcReCfArsloEG1D8FjsLv-SIBn2DI-z0FWC10Wt4qKiFb6_wOdTaWzyKpny9CGAK9HAsIakM1iJ5hocgDjHP-5XKy_Bg0_gatbINGC-7LISr6n_CW7UecB7Vg4JiA6eVxCvBnwAuz0IViMiwKoAqN3JPQ8jXcu2WAqvLSbNC3fxuOjasyhjrjfX6Wt8rQlsyFNl_5kBODxwpNrgl"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] font-bold text-white">Ch. 175</span>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between text-white">
+<span class="material-symbols-outlined text-[14px]">favorite</span>
+<span class="text-[10px] font-medium">2.1k</span>
+</div>
+</div>
+<p class="text-overline font-overline text-on-surface truncate mt-1">Rainy Night</p>
+</div>
+<!-- Scene Thumbnail 3 -->
+<div class="flex flex-col group cursor-pointer" onclick="openSceneModal('Ch. 160', 'Secret Rooftop Moment')">
+<div class="relative w-full aspect-[2/3] rounded-lg overflow-hidden bg-surface-container-high group-hover:opacity-90 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Stylized webtoon anime frame showing a dusk sunset turning into dark starry night over modern city rooftops, warm magenta horizon fading into pure jet black sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpWRUXJ7FUqyEyaO7Mvzafqt9oDrVlCwXBnZeUEC_4eL8vp7ZIHcwMXTT1_tlaNxcp1LBstBo6UCiV8sHjnyU4VwCVza8qPbMZYWaPz7TK6az_1g3gelyXvSqOxX2GGUFI4-pxuNS2kCKY5WlaSx7Fs2DWa64wrNnd40bCqQRxfTUd353Ad40HhfYhSCck-nnvnBNSqCG6I9xpNOEG-MaDs_P5hodfhYKaqpnQp_RDQsgDGQ4zeCoC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+<span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm text-[10px] font-bold text-white">Ch. 160</span>
+<div class="absolute bottom-1.5 left-1.5 right-1.5 flex items-center justify-between text-white">
+<span class="material-symbols-outlined text-[14px]">favorite</span>
+<span class="text-[10px] font-medium">980</span>
+</div>
+</div>
+<p class="text-overline font-overline text-on-surface truncate mt-1">Rooftop Dusk</p>
+</div>
+</div>
+</div>
+<!-- FLOATING ACTION BUTTON: Continue Reading -->
+<div class="fixed bottom-6 right-4 z-40 max-w-md">
+<button aria-label="Continue reading Chapter 183" class="px-5 py-3 rounded-full bg-primary-container hover:bg-[#903c5f] text-white font-headline-sm font-semibold shadow-lg shadow-black/80 flex items-center gap-2 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Continue Ch. 182</span>
+<span class="text-caption font-caption text-primary-fixed opacity-80 pl-1">(p. 18)</span>
+</button>
+</div>
+</div>
+<script>
+  function switchView(mode) {
+    const btnChapters = document.getElementById('tab-btn-chapters');
+    const btnScenes = document.getElementById('tab-btn-scenes');
+    const viewChapters = document.getElementById('view-chapters');
+
+    if (mode === 'chapters') {
+      btnChapters.className = 'flex-1 py-2 rounded-lg text-caption font-caption font-semibold flex items-center justify-center gap-2 transition-all bg-primary-container text-white shadow-sm';
+      btnChapters.setAttribute('aria-selected', 'true');
+      btnScenes.className = 'flex-1 py-2 rounded-lg text-caption font-caption font-semibold flex items-center justify-center gap-2 transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high';
+      btnScenes.setAttribute('aria-selected', 'false');
+      if (viewChapters) viewChapters.style.display = 'flex';
+    } else {
+      btnScenes.className = 'flex-1 py-2 rounded-lg text-caption font-caption font-semibold flex items-center justify-center gap-2 transition-all bg-primary-container text-white shadow-sm';
+      btnScenes.setAttribute('aria-selected', 'true');
+      btnChapters.className = 'flex-1 py-2 rounded-lg text-caption font-caption font-semibold flex items-center justify-center gap-2 transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high';
+      btnChapters.setAttribute('aria-selected', 'false');
+    }
+  }
+
+  function openSceneModal(ch, title) {
+    // Delighted micro-feedback handler
+    const fab = document.querySelector('button[aria-label^="Continue reading"]');
+    if (fab) {
+      fab.classList.add('scale-105');
+      setTimeout(() => fab.classList.remove('scale-105'), 200);
+    }
+  }
+</script>
+</main>
+</div>
+</body></html>

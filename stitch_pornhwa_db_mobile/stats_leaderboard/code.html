@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>User Profile - Pornhwa DB</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#5a3f48",
+            "on-tertiary-container": "#f5cbf6",
+            "on-surface": "#eddfe2",
+            "surface-container-highest": "#3b3335",
+            "on-tertiary": "#432647",
+            "inverse-surface": "#eddfe2",
+            "secondary-fixed": "#ffd9e3",
+            "on-tertiary-fixed-variant": "#5b3c5f",
+            "surface-tint": "#ffb0ca",
+            "surface-container": "#251e20",
+            "tertiary-container": "#745378",
+            "on-secondary": "#422a31",
+            "outline-variant": "#27272a",
+            "on-surface-variant": "#a1a1aa",
+            "secondary": "#e2bdc7",
+            "on-primary-fixed": "#3e001f",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#000000",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed": "#2c1031",
+            "on-error": "#690005",
+            "surface-container-low": "#0b0b0b",
+            "surface-bright": "#40373a",
+            "on-primary-fixed-variant": "#7d264c",
+            "on-secondary-container": "#d0acb6",
+            "on-secondary-fixed": "#2a151c",
+            "surface-container-high": "#141414",
+            "primary-container": "#9b3e64",
+            "tertiary": "#e2bae4",
+            "tertiary-fixed-dim": "#e2bae4",
+            "on-background": "#eddfe2",
+            "secondary-fixed-dim": "#e2bdc7",
+            "surface-dim": "#000000",
+            "primary": "#ffb0ca",
+            "surface": "#000000",
+            "tertiary-fixed": "#fed6ff",
+            "on-primary": "#600c35",
+            "primary-fixed": "#ffd9e3",
+            "inverse-primary": "#9b3e64",
+            "on-primary-container": "#ffccdb",
+            "surface-variant": "#141414",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#000000",
+            "on-secondary-fixed-variant": "#5a3f48",
+            "outline": "#27272a",
+            "inverse-on-surface": "#362e31",
+            "error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "gutter": "0.75rem",
+            "gutter-tablet": "1rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "overline": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "overline": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-sm": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "700" }],
+            "caption": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "400" }],
+            "display": ["1.75rem", { "lineHeight": "2.25rem", "fontWeight": "700" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #000000;
+      color: #eddfe2;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<meta content="mobile_tab" name="shell-type"/>
+</head>
+<body class="bg-black text-on-surface font-body-md text-body-md antialiased min-h-screen selection:bg-primary-container selection:text-white">
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col bg-black">
+<!-- Sticky Glass Top App Bar -->
+<header class="fixed top-0 left-0 right-0 max-w-md mx-auto z-50 bg-black/60 backdrop-blur-md border-b border-[#27272a]">
+<div class="flex items-center justify-between px-4 h-14">
+<div class="flex items-center gap-3">
+<!-- 28px Squircle Brand Mark with Rose Letter P -->
+<div class="w-7 h-7 rounded-lg bg-[#0b0b0b] border border-[#27272a] flex items-center justify-center flex-shrink-0 shadow-inner shadow-primary-container/20">
+<span class="font-headline-md text-[16px] font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container leading-none select-none">P</span>
+</div>
+<span class="text-headline-sm font-bold text-on-surface tracking-tight truncate">User Profile</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button aria-label="Filter" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95 relative" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Slot with pt matching header h-14 -->
+<main class="flex-1 w-full pt-14 pb-24">
+<div class="flex flex-col w-full pb-8 px-4">
+<!-- Sub-header Bar: Period Switcher & Sub-nav -->
+<div class="flex items-center justify-between pt-3 pb-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></div>
+<span class="font-overline text-overline uppercase tracking-wider text-on-surface-variant">Live Synced Stats</span>
+</div>
+<!-- Timeframe Filter Pill -->
+<div class="relative">
+<button class="bg-surface-container-high text-on-surface px-3 py-1.5 rounded-full flex items-center gap-1.5 active:scale-95 transition-transform shadow-sm" id="timeframe-trigger" type="button">
+<span class="material-symbols-outlined text-primary text-[15px]">calendar_today</span>
+<span class="font-caption text-caption font-semibold" id="selected-timeframe">This Month</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] transition-transform duration-200" id="timeframe-chevron">expand_more</span>
+</button>
+<!-- Dropdown Menu -->
+<div class="hidden absolute right-0 mt-1.5 w-36 bg-surface-container-high rounded-xl p-1 z-20 shadow-xl shadow-black/80" id="timeframe-menu">
+<button class="w-full text-left px-3 py-2 text-caption rounded-lg hover:bg-secondary-container/40 text-primary font-medium flex items-center justify-between" onclick="selectTimeframe('This Week')" type="button">
+<span>This Week</span>
+<span class="material-symbols-outlined text-[14px]">check</span>
+</button>
+<button class="w-full text-left px-3 py-2 text-caption rounded-lg hover:bg-secondary-container/40 text-on-surface font-medium flex items-center justify-between" onclick="selectTimeframe('This Month')" type="button">
+<span>This Month</span>
+</button>
+<button class="w-full text-left px-3 py-2 text-caption rounded-lg hover:bg-secondary-container/40 text-on-surface font-medium flex items-center justify-between" onclick="selectTimeframe('All Time')" type="button">
+<span>All Time</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Metric Tiles 2x2 Grid -->
+<div class="grid grid-cols-2 gap-3 mb-4">
+<!-- Tile 1: Chapters Read -->
+<div class="bg-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-sm relative overflow-hidden group">
+<div class="absolute -right-3 -top-3 w-16 h-16 bg-primary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+</div>
+<span class="font-overline text-overline text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>+18%
+        </span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface tracking-tight font-black">1,420</div>
+<div class="font-caption text-caption text-on-surface-variant font-medium">Chapters Read</div>
+</div>
+</div>
+<!-- Tile 2: Average Rating -->
+<div class="bg-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute -right-3 -top-3 w-16 h-16 bg-primary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex text-primary text-[10px]">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface tracking-tight font-black">4.6</div>
+<div class="font-caption text-caption text-on-surface-variant font-medium">Average Rating</div>
+</div>
+</div>
+<!-- Tile 3: Reading Time -->
+<div class="bg-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute -right-3 -top-3 w-16 h-16 bg-primary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">history_toggle_off</span>
+</div>
+<span class="font-overline text-overline text-on-surface-variant">Top 4%</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface tracking-tight font-black">84h</div>
+<div class="font-caption text-caption text-on-surface-variant font-medium">Reading Time</div>
+</div>
+</div>
+<!-- Tile 4: Series Finished -->
+<div class="bg-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute -right-3 -top-3 w-16 h-16 bg-primary-container/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/40 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+</div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface tracking-tight font-black">42</div>
+<div class="font-caption text-caption text-on-surface-variant font-medium">Series Finished</div>
+</div>
+</div>
+</div>
+<!-- Flat Analytics Bar Chart Area -->
+<div class="bg-surface-container-high rounded-xl p-4 mb-5 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Reading Activity</span>
+<span class="font-caption text-caption text-on-surface-variant">Weekly pace: 34 chapters/day avg</span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low text-primary text-overline font-overline">
+<span class="material-symbols-outlined text-[14px]">local_fire_department</span>
+<span>Peak Thu</span>
+</div>
+</div>
+<!-- Chart Visual Columns -->
+<div class="h-36 w-full flex items-end justify-between gap-2 pt-4 pb-1 px-1">
+<!-- Mon -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group cursor-pointer">
+<div class="font-overline text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">22</div>
+<div class="w-full bg-secondary-container/40 rounded-t-md h-[40%] group-hover:bg-primary-container/60 transition-all duration-300"></div>
+<span class="font-overline text-overline text-on-surface-variant group-hover:text-on-surface">M</span>
+</div>
+<!-- Tue -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group cursor-pointer">
+<div class="font-overline text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">36</div>
+<div class="w-full bg-secondary-container/40 rounded-t-md h-[65%] group-hover:bg-primary-container/60 transition-all duration-300"></div>
+<span class="font-overline text-overline text-on-surface-variant group-hover:text-on-surface">T</span>
+</div>
+<!-- Wed -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group cursor-pointer">
+<div class="font-overline text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">44</div>
+<div class="w-full bg-secondary-container/40 rounded-t-md h-[80%] group-hover:bg-primary-container/60 transition-all duration-300"></div>
+<span class="font-overline text-overline text-on-surface-variant group-hover:text-on-surface">W</span>
+</div>
+<!-- Thu (Peak) -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group cursor-pointer">
+<div class="font-overline text-[10px] text-primary font-bold">58</div>
+<div class="w-full bg-primary-container rounded-t-md h-[100%] shadow-lg shadow-primary-container/30 relative">
+<div class="absolute top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+<span class="font-overline text-overline text-primary font-bold">T</span>
+</div>
+<!-- Fri -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group cursor-pointer">
+<div class="font-overline text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">30</div>
+<div class="w-full bg-secondary-container/40 rounded-t-md h-[55%] group-hover:bg-primary-container/60 transition-all duration-300"></div>
+<span class="font-overline text-overline text-on-surface-variant group-hover:text-on-surface">F</span>
+</div>
+<!-- Sat -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group cursor-pointer">
+<div class="font-overline text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">50</div>
+<div class="w-full bg-secondary-container/50 rounded-t-md h-[90%] group-hover:bg-primary-container/60 transition-all duration-300"></div>
+<span class="font-overline text-overline text-on-surface-variant group-hover:text-on-surface">S</span>
+</div>
+<!-- Sun -->
+<div class="flex-1 flex flex-col items-center gap-2 h-full justify-end group cursor-pointer">
+<div class="font-overline text-[10px] text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity">41</div>
+<div class="w-full bg-secondary-container/40 rounded-t-md h-[75%] group-hover:bg-primary-container/60 transition-all duration-300"></div>
+<span class="font-overline text-overline text-on-surface-variant group-hover:text-on-surface">S</span>
+</div>
+</div>
+</div>
+<!-- Community Leaderboard Section -->
+<div class="flex flex-col">
+<div class="flex items-center justify-between mb-3 px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">military_tech</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Community Leaderboard</h2>
+</div>
+<button class="font-caption text-caption text-primary hover:text-on-primary-container font-semibold flex items-center" type="button">
+<span>View Rules</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+<!-- Ranked List -->
+<div class="flex flex-col gap-2.5">
+<!-- Rank 1 -->
+<div class="bg-surface-container-high rounded-xl p-3 flex items-center justify-between shadow-sm relative overflow-hidden transition-all hover:bg-surface-container active:scale-[0.99]">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-primary-container text-white font-bold text-caption flex items-center justify-center flex-shrink-0 shadow-md shadow-primary-container/30">
+            01
+          </div>
+<div class="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up moody portrait avatar with dramatic neon pink and obsidian shadows, stylized anime aesthetic, high contrast dark profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwpxde5wrhnFDciG_flOrUVP__l3NoZFZwzqyrzOBML8KmkscjkCFPu-LSWoQdnNp_palWoPwlGylKgFmeNnIhgCcxR1XnlaSNQkARqbDVj9oPYTHev4wXGVl4Oc2JlvnnO0cMa1vJuhHB02_a61Ti9N2k9pA0TI8ONkzO5RgLJIlR8yqI2xIJMHLoDUcMCX6Tyn4yTggBF4OyngrJei8x8mmV0aLAokxJuOxFpTgF8yI1wbIEh_5H"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface truncate">@Nocturne</span>
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant truncate">48 curated lists • 3.2k edits</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0 pl-2">
+<span class="font-headline-sm text-headline-sm font-extrabold text-primary">12,450</span>
+<span class="block font-overline text-[10px] text-on-surface-variant uppercase tracking-wider leading-none">pts</span>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="bg-surface-container-high rounded-xl p-3 flex items-center justify-between shadow-sm transition-all hover:bg-surface-container active:scale-[0.99]">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-secondary-container/40 text-primary font-bold text-caption flex items-center justify-center flex-shrink-0">
+            02
+          </div>
+<div class="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Stylized graphic avatar of an anime character with lavender tinted hair against a midnight black ambient backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaYZ1UDmQnVLvXJQMDJKE6RRXn7byqfHmuYy6LSlOL8UGrT4AWnjnm9uE-cRb9OK1rX5F-yxUUYo_dTZHea2tkP-IuNk53D9fvz95WF-gbMZUiQ6AvYpUlWQGvtLzGwLxCPf8_23JRxvSOpGGOit2SL7D0Nj7c4Dx1IJ3EFjWAJJXanwoEoAPsGqiUTNsMusOknrNIFJCdKjzNDwh5V2b9fOBzGkCPy0HgtfSIZMqV-iwWE1UHyIWY"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface truncate">@Daehyun</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">194 reviews written</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0 pl-2">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">9,820</span>
+<span class="block font-overline text-[10px] text-on-surface-variant uppercase tracking-wider leading-none">pts</span>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="bg-surface-container-high rounded-xl p-3 flex items-center justify-between shadow-sm transition-all hover:bg-surface-container active:scale-[0.99]">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-secondary-container/40 text-primary font-bold text-caption flex items-center justify-center flex-shrink-0">
+            03
+          </div>
+<div class="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cyberpunk comic art avatar with dark visor and subtle glowing pink highlights, pure black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIlWWCBwAVQalR3T5yNYIXt7Yk_ygx_8_xqs6V1z0bBCV52EI0JPKcEWxnxIWjkwRmvBTwhJZMiTnJ12DhEha_hD1Tt8df-BrfHANxjjZWcYk1NXfo8hCmVjCyZwvzlZ4XyAa0mrSKtO7e9tSGa2QXHG8fHKN_lWdI-yooblNehCaWgTHGY-6A-cnxxNgA0rwLTvMwssxWgOdQb_RW-s9Ly6CdBQbCH3FQwxTqvhOP0xWvhQA2RFbD"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface truncate">@ManhwaKnight</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">86 tracked series</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0 pl-2">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">8,140</span>
+<span class="block font-overline text-[10px] text-on-surface-variant uppercase tracking-wider leading-none">pts</span>
+</div>
+</div>
+<!-- Rank 4 -->
+<div class="bg-surface-container-high rounded-xl p-3 flex items-center justify-between shadow-sm transition-all hover:bg-surface-container active:scale-[0.99]">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-7 h-7 rounded-full bg-surface-container-highest text-on-surface-variant font-bold text-caption flex items-center justify-center flex-shrink-0">
+            04
+          </div>
+<div class="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Monochrome ink drawing avatar with sleek webtoon styling and subtle crimson rim lighting on jet black base" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyPyslFPnk9k2M_1aVa6PGQ-MqM_aSiADJk7MYnJ_t_myN72UvZdwWhHpg2YCZvdG23ApKxUr-BxA2Cqv6up8unOOSYmZUlJLYBXHRSy0rNBduWsaprkzwDr_iq6eZC_xGqGh-nbepsUdUdsIt8_DlEQodfwbySTzKO1QLi_FU39Dal7THtAOn1zSGfnPTHrZR0MNUE2OvG0jlaeZWZN-HU50ABgHcTmoywMxw7Bg7W9v2KDs69mUG"/>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface truncate">@WebtoonCurator</span>
+<span class="font-caption text-caption text-on-surface-variant truncate">41 contributions</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0 pl-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface-variant">6,700</span>
+<span class="block font-overline text-[10px] text-on-surface-variant uppercase tracking-wider leading-none">pts</span>
+</div>
+</div>
+</div>
+<!-- Personal Rank Micro Banner -->
+<div class="mt-4 p-3 bg-secondary-container/20 rounded-xl flex items-center justify-between shadow-inner">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-white text-[11px] font-bold">
+          28
+        </div>
+<div class="flex flex-col">
+<span class="font-caption text-caption font-semibold text-on-surface">Your Position</span>
+<span class="font-overline text-[10px] text-primary">120 pts to reach Rank 27</span>
+</div>
+</div>
+<button class="px-3 py-1 bg-primary-container text-white rounded-full font-overline text-overline active:scale-95 transition-transform" type="button">
+        Earn XP
+      </button>
+</div>
+</div>
+</div>
+<script>
+  // Ensure profile tab styling matches shell expectations for Screen 15
+  (function initProfileActiveTab() {
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === '#profile' || link.getAttribute('data-path') === 'profile') {
+        link.classList.remove('text-[#a1a1aa]');
+        link.classList.add('bg-[rgba(155,62,100,0.18)]', 'text-[#ffb0ca]');
+      }
+    });
+
+    const trigger = document.getElementById('timeframe-trigger');
+    const menu = document.getElementById('timeframe-menu');
+    const chevron = document.getElementById('timeframe-chevron');
+
+    if (trigger && menu) {
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menu.classList.toggle('hidden');
+        chevron.classList.toggle('rotate-180');
+      });
+
+      document.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        chevron.classList.remove('rotate-180');
+      });
+    }
+  })();
+
+  function selectTimeframe(name) {
+    const label = document.getElementById('selected-timeframe');
+    if (label) label.textContent = name;
+    const menu = document.getElementById('timeframe-menu');
+    if (menu) menu.classList.add('hidden');
+  }
+</script>
+</main>
+<!-- Docked Icon-First Bottom Navigation Bar (No Text Labels) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 flex items-center justify-around px-3 h-16 pb-safe bg-black border-t border-[#27272a]" data-active-classes="bg-[rgba(155,62,100,0.18)] text-[#ffb0ca] border border-primary-container/30">
+<!-- 1. Home -->
+<a aria-label="Home" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="home-feed" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</a>
+<!-- 2. Browse -->
+<a aria-label="Browse" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="browse-catalogue" href="#browse">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+</a>
+<!-- 3. Search -->
+<a aria-label="Search" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="search-explore" href="#search">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</a>
+<!-- 4. Library (with rose numeric badge) -->
+<a aria-label="Library" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90 relative" data-path="library" href="#library">
+<span class="material-symbols-outlined text-[24px]">auto_stories</span>
+<span class="absolute top-1 right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-primary-container text-white text-[10px] font-bold flex items-center justify-center leading-none border border-black">3</span>
+</a>
+<!-- 5. Profile -->
+<a aria-label="Profile" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="profile" href="#profile">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</a>
+</nav>
+</div>
+</body></html>

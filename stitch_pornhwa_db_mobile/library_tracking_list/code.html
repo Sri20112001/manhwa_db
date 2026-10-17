@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Library - Pornhwa DB</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#5a3f48",
+            "on-tertiary-container": "#f5cbf6",
+            "on-surface": "#eddfe2",
+            "surface-container-highest": "#3b3335",
+            "on-tertiary": "#432647",
+            "inverse-surface": "#eddfe2",
+            "secondary-fixed": "#ffd9e3",
+            "on-tertiary-fixed-variant": "#5b3c5f",
+            "surface-tint": "#ffb0ca",
+            "surface-container": "#251e20",
+            "tertiary-container": "#745378",
+            "on-secondary": "#422a31",
+            "outline-variant": "#27272a",
+            "on-surface-variant": "#a1a1aa",
+            "secondary": "#e2bdc7",
+            "on-primary-fixed": "#3e001f",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#000000",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed": "#2c1031",
+            "on-error": "#690005",
+            "surface-container-low": "#0b0b0b",
+            "surface-bright": "#40373a",
+            "on-primary-fixed-variant": "#7d264c",
+            "on-secondary-container": "#d0acb6",
+            "on-secondary-fixed": "#2a151c",
+            "surface-container-high": "#141414",
+            "primary-container": "#9b3e64",
+            "tertiary": "#e2bae4",
+            "tertiary-fixed-dim": "#e2bae4",
+            "on-background": "#eddfe2",
+            "secondary-fixed-dim": "#e2bdc7",
+            "surface-dim": "#000000",
+            "primary": "#ffb0ca",
+            "surface": "#000000",
+            "tertiary-fixed": "#fed6ff",
+            "on-primary": "#600c35",
+            "primary-fixed": "#ffd9e3",
+            "inverse-primary": "#9b3e64",
+            "on-primary-container": "#ffccdb",
+            "surface-variant": "#141414",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#000000",
+            "on-secondary-fixed-variant": "#5a3f48",
+            "outline": "#27272a",
+            "inverse-on-surface": "#362e31",
+            "error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "gutter": "0.75rem",
+            "gutter-tablet": "1rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "overline": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "overline": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-sm": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "700" }],
+            "caption": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "400" }],
+            "display": ["1.75rem", { "lineHeight": "2.25rem", "fontWeight": "700" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #000000;
+      color: #eddfe2;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<meta content="mobile_tab" name="shell-type"/>
+</head>
+<body class="bg-black text-on-surface font-body-md text-body-md antialiased min-h-screen selection:bg-primary-container selection:text-white">
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col bg-black">
+<!-- Sticky Glass Top App Bar -->
+<header class="fixed top-0 left-0 right-0 max-w-md mx-auto z-50 bg-black/60 backdrop-blur-md border-b border-[#27272a]">
+<div class="flex items-center justify-between px-4 h-14">
+<div class="flex items-center gap-3">
+<!-- 28px Squircle Brand Mark with Rose Letter P -->
+<div class="w-7 h-7 rounded-lg bg-[#0b0b0b] border border-[#27272a] flex items-center justify-center flex-shrink-0 shadow-inner shadow-primary-container/20">
+<span class="font-headline-md text-[16px] font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container leading-none select-none">P</span>
+</div>
+<span class="text-headline-sm font-bold text-on-surface tracking-tight truncate">Library</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button aria-label="Filter" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95 relative" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Slot with pt matching header h-14 -->
+<main class="flex-1 w-full pt-14 pb-24">
+<div class="flex flex-col w-full">
+<!-- Sticky Glass Secondary Action Header -->
+<div class="sticky top-14 z-40 bg-black/70 backdrop-blur-md px-4 py-2 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Shelf</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-caption text-caption font-semibold">14 Titles</span>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Search library" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button aria-label="Sort options" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">sort</span>
+</button>
+<button aria-label="Toggle view grid or list" class="w-9 h-9 rounded-full flex items-center justify-center text-primary bg-primary-container/20 transition-colors active:scale-95" id="viewToggleBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">view_agenda</span>
+</button>
+</div>
+</div>
+<!-- Segmented Horizontally Scrollable Status Filter Tabs -->
+<div class="w-full overflow-x-auto no-scrollbar px-4 pt-1 pb-3 flex items-center gap-2">
+<button class="library-tab shrink-0 px-3.5 py-1.5 rounded-full text-caption font-caption font-semibold text-on-primary bg-primary-container shadow-sm flex items-center gap-1.5 active:scale-95 transition-all" type="button">
+<span>Reading</span>
+<span class="text-[10px] px-1.5 py-0.2 rounded-full bg-black/30 text-primary-fixed">8</span>
+</button>
+<button class="library-tab shrink-0 px-3.5 py-1.5 rounded-full text-caption font-caption font-medium text-on-surface-variant hover:text-on-surface bg-surface-container-low hover:bg-surface-container transition-all" type="button">
+<span>Plan to Read</span>
+</button>
+<button class="library-tab shrink-0 px-3.5 py-1.5 rounded-full text-caption font-caption font-medium text-on-surface-variant hover:text-on-surface bg-surface-container-low hover:bg-surface-container transition-all" type="button">
+<span>Completed</span>
+</button>
+<button class="library-tab shrink-0 px-3.5 py-1.5 rounded-full text-caption font-caption font-medium text-on-surface-variant hover:text-on-surface bg-surface-container-low hover:bg-surface-container transition-all" type="button">
+<span>On Hold</span>
+</button>
+<button class="library-tab shrink-0 px-3.5 py-1.5 rounded-full text-caption font-caption font-medium text-on-surface-variant hover:text-on-surface bg-surface-container-low hover:bg-surface-container transition-all" type="button">
+<span>Dropped</span>
+</button>
+<button class="library-tab shrink-0 px-3.5 py-1.5 rounded-full text-caption font-caption font-medium text-on-surface-variant hover:text-on-surface bg-surface-container-low hover:bg-surface-container transition-all" type="button">
+<span>Re-reading</span>
+</button>
+</div>
+<!-- Series Rows Container -->
+<div class="px-4 flex flex-col gap-3">
+<!-- Row 1: Secret Class -->
+<article class="bg-surface-container-high rounded-xl p-3 flex gap-3 relative overflow-hidden transition-all duration-200 hover:bg-surface-container-highest">
+<!-- 2:3 Cover Thumbnail 64x96px -->
+<div class="w-16 h-24 rounded-lg overflow-hidden shrink-0 relative bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Abstract minimal geometric gradient composition with rich dark rose, deep wine crimson, and slate black tones in a vertical 2:3 ratio, clean digital artwork" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc5N7Hwn96FNzt2fgMTaHw-grBxMWIC7KSCa1CBR6gwzl7o_5lHW8Bl4N1mqSG6UKLFEg4MoU-rYZgh6LL99Itsx4sXRb38M7onE4IBoy9PLUE0CVcg3B7tsbXqn7yq3fEmZ0SzHyNm-udUPMVsqexs8TWOJ_aaHDVRZnUneZXGppE5SLaKF6RqWDH80E6Qoinm3L6vKMc3BfYhB8NPmsPAVbzzlXU0tRGiGP2b1-BLouGFcQqpV1T"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<span class="absolute bottom-1 left-1 font-caption text-[9px] px-1 py-0.2 rounded bg-black/80 text-primary-fixed font-bold leading-tight">HD</span>
+</div>
+<!-- Details & Tracking Progress -->
+<div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface truncate tracking-tight">Secret Class</h2>
+<button aria-label="Entry options" class="w-7 h-7 -mr-1 -mt-1 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<p class="font-caption text-caption text-on-surface-variant truncate">Min-woo &amp; G-Bro</p>
+</div>
+<div class="flex flex-col gap-1.5 mt-2">
+<!-- Linear Reading Progress Bar -->
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-300" style="width: 85%;"></div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption pt-0.5">
+<span class="font-semibold text-primary">Ch 182 <span class="text-on-surface-variant font-normal">/ 191</span></span>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-primary-container/20 text-primary">Ongoing</span>
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;" title="High Priority">flag</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Row 2: Boarding Diary (Interactive Swipe Affordance Preview) -->
+<div class="relative w-full rounded-xl overflow-hidden bg-surface-container-low select-none">
+<!-- Revealed Quick Actions Underneath -->
+<div class="absolute inset-y-0 right-0 w-36 flex items-center justify-end px-3 gap-2">
+<button aria-label="Favorite rating" class="w-10 h-10 rounded-full bg-surface-container-high text-primary flex items-center justify-center active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+<button class="h-10 px-3 rounded-full bg-primary-container text-white text-caption font-caption font-bold flex items-center gap-1 shadow-md active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>1 Ch</span>
+</button>
+</div>
+<!-- Swipeable Front Card Shifted Left for Affordance -->
+<article class="bg-surface-container-high rounded-xl p-3 flex gap-3 relative z-10 transition-transform duration-300 transform -translate-x-28" id="swipeCardAffordance">
+<div class="w-16 h-24 rounded-lg overflow-hidden shrink-0 relative bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Subtle modern minimalist dark gradient design featuring dusty blush rose, charcoal obsidian, and smoky quartz textures, neutral vertical book format" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdqVPWE110W9xjkHVmJHtassWI4QE7lV4jg8vxrQaELtQUeFNM-SX0A8gNCgoi375w0oxQbHyFRRhi63at6DTgwih_9_9HiZi7eQ0w6I1v2ur5E0JcAM4MaKz1vnTUFlOA73LYKwTjkN7BuuODWdZ79T3s8Wbdof1GFwLQwv5W8aGImOe-a0yiCs6u67KMaHEti4bMwVfQW2TlasquuoVkpPRx2mCSkxHI_FzlKVjqem39_HrS7FmM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<span class="absolute top-1 left-1 w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface truncate tracking-tight">Boarding Diary</h2>
+<span class="text-[10px] text-on-surface-variant font-caption flex items-center gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-[12px]">schedule</span> 2h ago
+              </span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant truncate">Kim Jin</p>
+</div>
+<div class="flex flex-col gap-1.5 mt-2">
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-300" style="width: 95%;"></div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption pt-0.5">
+<span class="font-semibold text-primary">Ch 140 <span class="text-on-surface-variant font-normal">/ 148</span></span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-primary-container/20 text-primary">Ongoing</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Row 3: Silent War -->
+<article class="bg-surface-container-high rounded-xl p-3 flex gap-3 relative overflow-hidden transition-all duration-200 hover:bg-surface-container-highest">
+<div class="w-16 h-24 rounded-lg overflow-hidden shrink-0 relative bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Monochrome deep graphite and muted rosewood architectural gradient blocks, smooth atmospheric lighting, neutral 2:3 abstract book cover aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv_pAbNT3wt42yXuxEt_ZTc7S6EZkLML_lU8uwNUcuKeqoYGVmjFtfGlq52P_29Kp0Zer5TpVjj6hMt43Kk-NxoZwV4PhyQXLyxCTAFOaVdaxhcrFqKYDSckJiciMn_48mIfg_lqFzGuILyk9CpBx8VbvaAeaQUiYFJ1_-Kgb6U6ubAbqZ8vchzY7muNQNUsAKO-2VkhARZHveRE33pclDdh_d2emvHbD78EKtPKWkRKlhEMzsqFJ4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+<div class="absolute bottom-1 right-1 flex items-center text-amber-300">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[9px] font-bold ml-0.5">9.8</span>
+</div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface truncate tracking-tight">Silent War</h2>
+<button aria-label="Entry options" class="w-7 h-7 -mr-1 -mt-1 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<p class="font-caption text-caption text-on-surface-variant truncate">Yラップ</p>
+</div>
+<div class="flex flex-col gap-1.5 mt-2">
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 rounded-full transition-all duration-300" style="width: 100%;"></div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption pt-0.5">
+<span class="font-semibold text-emerald-400">Ch 120 <span class="text-on-surface-variant font-normal">/ 120</span></span>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-950 text-emerald-300">Completed</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Row 4: Touch to Unlock -->
+<article class="bg-surface-container-high rounded-xl p-3 flex gap-3 relative overflow-hidden transition-all duration-200 hover:bg-surface-container-highest">
+<div class="w-16 h-24 rounded-lg overflow-hidden shrink-0 relative bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Abstract dynamic fluid shapes in deep plum, velvet black, and gentle dusty rose, ambient lighting in a sleek 2:3 vertical graphic frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHIaWRibwCuJw01LlqFmzMDpU7FMaOMyNdOMJZNBSprsbeHmCQQcWxecd7VvnGDXReppYqVvmhuTTeAa1B-fixwzTSO8UgJPQqeUGoWc4PdSwYuewnlbtPj_KDc4hujirkhIWsvXN2Hmvwc7b51PlZUn13G2U4FvTay6R7-inudLDLwW0C2efmKlOgRs-CGx_szc1f1UP0cuV0oOd5T2jdhTVH5yMhZT8KwcBy0alp2FrSILe8tqeK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<span class="absolute bottom-1 left-1 font-caption text-[9px] px-1 py-0.2 rounded bg-black/80 text-primary-fixed font-bold leading-tight">CH 64</span>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between py-0.5">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface truncate tracking-tight">Touch to Unlock</h2>
+<button aria-label="Entry options" class="w-7 h-7 -mr-1 -mt-1 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<p class="font-caption text-caption text-on-surface-variant truncate">Kwon</p>
+</div>
+<div class="flex flex-col gap-1.5 mt-2">
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full transition-all duration-300" style="width: 61%;"></div>
+</div>
+<div class="flex items-center justify-between text-caption font-caption pt-0.5">
+<span class="font-semibold text-primary">Ch 64 <span class="text-on-surface-variant font-normal">/ 104</span></span>
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full text-[11px] font-medium bg-primary-container/20 text-primary">Ongoing</span>
+<span class="material-symbols-outlined text-primary text-[15px]" style="font-variation-settings: 'FILL' 1;" title="High Priority">flag</span>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Subtle Library Sync Status & Empty State Container Hint -->
+<div class="px-4 mt-6 mb-2">
+<div class="bg-surface-container-low rounded-2xl p-5 flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="w-11 h-11 rounded-full bg-primary-container/15 flex items-center justify-center text-primary mb-2.5">
+<span class="material-symbols-outlined text-[24px]">menu_book</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-semibold text-on-surface mb-0.5">Auto-Cloud Sync Active</h3>
+<p class="font-caption text-caption text-on-surface-variant max-w-xs leading-relaxed">
+        Swipe left on any entry to rapidly log +1 chapter or mark favorites. Your reading spots stay backed up in real time.
+      </p>
+<button class="mt-3.5 px-4 py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-caption text-caption font-semibold flex items-center gap-1.5 transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">cloud_done</span>
+<span>All 14 titles synced</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  // Interactive Swipe Card Affordance Toggle for Row 2
+  const swipeCard = document.getElementById('swipeCardAffordance');
+  if (swipeCard) {
+    let isShifted = true;
+    swipeCard.addEventListener('click', () => {
+      isShifted = !isShifted;
+      if (isShifted) {
+        swipeCard.classList.add('-translate-x-28');
+      } else {
+        swipeCard.classList.remove('-translate-x-28');
+      }
+    });
+  }
+
+  // Segmented Pill Tab Selection
+  const tabs = document.querySelectorAll('.library-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => {
+        t.className = 'library-tab shrink-0 px-3.5 py-1.5 rounded-full text-caption font-caption font-medium text-on-surface-variant hover:text-on-surface bg-surface-container-low hover:bg-surface-container transition-all';
+      });
+      tab.className = 'library-tab shrink-0 px-3.5 py-1.5 rounded-full text-caption font-caption font-semibold text-on-primary bg-primary-container shadow-sm flex items-center gap-1.5 active:scale-95 transition-all';
+    });
+  });
+</script>
+</main>
+<!-- Docked Icon-First Bottom Navigation Bar (No Text Labels) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 flex items-center justify-around px-3 h-16 pb-safe bg-black border-t border-[#27272a]" data-active-classes="bg-[rgba(155,62,100,0.18)] text-[#ffb0ca] border border-primary-container/30">
+<!-- 1. Home -->
+<a aria-label="Home" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="home-feed" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</a>
+<!-- 2. Browse -->
+<a aria-label="Browse" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="browse-catalogue" href="#browse">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+</a>
+<!-- 3. Search -->
+<a aria-label="Search" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="search-explore" href="#search">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</a>
+<!-- 4. Library (with rose numeric badge) -->
+<a aria-current="page" aria-label="Library" class="w-12 h-10 rounded-full flex items-center justify-center transition-all active:scale-90 relative bg-[rgba(155,62,100,0.18)] text-[#ffb0ca] border border-primary-container/30" data-path="library" href="#library">
+<span class="material-symbols-outlined text-[24px]">auto_stories</span>
+<span class="absolute top-1 right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-primary-container text-white text-[10px] font-bold flex items-center justify-center leading-none border border-black">3</span>
+</a>
+<!-- 5. Profile -->
+<a aria-label="Profile" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="profile" href="#profile">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</a>
+</nav>
+</div>
+</body></html>

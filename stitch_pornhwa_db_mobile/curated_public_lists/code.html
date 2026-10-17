@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Browse Catalogue - Pornhwa DB</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#5a3f48",
+            "on-tertiary-container": "#f5cbf6",
+            "on-surface": "#eddfe2",
+            "surface-container-highest": "#3b3335",
+            "on-tertiary": "#432647",
+            "inverse-surface": "#eddfe2",
+            "secondary-fixed": "#ffd9e3",
+            "on-tertiary-fixed-variant": "#5b3c5f",
+            "surface-tint": "#ffb0ca",
+            "surface-container": "#251e20",
+            "tertiary-container": "#745378",
+            "on-secondary": "#422a31",
+            "outline-variant": "#27272a",
+            "on-surface-variant": "#a1a1aa",
+            "secondary": "#e2bdc7",
+            "on-primary-fixed": "#3e001f",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#000000",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed": "#2c1031",
+            "on-error": "#690005",
+            "surface-container-low": "#0b0b0b",
+            "surface-bright": "#40373a",
+            "on-primary-fixed-variant": "#7d264c",
+            "on-secondary-container": "#d0acb6",
+            "on-secondary-fixed": "#2a151c",
+            "surface-container-high": "#141414",
+            "primary-container": "#9b3e64",
+            "tertiary": "#e2bae4",
+            "tertiary-fixed-dim": "#e2bae4",
+            "on-background": "#eddfe2",
+            "secondary-fixed-dim": "#e2bdc7",
+            "surface-dim": "#000000",
+            "primary": "#ffb0ca",
+            "surface": "#000000",
+            "tertiary-fixed": "#fed6ff",
+            "on-primary": "#600c35",
+            "primary-fixed": "#ffd9e3",
+            "inverse-primary": "#9b3e64",
+            "on-primary-container": "#ffccdb",
+            "surface-variant": "#141414",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#000000",
+            "on-secondary-fixed-variant": "#5a3f48",
+            "outline": "#27272a",
+            "inverse-on-surface": "#362e31",
+            "error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "gutter": "0.75rem",
+            "gutter-tablet": "1rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "overline": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "overline": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-sm": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "700" }],
+            "caption": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "400" }],
+            "display": ["1.75rem", { "lineHeight": "2.25rem", "fontWeight": "700" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #000000;
+      color: #eddfe2;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<meta content="mobile_tab" name="shell-type"/>
+</head>
+<body class="bg-black text-on-surface font-body-md text-body-md antialiased min-h-screen selection:bg-primary-container selection:text-white">
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col bg-black">
+<!-- Sticky Glass Top App Bar -->
+<header class="fixed top-0 left-0 right-0 max-w-md mx-auto z-50 bg-black/60 backdrop-blur-md border-b border-[#27272a]">
+<div class="flex items-center justify-between px-4 h-14">
+<div class="flex items-center gap-3">
+<!-- 28px Squircle Brand Mark with Rose Letter P -->
+<div class="w-7 h-7 rounded-lg bg-[#0b0b0b] border border-[#27272a] flex items-center justify-center flex-shrink-0 shadow-inner shadow-primary-container/20">
+<span class="font-headline-md text-[16px] font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container leading-none select-none">P</span>
+</div>
+<span class="text-headline-sm font-bold text-on-surface tracking-tight truncate">Browse Catalogue</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button aria-label="Filter" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95 relative" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Slot with pt matching header h-14 -->
+<main class="flex-1 w-full pt-14 pb-24">
+<div class="flex flex-col w-full px-4 pt-2 pb-6">
+<!-- Header Banner & Quick Search trigger (Icon-first compact row) -->
+<div class="flex items-center justify-between py-2 mb-3">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Curated Lists</h1>
+<p class="font-caption text-caption text-on-surface-variant">Community collections &amp; top reader picks</p>
+</div>
+<button aria-label="Search Lists" class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+</div>
+<!-- Filter Chips Row (Horizontally Scrollable) -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 pb-3 mb-2">
+<button class="flex-shrink-0 px-4 py-1.5 rounded-full bg-primary-container text-white font-caption text-caption font-semibold flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span>Trending</span>
+</button>
+<button class="flex-shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-caption text-caption font-medium flex items-center gap-1.5 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">arrow_back_ios_new</span>
+<span>New</span>
+</button>
+<button class="flex-shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-caption text-caption font-medium flex items-center gap-1.5 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+<span>Most liked</span>
+</button>
+<button class="flex-shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-caption text-caption font-medium flex items-center gap-1.5 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Editor's pick</span>
+</button>
+<button class="flex-shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-caption text-caption font-medium flex items-center gap-1.5 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">hotel_class</span>
+<span>Staff favorites</span>
+</button>
+</div>
+<!-- List Cards Column -->
+<div class="flex flex-col gap-3">
+<!-- Card 1 -->
+<article class="w-full bg-surface-container-high rounded-xl p-3.5 flex gap-3.5 active:bg-surface-bright/20 transition-colors cursor-pointer select-none">
+<!-- 2x2 Miniature Collage Grid (w-24, h-28) -->
+<div class="w-24 h-28 flex-shrink-0 grid grid-cols-2 grid-rows-2 gap-1 rounded-lg overflow-hidden bg-surface-container-low p-1">
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Dark aesthetic webtoon cover illustration featuring deep rose shadows, dramatic lighting on a brooding protagonist, moody cinematic tones, Korean comic manhwa style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDt1vM-3zjswhJVYe6C0ztTJM964BzmB8spzqI7WPCQQo31JDUCfNwHrG4m44FxhKIe6PqIuwqD2kiWZG7QUFiwbv7Mo5uPSZMNOW23PpDOijJ3tMjABg-5Iltw-I8QHDpllc-gDj4ugQRCYmLWylUGgIneKj-svPmRv_tScnXVKnG45p5srRBEHyWvjdwS1T1zFzpIYAru_xntH4_v8shdyUwpxWQnScjMiBUGw353w2oiZ0H4NjY3')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Chic mysterious female lead manhwa cover, rose wine accents, noir rain backdrop, sleek modern Korean romance thriller visual style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBw3GeBl5ucAFNJ49KKo1CGRKm6jo1L_taF2jls8g_ctGNfw-MyRGV-b_8EFw9fFOr0SCZ7aG-g1ULmPgsmDAl72PREj-5eWuhwsRt1866PLFAb8ngFZmYMmmkRKcroNfK0UX8rTgjjAQM5zqsqWoKzn2dLXdpVRYxJNqbv912Wedl3nALnTjXJX2kcyzzgzXqmqclQUNjCpnbL123GrMyUbEYaWDc93kSpMpVZNnki6QBQp6XAcW8r')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Cinematic silhouette of a couple standing near city penthouse skyline, midnight velvet hues and subtle magenta highlights." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpNuP2L2LFNq7eZn6bSMXnJzh2nwbeM14o4W7_9fCrS8eHfgSUTO4JnUFSthWJ6wxUC9AoxGiT_iwC29TriPSdT_7PwsNKPCUQ-kbOlf6WsCfRmQa4yvp0jaUgzjxByprzPqo0-VcfMlBs6nHx7SamlRQkgf4ZiNbFbV2RqWntFHsuuFH9AjeMf2plpAnm0m5-yyq-CAQpCnc_nTBPRtBk3r1SGgTI0kktCeaB-nhF4WNaA-2Sn5KW')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Dramatic high-contrast anime style portrait with wine red atmospheric mist, stylish typography hints, high fidelity manhwa artwork." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDdoxfwUEvuFOEt4H5o9_Jn4HfyLxNS2mH3Ied6_iAskUHMxjPtGYaF6cTluaFF8zI4xVZIVv6ELeMK-Q43iV832MhEuU4Jzu7IKuZ-mMJcX_4FjuTY4wh_E_P2XisYpovWaXFOow7PkQ7ujUzL6rQwpZA2W36TBZsFKL7wenZa-n42yPn3qIJn5rdWRtvPlgV6obn8O-sWE0XW0TYeMAgQ7DTaa6cPcIbV3ldJgnB9i8Z7E8pbvxyf')"></div>
+</div>
+<!-- Content Info -->
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface line-clamp-1 leading-snug">Top 50 Peak Drama &amp; Mystery Manhwa</h2>
+<p class="font-caption text-caption text-on-surface-variant line-clamp-2 mt-0.5 leading-tight">The most compelling story-driven manhwa with impeccable pacing and tension.</p>
+</div>
+<div class="flex flex-col gap-1.5 mt-2">
+<!-- Metadata Row -->
+<div class="flex items-center gap-3 font-caption text-caption text-on-surface-variant">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-medium text-on-surface">1.4k</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">layers</span>
+<span>48 titles</span>
+</span>
+</div>
+<!-- Author Row -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5 min-w-0">
+<div class="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Minimalist circular avatar portrait of an anime curator with subtle pink hair highlights on dark charcoal backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0VJuDKHWKk1kv98yPu44kOCXBOA_rvejfddwnPFd1sSAd3TFV3OeQVNyW_wPPY1U35QwJzocElz18ezOHNX39LieYRw58lYQqnrBdC5DA0Usq7Dm54AfuMml0dLAZEvSZChrRsu7UxHtFn1ZXHcbCFDU2Ve7YUvyQ9E4qze4ezLXu8Xccfup0TU71STrQS7G-8JR5vuOsIm_-wJkOqxs-peL7MiLJbm3fi0flcZeYbq1eWJrXf-SL"/>
+</div>
+<span class="font-caption text-caption text-on-surface-variant truncate font-medium">@Nocturne</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]" title="Public list">public</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="w-full bg-surface-container-high rounded-xl p-3.5 flex gap-3.5 active:bg-surface-bright/20 transition-colors cursor-pointer select-none">
+<!-- 2x2 Collage -->
+<div class="w-24 h-28 flex-shrink-0 grid grid-cols-2 grid-rows-2 gap-1 rounded-lg overflow-hidden bg-surface-container-low p-1">
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="College romance manhwa illustration with sunset campus lighting, soft rose aesthetic and warm shadows, high quality anime cover." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALjOKmzFl6PmVH9aHltGllOd6yIkUTOB6416BUz9DNIuXOFoKXwI7JiQo7KH2iEV2byXgRDDhRWgUUCo9ImXFX0gY3Eoi7HExg9h68gTaXyqyu8pfQPCwbh8IJ_JWwbWFe3ln8NCV648V0tziOSxSO0m-CyLoN99bY9yJedGmtK2o4rd0PrfQ0t_H5BTQN4TzAZ4-CxSvdUlTq4tujgsZ077J2pmzCLzXTxLIKGFeRKScDOtklqyzJ')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="University library study scene anime artwork, warm golden-rose lantern tones, modern aesthetic webtoon visual." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpBwp6thZS8FnhtJgfuc0B7BxoHXvJx-XROxANNwF9kVlBP9mAX2IIOijl5vjKe1AJBoybl3G0N5tI7BrnKC1otxEq-sKFLYLKY-fmvipZyhK786LUSAOWpgFHDSZCcfowZ6859nePAVEEznnaoXSMA6aUjGulxLqkl32Jk3XQBvc7ykAaGLwZ9M4Bk3bfrFNE8G-ttho2mP7jFoQoyAXrK2AtzgclJL5bQdrasZ3YJlj_kKLf0MtB')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Two college students sitting in an aesthetic cafe holding iced coffee, soft dusk ambient light and deep charcoal background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA4pAPnNqmwniZqRXupgPl-T-_B2raEOpnJbTAtSyZwN639wKr0YxAS83ypdlkHiIiDS7b_mb-ky0wWfSeFTF_tp2X49PGoaBpNd8FKjrZUnBBUsptmbTWO-x2OiYOMHzztzdGbElrobcyAvxrozmQAV8BmqUmHHelKZHI6kFnWA3Gt2-zGbGL1Ng9jBi2H1TjYL6BOG1CMMgdu2cRA0jrKbPqdzMqK5tGP5ypM8tTGhIqJHFUbUx0Z')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Casual streetwear fashionable webtoon couple standing under cherry blossom tree at dusk, cinematic manga cover art." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1C4IgYrllX_5_KhqhMbZrvJZjKkZ3BSN1-yC0MldzVg29a2IRWg0aJ_eh2Gmaf4Md7OEVbj6Xn2MZRctdjPsC8eVKPuWc3i22xLzPH6L4kNddpIR0cPhPEDumI4orBQ9qKvsRjKfsAXdpht7xZZq8JFsb_NEhHr72dHQnAfdw-ukwBw2dpOtD6RT7OgkqDnfPS9m1cPd7uJSMHkgPXM4whdZSSZ1G45G-WQPjGB-l6-BNnq0J6v24')"></div>
+</div>
+<!-- Content Info -->
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface line-clamp-1 leading-snug">College Romance &amp; Slice of Life Gems</h2>
+<p class="font-caption text-caption text-on-surface-variant line-clamp-2 mt-0.5 leading-tight">Wholesome yet spicy slice of life college settings with great art direction.</p>
+</div>
+<div class="flex flex-col gap-1.5 mt-2">
+<!-- Metadata Row -->
+<div class="flex items-center gap-3 font-caption text-caption text-on-surface-variant">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-medium text-on-surface">890</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">layers</span>
+<span>32 titles</span>
+</span>
+</div>
+<!-- Author Row -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5 min-w-0">
+<div class="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Stylized modern profile avatar with retro headphones and rose-tinted sunglasses on dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdfhSBL-Vmtn6IoFROVaYGq4OSR_s16XfRF2QKjkIO3ay8m9t9lKzQoOJ1ijze6ady2p5EZzS3GkC7b-N3DZ8PqPusigoZfltIITY5L-RlnR6yK0eslPgvJ3oikRRvbxPxVxDd-BK_1VI2Jod7876Oh9jLHqVBLtSYMiFo8GR1YsVqElc0jhzacyTr5MmoGMKbnlQ_GIbUG1vbAlUtOQraunBlnQk3erWIDGWF5KPm0Ojay187ul_I"/>
+</div>
+<span class="font-caption text-caption text-on-surface-variant truncate font-medium">@WebtoonCurator</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]" title="Public list">public</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="w-full bg-surface-container-high rounded-xl p-3.5 flex gap-3.5 active:bg-surface-bright/20 transition-colors cursor-pointer select-none">
+<!-- 2x2 Collage -->
+<div class="w-24 h-28 flex-shrink-0 grid grid-cols-2 grid-rows-2 gap-1 rounded-lg overflow-hidden bg-surface-container-low p-1">
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Intense martial arts manhwa protagonist emerging from smoke with glowing red eyes, ink-wash brush art style, moody dark palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCoKuIMNC0dPXPYt5Ivu9xn8bXPfa75nnXTFOQUG8ufK_ZN86brDYIaxz0kW2Z9xC-RF-Y5-hq7slShRISft9YislJfHmlBdfUHm9Zt-OK9LxuHu_N2tUWRRwyy1tGfVYDXCKMzZ-BrMb5sOerbysmMG66o7mlWA-2U4CPfCnSuqslXJJvVULQQIxz-fxq_TUwL-ObMDGPQHD9NiSuonMwf_DSLbG08HB2Tu-w7vIgY3OKDaG3Lj9mi')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Dark fantasy armor clad webtoon warrior standing in rain, neon rose reflections on metallic plates, detailed manhwa cover." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWykAK1NTVgfyA2rcSjbm7-ioVG9kAI-ZQLdMD_7MlGPSPJ7RQLiMyNh1q3S6PEHeluELb0cc7qg9kGAsgr7URSwNmWP-Q10z4_lgTyiXJFI6cDk-hg23LFfYpuKligT24NCLXsiKgG73FAGRlh--umUGE_iNeP4bh_afYiTZQc98-r6ty9iQsLC77dHpQa1YJqWwuU53FscH1b5rk96D24qLCvmBFp-LfC1qjTG2BIVz9ic6xBqnj')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Close up intense expression of determined manhwa hero with scar, cinematic low key lighting and rose colored sparks." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAy5IoCbp1kVBWna5Z8NgdKRNO2-k_UIoJRAlqZIC_KgtkfHo8Vp2ImK_rMjk7cY2Mk-z__cmLTHBHcsENsMjlKJ2_L2D9yVACi-PFunWLl5JKzv5XEDg6gqrhISCltL8Oo63R61eo5IdRFwmzO_vHfodL839AQOjl0oLK22j_wOSaRSgVkQEvuhBRWnQbO8v5BUdcKknXCnRby7vjNiME7IDpL2rFnANGwgqB5NUbtdUSq1CuSNoG0')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Gothic throne room with lone charismatic protagonist, crimson tapestries and obsidian architecture, manhwa webtoon style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDadB5i7JSICjq5XDLnR2rp0Y3Ajl7QqE7lyzehUQNFjHe-ieqo1ucWtNxZYo7pxpybC8LNCwNX453sk8QGk1y-etH5ucQeSv5ncoBFaOi1v4K4GSz6JrLRzHZy4VfEXywAKIOeh_3YS8DBSlDRWKRzNKlEnu9smzlniQiu2ueKZmv3IADGG-BlsIFU9hkC7ve_eUXigMzEhSIxAht9WaP0UPLqzRjcFk04VtQOanZIBU2BQheleY0J')"></div>
+</div>
+<!-- Content Info -->
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface line-clamp-1 leading-snug">Masterpiece Character Development</h2>
+<p class="font-caption text-caption text-on-surface-variant line-clamp-2 mt-0.5 leading-tight">Protagonists that actually evolve and mature throughout the series.</p>
+</div>
+<div class="flex flex-col gap-1.5 mt-2">
+<!-- Metadata Row -->
+<div class="flex items-center gap-3 font-caption text-caption text-on-surface-variant">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-medium text-on-surface">2.1k</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">layers</span>
+<span>24 titles</span>
+</span>
+</div>
+<!-- Author Row -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5 min-w-0">
+<div class="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Manga illustrator avatar icon in black and white sketch art with a subtle pink dot blush." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdWbGbn4_8gxTGM_BxlWU08RHpYEucraELRcjcH4xsXHf2mIBlifc9SdHJ5C54XysZcZD_dNSFSVyS0luQ6GRn8WtNDogEAt7laiKW8BHRzfg9nHp1O4yyixAVoK9xAlN064j-xEdYdiT-L367khyatxoHnPJpGsOmOgknd8Ry0cdqy06tHEJPPrAHhRPL8Tw9SZ9OLL1bYotoAWhzcprc8sm3FPDZuceA5vkzjdIqpPGrOeory7sS"/>
+</div>
+<span class="font-caption text-caption text-on-surface-variant truncate font-medium">@Daehyun</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]" title="Public list">public</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="w-full bg-surface-container-high rounded-xl p-3.5 flex gap-3.5 active:bg-surface-bright/20 transition-colors cursor-pointer select-none">
+<!-- 2x2 Collage -->
+<div class="w-24 h-28 flex-shrink-0 grid grid-cols-2 grid-rows-2 gap-1 rounded-lg overflow-hidden bg-surface-container-low p-1">
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Cyberpunk sci-fi webtoon neon alley, hot pink and midnight violet tones, sleek Korean digital comic cover." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBVY1cs6fgvqGokq6SKmjRj6c6MsjZ9V6toS9S_UZzGnHSbMhm-yVEcr8XQd4lyW0ufobk2U-dIDpsFmtdhUgG19W1iA6OzWotDb5jAG5Ewq4EaXS9UiGMnE9QLT9ZRHGj0nYJMCFfdR_BxlloLweQ2A-OQ3RXAe0bSWgVwCJ8yI6dG72hPwKpMTprpzUDXvzMg4LFUDKxePw8ClOtk1XUo5YMGbrRl10ObI9ssAYtNHPy0q3Tx70Yz')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Supernatural mystery manhwa scene with crimson moon and crow silhouettes over old Seoul district at night." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAjtrIe77C4xq_NuBS8WxNWapN_PbXxRdGR7gTsCbWDxK_sHlv7VTA6nohEQfTU2JahqD1y2FStLgcqGCu0bikDf-PzSeXB8WZFHrC1f8y1x9suy6enG1jVMpXf56vskjwpCTPuV964qHhfEnhtjGGNKuXXt1rBiHDkzjvhiwtT2jioRPYH3uwVVf8a9r2GnxMsyWuR5OaW1s-NumkJu2mOS2xK7pJ3-HvPsGqzI83JYasgAHpyx8iT')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Aesthetic manhwa cover with two rival characters facing opposite directions, dramatic split shadow rose lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCg0Yz1zVNnRjFakcnD4Gnv8lQeSdWBBZnuUBY0tl85ZlMbdGZacS5W-3P4IT6hW0xFnuLEfmp4mdfVvb1ya3T5mqha4yIDPMnd9GvHSZ1atL1HhQSVdRm1v_7hbvy5MV7CcmpALCR-Gb1OKIQ6PVwhJEYaLi8-FUy2BFPGpkokW-Br0n_yMBww9kPGfBU0u17V5NOlMviJ6tM15deOhxXd62G07bMETHxCz3rEuay61ZmNEW3ONTUV')"></div>
+<div class="w-full h-full rounded bg-cover bg-center overflow-hidden" data-alt="Urban fantasy night market stall manhwa panel with glowing neon rose lanterns and rain-slicked pavement." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB5xkhHKDicmkQ9GG5ZhvtBUJfB1FcTOt7c0uB7tPpaUvwgfcNMbDfFNXzTjTSjcaxcO4j1D6noXOZ5PLkLhtncV_Ry_TcqgKsyTH_u-eJyfkMGCi8YUKB511OIZwjO5qNevTZrZ07j3Z6E2mQKXPA6cNxB2_R8U_rWaGH5zp9ErqLf2c6bT4BfAHNqnmXMIOjYXMPp020nvpNg_EjJy3ukxLjB_1vlG8puGFPjTmfWAEod0LTDYCDw')"></div>
+</div>
+<!-- Content Info -->
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-on-secondary-container uppercase tracking-wider">Official</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface line-clamp-1 leading-snug">Weekly Community Highlights</h2>
+</div>
+<p class="font-caption text-caption text-on-surface-variant line-clamp-2 mt-0.5 leading-tight">Hand-picked weekly recommendations trending across reader circles.</p>
+</div>
+<div class="flex flex-col gap-1.5 mt-2">
+<!-- Metadata Row -->
+<div class="flex items-center gap-3 font-caption text-caption text-on-surface-variant">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-medium text-on-surface">640</span>
+</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">layers</span>
+<span>15 titles</span>
+</span>
+</div>
+<!-- Author Row -->
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-1.5 min-w-0">
+<div class="w-5 h-5 rounded-full overflow-hidden flex-shrink-0 bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+</div>
+<span class="font-caption text-caption text-primary font-semibold truncate">@Admin</span>
+</div>
+<span class="material-symbols-outlined text-primary text-[16px]" title="Verified list">verified</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Micro Create FAB in Corner / Callout Delight Banner -->
+<div class="mt-4 p-4 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-full bg-secondary-container/40 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">playlist_add</span>
+</div>
+<div class="min-w-0">
+<p class="font-headline-sm text-headline-sm text-on-surface font-semibold truncate">Create your own list</p>
+<p class="font-caption text-caption text-on-surface-variant truncate">Share your webtoon taste with thousands</p>
+</div>
+</div>
+<button class="px-3.5 py-1.5 rounded-lg bg-primary-container text-white font-caption text-caption font-semibold flex-shrink-0 active:scale-95 transition-transform flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>New</span>
+</button>
+</div>
+</div>
+<script>
+  // Simple interactive chip selection toggle
+  document.querySelectorAll('.no-scrollbar button').forEach(button => {
+    button.addEventListener('click', function() {
+      document.querySelectorAll('.no-scrollbar button').forEach(b => {
+        b.className = 'flex-shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface font-caption text-caption font-medium flex items-center gap-1.5 active:scale-95 transition-transform';
+      });
+      this.className = 'flex-shrink-0 px-4 py-1.5 rounded-full bg-primary-container text-white font-caption text-caption font-semibold flex items-center gap-1.5 shadow-sm active:scale-95 transition-transform';
+    });
+  });
+</script>
+</main>
+<!-- Docked Icon-First Bottom Navigation Bar (No Text Labels) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 flex items-center justify-around px-3 h-16 pb-safe bg-black border-t border-[#27272a]" data-active-classes="bg-[rgba(155,62,100,0.18)] text-[#ffb0ca] border border-primary-container/30">
+<!-- 1. Home -->
+<a aria-label="Home" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="home-feed" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</a>
+<!-- 2. Browse -->
+<a aria-current="page" aria-label="Browse" class="w-12 h-10 rounded-full flex items-center justify-center transition-all active:scale-90 bg-[rgba(155,62,100,0.18)] text-[#ffb0ca] border border-primary-container/30" data-path="browse-catalogue" href="#browse">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+</a>
+<!-- 3. Search -->
+<a aria-label="Search" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="search-explore" href="#search">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</a>
+<!-- 4. Library (with rose numeric badge) -->
+<a aria-label="Library" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90 relative" data-path="library" href="#library">
+<span class="material-symbols-outlined text-[24px]">auto_stories</span>
+<span class="absolute top-1 right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-primary-container text-white text-[10px] font-bold flex items-center justify-center leading-none border border-black">3</span>
+</a>
+<!-- 5. Profile -->
+<a aria-label="Profile" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="profile" href="#profile">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</a>
+</nav>
+</div>
+</body></html>

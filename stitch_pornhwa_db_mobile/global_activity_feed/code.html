@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Library - Pornhwa DB</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#5a3f48",
+            "on-tertiary-container": "#f5cbf6",
+            "on-surface": "#eddfe2",
+            "surface-container-highest": "#3b3335",
+            "on-tertiary": "#432647",
+            "inverse-surface": "#eddfe2",
+            "secondary-fixed": "#ffd9e3",
+            "on-tertiary-fixed-variant": "#5b3c5f",
+            "surface-tint": "#ffb0ca",
+            "surface-container": "#251e20",
+            "tertiary-container": "#745378",
+            "on-secondary": "#422a31",
+            "outline-variant": "#27272a",
+            "on-surface-variant": "#a1a1aa",
+            "secondary": "#e2bdc7",
+            "on-primary-fixed": "#3e001f",
+            "error": "#ffb4ab",
+            "surface-container-lowest": "#000000",
+            "on-error-container": "#ffdad6",
+            "on-tertiary-fixed": "#2c1031",
+            "on-error": "#690005",
+            "surface-container-low": "#0b0b0b",
+            "surface-bright": "#40373a",
+            "on-primary-fixed-variant": "#7d264c",
+            "on-secondary-container": "#d0acb6",
+            "on-secondary-fixed": "#2a151c",
+            "surface-container-high": "#141414",
+            "primary-container": "#9b3e64",
+            "tertiary": "#e2bae4",
+            "tertiary-fixed-dim": "#e2bae4",
+            "on-background": "#eddfe2",
+            "secondary-fixed-dim": "#e2bdc7",
+            "surface-dim": "#000000",
+            "primary": "#ffb0ca",
+            "surface": "#000000",
+            "tertiary-fixed": "#fed6ff",
+            "on-primary": "#600c35",
+            "primary-fixed": "#ffd9e3",
+            "inverse-primary": "#9b3e64",
+            "on-primary-container": "#ffccdb",
+            "surface-variant": "#141414",
+            "primary-fixed-dim": "#ffb0ca",
+            "background": "#000000",
+            "on-secondary-fixed-variant": "#5a3f48",
+            "outline": "#27272a",
+            "inverse-on-surface": "#362e31",
+            "error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1rem",
+            "gutter": "0.75rem",
+            "gutter-tablet": "1rem",
+            "space-2xl": "2rem",
+            "space-xl": "1.5rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "gutter-mobile": "0.75rem"
+          },
+          "fontFamily": {
+            "overline": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-md": ["Inter"],
+            "caption": ["Inter"],
+            "display": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "overline": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-sm": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "700" }],
+            "caption": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "400" }],
+            "display": ["1.75rem", { "lineHeight": "2.25rem", "fontWeight": "700" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #000000;
+      color: #eddfe2;
+      font-family: 'Inter', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<meta content="mobile_tab" name="shell-type"/>
+</head>
+<body class="bg-black text-on-surface font-body-md text-body-md antialiased min-h-screen selection:bg-primary-container selection:text-white">
+<div class="max-w-md mx-auto min-h-screen relative flex flex-col bg-black">
+<!-- Sticky Glass Top App Bar -->
+<header class="fixed top-0 left-0 right-0 max-w-md mx-auto z-50 bg-black/60 backdrop-blur-md border-b border-[#27272a]">
+<div class="flex items-center justify-between px-4 h-14">
+<div class="flex items-center gap-3">
+<!-- 28px Squircle Brand Mark with Rose Letter P -->
+<div class="w-7 h-7 rounded-lg bg-[#0b0b0b] border border-[#27272a] flex items-center justify-center flex-shrink-0 shadow-inner shadow-primary-container/20">
+<span class="font-headline-md text-[16px] font-black text-transparent bg-clip-text bg-gradient-to-br from-primary to-primary-container leading-none select-none">P</span>
+</div>
+<span class="text-headline-sm font-bold text-on-surface tracking-tight truncate">Library</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button aria-label="Filter" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+<button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-[#0b0b0b] rounded-full transition-colors active:scale-95 relative" type="button">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2.5 right-2.5 w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Slot with pt matching header h-14 -->
+<main class="flex-1 w-full pt-14 pb-24">
+<div class="flex flex-col w-full">
+<!-- Interactive Pill Filter Strip -->
+<section class="w-full px-space-lg pt-space-xs pb-space-sm overflow-x-auto no-scrollbar flex items-center gap-space-sm" id="filter-container">
+<button class="filter-chip px-3.5 py-1.5 rounded-full bg-primary-container text-on-surface font-headline-sm text-overline shadow-sm flex items-center gap-1.5 whitespace-nowrap transition-transform active:scale-95" data-filter="all" type="button">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>All Activity</span>
+</button>
+<button class="filter-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-headline-sm text-overline flex items-center gap-1.5 whitespace-nowrap transition-colors hover:text-on-surface active:scale-95" data-filter="status" type="button">
+<span class="material-symbols-outlined text-[14px]">bookmark</span>
+<span>Status Changes</span>
+</button>
+<button class="filter-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-headline-sm text-overline flex items-center gap-1.5 whitespace-nowrap transition-colors hover:text-on-surface active:scale-95" data-filter="reviews" type="button">
+<span class="material-symbols-outlined text-[14px]">rate_review</span>
+<span>Reviews</span>
+</button>
+<button class="filter-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-headline-sm text-overline flex items-center gap-1.5 whitespace-nowrap transition-colors hover:text-on-surface active:scale-95" data-filter="ratings" type="button">
+<span class="material-symbols-outlined text-[14px]">star</span>
+<span>Ratings</span>
+</button>
+<button class="filter-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant font-headline-sm text-overline flex items-center gap-1.5 whitespace-nowrap transition-colors hover:text-on-surface active:scale-95" data-filter="lists" type="button">
+<span class="material-symbols-outlined text-[14px]">format_list_bulleted</span>
+<span>Lists</span>
+</button>
+</section>
+<!-- Live Pulse Stats Counter -->
+<div class="px-space-lg pt-space-xs pb-space-sm flex items-center justify-between text-on-surface-variant font-caption text-caption">
+<div class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+</span>
+<span>1,428 updates recorded today</span>
+</div>
+<button class="flex items-center gap-1 text-primary hover:text-on-primary-container active:scale-90 transition-transform" id="refresh-feed-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+<span class="font-overline text-overline uppercase tracking-wider">Live</span>
+</button>
+</div>
+<!-- Reverse-Chronological Timeline Feed -->
+<div class="px-space-lg flex flex-col gap-space-md">
+<!-- Row 1: Status Change -->
+<article class="feed-item bg-surface-container-high rounded-xl p-3.5 flex items-start gap-3 shadow-md transition-all hover:bg-surface-container-highest/40" data-item-type="status">
+<!-- Avatar + Rose Badge Overlap -->
+<div class="relative flex-shrink-0">
+<div class="w-9 h-9 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="High-contrast dark anime style profile avatar of Nocturne, shadowy aesthetic, violet and muted rose tones, clean digital illustration, moody edge lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3GMEmDjk1V6QAKoR52WVJNc1mX_bR6xYXnwxkuPEBN3q2xjTbMCLPQNVD7hzzAiI9MczO8ZbqPOqZT2h1xXPxu1vSc9ZDrcP095OmfZxnmBzNqyZq2bjCtdZxhhJ-oAYy4zC5NHnvuEWK3wsuSKW247xNb2dRlyRt9x-I-hwqDPl-eB0Y-nmVvaiSyAAulfpvSl1Q_6VrMv6-NmFo8LdhQzZ6YMUqJAqLsbYlsiLAvARXwJB_F40x"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-primary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-surface text-[10px]" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+</div>
+<!-- Middle Content Flow -->
+<div class="flex-1 min-w-0 flex flex-col gap-1">
+<div class="flex items-baseline flex-wrap gap-x-1.5 leading-tight">
+<span class="font-headline-sm text-headline-sm text-on-surface">@Nocturne</span>
+<span class="font-caption text-caption text-on-surface-variant">marked as</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-secondary-container/60 text-primary font-overline text-overline">Reading</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[12px] text-primary">schedule</span>
+<span>12m ago</span>
+<span>•</span>
+<span class="text-on-surface font-caption truncate">Secret Class</span>
+</div>
+<p class="mt-1 font-body-md text-caption text-on-surface-variant bg-surface-container-low/70 rounded-lg p-2 leading-relaxed">
+          Caught up with the latest chapter release. Pacing stepped up noticeably.
+        </p>
+<!-- Reactions Row -->
+<div class="mt-1.5 flex items-center gap-4 text-on-surface-variant font-caption text-caption">
+<button class="reaction-btn flex items-center gap-1 hover:text-primary transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+<span>18</span>
+</button>
+<button class="flex items-center gap-1 hover:text-on-surface transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+<span>4</span>
+</button>
+</div>
+</div>
+<!-- Trailing 2:3 Miniature Thumbnail -->
+<div class="flex-shrink-0 w-11 h-[66px] rounded-lg overflow-hidden bg-surface-container relative shadow-md">
+<img class="w-full h-full object-cover" data-alt="Cover illustration of manga webtoon Secret Class, stylish dark rose and deep charcoal palette, aesthetic webtoon character art, sleek graphic composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcZu28YodO0_WOVYwXRS0-nEUHwX0ry0-E0XrSe7HbA887kdc3n5KEo3qJwlvuc-wxJELP3jxp0sIR19kGkQ3uitsO5OZSca3jJIMop2fmU9jmVBdP-OKGqtS1BuKojpiLbLD2rFNMiICtVHJRavzhrcdYolLdM0KVXLqvTXXDGoQCt09G9uF2LVFWr0gJylxvhtCETVCiqtb4hJi60eZc5H-F0hxafedi74MS8ZRHoqRqcoKFXktj"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<span class="absolute bottom-0.5 right-0.5 font-overline text-[9px] text-primary bg-black/80 px-1 rounded">Ch.184</span>
+</div>
+</article>
+<!-- Row 2: Star Rating -->
+<article class="feed-item bg-surface-container-high rounded-xl p-3.5 flex items-start gap-3 shadow-md transition-all hover:bg-surface-container-highest/40" data-item-type="ratings">
+<!-- Avatar + Star Badge Overlap -->
+<div class="relative flex-shrink-0">
+<div class="w-9 h-9 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cyberpunk stylized illustrated portrait avatar for Daehyun, neon rose accents, dark monochromatic clothing, sleek modern manhwa art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRReR11jR3onzislbxIw8KCsKpP0P_8xaPup20ObqlzNAWdpfjnHKkl2SKzikIaliO3tatuer9CexKaa0ajUifmljjE7FmeCiFlH-D_ZbvmboF6oa8DrVOqb6x8HHxYEgxJ9965elWat2omsB4EE7p86_biZ2d8oZj8CiHWYx8mvif49TYpcBEQXc_bTICvGodV9dN846Bm0Z5ZvP2xgx5MPYzx_tPhfrx-mtI6-8ViQrvjxBrRMrU"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-secondary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-[10px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- Middle Content Flow -->
+<div class="flex-1 min-w-0 flex flex-col gap-1">
+<div class="flex items-baseline flex-wrap gap-x-1.5 leading-tight">
+<span class="font-headline-sm text-headline-sm text-on-surface">@Daehyun</span>
+<span class="font-caption text-caption text-on-surface-variant">rated</span>
+<span class="font-headline-sm text-caption text-on-surface truncate">Silent War</span>
+</div>
+<!-- Rating Stars Bar -->
+<div class="flex items-center gap-1.5">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-headline-sm text-caption text-primary">5.0</span>
+<span class="text-on-surface-variant font-caption text-caption">• 45m ago</span>
+</div>
+<blockquote class="mt-1 font-body-md text-caption text-on-surface bg-surface-container-low/70 rounded-lg p-2 italic leading-relaxed border-l-2 border-primary-container">
+          “Flawless psychological ending. Best arc yet.”
+        </blockquote>
+<!-- Reactions Row -->
+<div class="mt-1.5 flex items-center gap-4 text-on-surface-variant font-caption text-caption">
+<button class="reaction-btn flex items-center gap-1 hover:text-primary transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+<span>42</span>
+</button>
+<button class="flex items-center gap-1 hover:text-on-surface transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+<span>9</span>
+</button>
+</div>
+</div>
+<!-- Trailing 2:3 Miniature Thumbnail -->
+<div class="flex-shrink-0 w-11 h-[66px] rounded-lg overflow-hidden bg-surface-container relative shadow-md">
+<img class="w-full h-full object-cover" data-alt="Cover artwork for Silent War webtoon, intense atmospheric composition, dark slate and muted ruby tones, high drama visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoZ8aQ1mQtsCWLgcOFZjgMBPjAqTSz6jKR-qh73ZdUXcKSnWcrLzjj4Dbu8_nOXDie21_FY0eafOVw4HCg13oOEIaJzU4eN5NlphbdVTHggPyZ2vn8JatR4taXeDa0XMWz8TNdagYXZjJYyv4c2PlD53cyYAZEQMzMTkngZU6uFulIHX-VzVlFq-hbJg3rXim1Znn4YJJcoWyQpzHq8uVtJnOQJMvk6BwYZ9Uw-VDB6iG3SMS5DoGk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<span class="absolute top-0.5 right-0.5 bg-primary-container text-on-surface font-headline-sm text-[9px] px-1 rounded-sm">End</span>
+</div>
+</article>
+<!-- Row 3: In-Depth Review -->
+<article class="feed-item bg-surface-container-high rounded-xl p-3.5 flex items-start gap-3 shadow-md transition-all hover:bg-surface-container-highest/40" data-item-type="reviews">
+<!-- Avatar + Review Badge Overlap -->
+<div class="relative flex-shrink-0">
+<div class="w-9 h-9 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Illustrated webtoon reviewer persona avatar, ManhwaKnight, wearing sleek visor sunglasses, dark aesthetic palette with soft rose background glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1x_CHKcsCsNgjbSE_6hDuZyxvDq6LCrRp8NwB9sI_2orxh2puGpJgan5EtkVu0L80ra8t0IaSaF2WK0m1ueiesSievtE9XpmJgDFBqTorHiE5yf3tnVaDbB1aBlj9CmzUf0FG4xcnCsT07X0gWG9IJw59Yghmn0UxpqlT-D-uFDz31-29K8qlQ1Jq-QB6GThICzFA_wlUVmmxxACXWQRjTsDHXYMkeO_2odA8Vb9rI2O3x0yfVyd0"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-primary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-surface text-[10px]">edit</span>
+</div>
+</div>
+<!-- Middle Content Flow -->
+<div class="flex-1 min-w-0 flex flex-col gap-1">
+<div class="flex items-baseline flex-wrap gap-x-1.5 leading-tight">
+<span class="font-headline-sm text-headline-sm text-on-surface">@ManhwaKnight</span>
+<span class="font-caption text-caption text-on-surface-variant">reviewed</span>
+<span class="font-headline-sm text-caption text-on-surface truncate">Boarding Diary</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-caption text-caption">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[14px]">star_half</span>
+</div>
+<span class="font-headline-sm text-caption text-on-surface">4.5</span>
+<span>•</span>
+<span>2h ago</span>
+</div>
+<blockquote class="mt-1 font-body-md text-caption text-on-surface bg-surface-container-low/70 rounded-lg p-2 italic leading-relaxed">
+          “Great comedic beats with surprisingly thoughtful side-character development.”
+        </blockquote>
+<!-- Review Action Row -->
+<div class="mt-1.5 flex items-center justify-between text-on-surface-variant font-caption text-caption">
+<div class="flex items-center gap-4">
+<button class="reaction-btn flex items-center gap-1 hover:text-primary transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span>
+<span>86</span>
+</button>
+<button class="flex items-center gap-1 hover:text-on-surface transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">forum</span>
+<span>15</span>
+</button>
+</div>
+<button class="text-primary hover:text-on-primary-container font-overline text-overline uppercase flex items-center gap-0.5" type="button">
+            Full Review
+            <span class="material-symbols-outlined text-[12px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Trailing 2:3 Miniature Thumbnail -->
+<div class="flex-shrink-0 w-11 h-[66px] rounded-lg overflow-hidden bg-surface-container relative shadow-md">
+<img class="w-full h-full object-cover" data-alt="Cover artwork for Boarding Diary manhwa, stylized modern slice of life and romance aesthetic, pastel rose ambient rim lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-p63GvadpsjEuTppSWqkVHrpxd2d_n350Y-F3x3LiSaokzeZd8_kRgBRP9193kGfKnzedGBs_jJK5KXQBSlUk_IPfviwRKT7loktU7Xx6oHz6LIbxRATSK0WpxLKm0Khsb8zp6YtvUqt8ONGhd99AghowusUw6MwqbO0l8zYG0U4u67NBr7xsZVUVIGYPqP3CxSxRLeQfIVfIQT4cT9deEbj3V3komAfCK53pG_E_OqyToIeZYT77"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<span class="absolute bottom-0.5 right-0.5 font-overline text-[9px] text-on-surface bg-black/80 px-1 rounded">Ch.120</span>
+</div>
+</article>
+<!-- Row 4: List / Collection Addition -->
+<article class="feed-item bg-surface-container-high rounded-xl p-3.5 flex items-start gap-3 shadow-md transition-all hover:bg-surface-container-highest/40" data-item-type="lists">
+<!-- Avatar + Layers/List Badge Overlap -->
+<div class="relative flex-shrink-0">
+<div class="w-9 h-9 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Minimalist graphic avatar of an anime curator profile, geometric circle motifs, subtle rose gradient tint on black velvet texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0laFDyIxXI7Ju9n9qVt8RB3bbjVUch_Ab2bLqZUFJAvWsN7xMRKhHAazQ8bzIUXukEQ0aR8kXe1bek1QDIY5EJ32R14FNGuI2yVmcWezCZlqAzsX-i-SJi_DAM37a2ya4zQIxr--qQVN1mEUHPIxWCHu_tEeZoUqDaMZVvNUShrSvOFa7WlAPxgrDOMZaU-_8rRkf1ibgrqJqNflhHcw331zSmRzA9OXhqHrTycQAdbp9Co3v9Y-I"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-tertiary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-tertiary-container text-[10px]">layers</span>
+</div>
+</div>
+<!-- Middle Content Flow -->
+<div class="flex-1 min-w-0 flex flex-col gap-1">
+<div class="flex items-baseline flex-wrap gap-x-1.5 leading-tight">
+<span class="font-headline-sm text-headline-sm text-on-surface">@WebtoonCurator</span>
+<span class="font-caption text-caption text-on-surface-variant">added 3 titles to</span>
+</div>
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px] flex-shrink-0">folder_special</span>
+<span class="font-headline-sm text-caption truncate font-bold">College Romance &amp; Slice of Life</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[12px] text-primary">schedule</span>
+<span>4h ago</span>
+<span>•</span>
+<span>1.2k followers</span>
+</div>
+<!-- Reactions Row -->
+<div class="mt-1.5 flex items-center gap-4 text-on-surface-variant font-caption text-caption">
+<button class="reaction-btn flex items-center gap-1 hover:text-primary transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">bookmark_add</span>
+<span>64</span>
+</button>
+<button class="flex items-center gap-1 hover:text-on-surface transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">share</span>
+<span>Share</span>
+</button>
+</div>
+</div>
+<!-- Trailing 2x2 Micro-Thumbnails Collage (44x66px footprint) -->
+<div class="flex-shrink-0 w-11 h-[66px] rounded-lg overflow-hidden bg-surface-container grid grid-cols-2 grid-rows-2 gap-[1px] shadow-md p-[1px]">
+<div class="w-full h-full overflow-hidden rounded-xs bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Micro cover crop 1 for campus webtoon romance, clean anime art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChGB5dB6RoZtuH3j9X7Pu1SiUzT86bZuMhVYGKazcZ5G3d8zCRR2RHYDcGozDkRfNnJTAE--sCXhdUIt83KS8JzGYWzx6KxqJekVJiClwUw_O4pvdCnwKPZpEuZFefC285rhzcHPo0YI0JKfN3BilY2o403ZfrBp7TSry8YQEu-23IkIMnJBtmqzx1llqZRytukHBpw4gPohQxp3u5Q7s6CP_2kwJMuNSzKsUSVWX7IAmZzyR8JTe0"/>
+</div>
+<div class="w-full h-full overflow-hidden rounded-xs bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Micro cover crop 2 for campus webtoon drama, muted rose highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfb20oymmbgaP103e7dTzLr-DLF7KGkywfSTGorOfpcTUNN9zkzOSCav2pT_xUs9fK4mQ-lT1prona0ZurF7GB_E5mdZsJSqqq9K9AfcHbO0OyyhSo7VITV2C6z5Yp_5QDSDpvJH2SY9e-_OC5Z9U3MI6dZPaUCfyvtSZjJwr7LrPd8js_n89hPNF-VBsB8cfaQibcrlt5lIoRpbVktSGob5tgOKt8B_n6f7Lj_UqrkcRKTkqMhXz0"/>
+</div>
+<div class="w-full h-full overflow-hidden rounded-xs bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Micro cover crop 3 for webtoon story, moody dark lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoyYhRkvzSeSSxySC0Z6wJnBdjsJBEsSEeqZVnexB66FWDH4j0mKwKTRfAYKgzT4mREFjufTeudPi6-SyoF4lUqTljYq01_R8uhNo91MBiZFLeOyObUDx9Bp_NjUVcplwZSQWJilo-Bhkf5YbSVrUjlTP6LN_0ZBVQVA6wxqUEvAq47nwQFdtjJa2vBjhfM4fMD_3Tbyljm0O79ZdBJmsECdurzfer9q0pCGK66qXoi1DZbKVamCcL"/>
+</div>
+<div class="w-full h-full overflow-hidden rounded-xs bg-surface-container-high flex items-center justify-center text-primary font-headline-sm text-[9px]">
+          +8
+        </div>
+</div>
+</article>
+<!-- Row 5: Community Milestone / Delightful Highlight -->
+<article class="feed-item bg-surface-container-high rounded-xl p-3.5 flex items-start gap-3 shadow-md transition-all hover:bg-surface-container-highest/40" data-item-type="status">
+<div class="relative flex-shrink-0">
+<div class="w-9 h-9 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Illustrated portrait avatar of a female reader with loose wavy hair and a subtle rose-colored flower clip, modern manhwa aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEVhel6E6Gp5m6wexXFSbkWBeJal4aJQAgJgMiGeKqoNAjSvCvngzhk3GaoAZt1UJ07qJZmPMrc_6uWLzLFdmUlIE_g6dcZF_gtSd6WinbCHm8iqGz6kmc0xBycFr4ByF3EpglK5wPfjB5oBPW88GGL0c6OsbK3J7pSAD7EB198F1JCI3igeGydyHpH6f2PkyzeGfTVj2JneGb-9RGPZjYOJtJjh5e5btYqTZ4qoyfUW3s26tF1Ota"/>
+</div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-primary-container flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-surface text-[10px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col gap-1">
+<div class="flex items-baseline flex-wrap gap-x-1.5 leading-tight">
+<span class="font-headline-sm text-headline-sm text-on-surface">@SoraArchive</span>
+<span class="font-caption text-caption text-on-surface-variant">completed reading</span>
+<span class="font-headline-sm text-caption text-on-surface truncate">Sweet Guy</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[12px] text-primary">verified</span>
+<span class="text-primary font-overline text-overline">Completed Series</span>
+<span>•</span>
+<span>5h ago</span>
+</div>
+<p class="mt-1 font-body-md text-caption text-on-surface-variant bg-surface-container-low/70 rounded-lg p-2 leading-relaxed">
+          “What a wild ride from start to finish. Art evolution was sensational.”
+        </p>
+<div class="mt-1.5 flex items-center gap-4 text-on-surface-variant font-caption text-caption">
+<button class="reaction-btn flex items-center gap-1 hover:text-primary transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">favorite</span>
+<span>29</span>
+</button>
+<button class="flex items-center gap-1 hover:text-on-surface transition-colors active:scale-90" type="button">
+<span class="material-symbols-outlined text-[16px]">chat_bubble</span>
+<span>2</span>
+</button>
+</div>
+</div>
+<div class="flex-shrink-0 w-11 h-[66px] rounded-lg overflow-hidden bg-surface-container relative shadow-md">
+<img class="w-full h-full object-cover" data-alt="Cover artwork for Sweet Guy manhwa, neon-lit rainy city background with rose and cyan accents, high detail modern webtoon art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnFBcwQlxbh3OBmHJcy7L8VqNmX07O7SVO-Hht9rX9wZigHwhMi9Al03KE_UMeSdlAyNSha3wkg_FJC_jEuPzs7yPHkNjKg5KKaBEeccZZnQCcck3x88PpvxXWYdYCwl18CqoVCl6lDa-PLwxVjU68kVuwdtcQ5TQd7KNijTi4sVhWwrlCiDYs1og4Ogcq1Fgza5zLcU7nnLDwVQkQkRFOWomoxhqQzv0wDisTX7qtbWvgYJHqslrC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+<span class="absolute bottom-0.5 right-0.5 font-overline text-[9px] text-on-primary bg-primary-container px-1 rounded">Final</span>
+</div>
+</article>
+</div>
+<!-- Subtle Timeline Completion Message -->
+<div class="px-space-lg py-space-xl flex flex-col items-center justify-center text-center gap-2">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">You're all caught up!</span>
+<p class="font-caption text-caption text-on-surface-variant max-w-[260px]">
+      New community logs refresh as users read, rate, and curate titles.
+    </p>
+</div>
+</div>
+<script>
+  // Filter pill switching micro-interactions
+  const chips = document.querySelectorAll('.filter-chip');
+  const feedItems = document.querySelectorAll('.feed-item');
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((c) => {
+        c.classList.remove('bg-primary-container', 'text-on-surface');
+        c.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+      });
+      chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+      chip.classList.add('bg-primary-container', 'text-on-surface');
+
+      const filterVal = chip.getAttribute('data-filter');
+      feedItems.forEach((item) => {
+        if (filterVal === 'all' || item.getAttribute('data-item-type') === filterVal) {
+          item.style.display = 'flex';
+          item.classList.add('animate-fadeIn');
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Tap-to-like micro-delight
+  const reactionBtns = document.querySelectorAll('.reaction-btn');
+  reactionBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const heart = btn.querySelector('.material-symbols-outlined');
+      const counter = btn.querySelector('span:last-child');
+      const isLiked = btn.getAttribute('data-liked') === 'true';
+
+      if (!isLiked) {
+        btn.setAttribute('data-liked', 'true');
+        btn.classList.add('text-primary');
+        heart.style.fontVariationSettings = "'FILL' 1";
+        if (counter && !isNaN(parseInt(counter.textContent))) {
+          counter.textContent = parseInt(counter.textContent) + 1;
+        }
+      } else {
+        btn.removeAttribute('data-liked');
+        btn.classList.remove('text-primary');
+        heart.style.fontVariationSettings = "'FILL' 0";
+        if (counter && !isNaN(parseInt(counter.textContent))) {
+          counter.textContent = parseInt(counter.textContent) - 1;
+        }
+      }
+    });
+  });
+
+  // Pull refresh simulation
+  const refreshBtn = document.getElementById('refresh-feed-btn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => {
+      const icon = refreshBtn.querySelector('.material-symbols-outlined');
+      icon.classList.add('animate-spin');
+      setTimeout(() => {
+        icon.classList.remove('animate-spin');
+      }, 700);
+    });
+  }
+</script>
+</main>
+<!-- Docked Icon-First Bottom Navigation Bar (No Text Labels) -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 flex items-center justify-around px-3 h-16 pb-safe bg-black border-t border-[#27272a]" data-active-classes="bg-[rgba(155,62,100,0.18)] text-[#ffb0ca] border border-primary-container/30">
+<!-- 1. Home -->
+<a aria-label="Home" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="home-feed" href="#home">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</a>
+<!-- 2. Browse -->
+<a aria-label="Browse" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="browse-catalogue" href="#browse">
+<span class="material-symbols-outlined text-[24px]">explore</span>
+</a>
+<!-- 3. Search -->
+<a aria-label="Search" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="search-explore" href="#search">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</a>
+<!-- 4. Library (with rose numeric badge) -->
+<a aria-current="page" aria-label="Library" class="w-12 h-10 rounded-full flex items-center justify-center transition-all active:scale-90 relative bg-[rgba(155,62,100,0.18)] text-[#ffb0ca] border border-primary-container/30" data-path="library" href="#library">
+<span class="material-symbols-outlined text-[24px]">auto_stories</span>
+<span class="absolute top-1 right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-primary-container text-white text-[10px] font-bold flex items-center justify-center leading-none border border-black">3</span>
+</a>
+<!-- 5. Profile -->
+<a aria-label="Profile" class="w-12 h-10 rounded-full flex items-center justify-center text-[#a1a1aa] hover:text-on-surface transition-all active:scale-90" data-path="profile" href="#profile">
+<span class="material-symbols-outlined text-[24px]">person</span>
+</a>
+</nav>
+</div>
+</body></html>

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pornhwa DB - Home &amp; Discover</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#251e20",
+            "on-secondary-container": "#d0acb6",
+            "error-container": "#93000a",
+            "tertiary-fixed-dim": "#e2bae4",
+            "primary": "#ffb0ca",
+            "surface-container-high": "#30282a",
+            "on-background": "#eddfe2",
+            "inverse-on-surface": "#362e31",
+            "on-surface": "#eddfe2",
+            "primary-fixed-dim": "#ffb0ca",
+            "tertiary-fixed": "#fed6ff",
+            "surface-container-lowest": "#130c0f",
+            "on-tertiary-container": "#f5cbf6",
+            "primary-container": "#9b3e64",
+            "on-primary-fixed": "#3e001f",
+            "inverse-primary": "#9b3e64",
+            "tertiary-container": "#745378",
+            "on-tertiary": "#432647",
+            "on-error": "#690005",
+            "error": "#ffb4ab",
+            "secondary-container": "#5a3f48",
+            "inverse-surface": "#eddfe2",
+            "on-tertiary-fixed": "#2c1031",
+            "tertiary": "#e2bae4",
+            "surface-variant": "#3b3335",
+            "outline": "#a18b91",
+            "surface-dim": "#181214",
+            "on-primary": "#600c35",
+            "background": "#181214",
+            "surface-tint": "#ffb0ca",
+            "on-secondary": "#422a31",
+            "on-tertiary-fixed-variant": "#5b3c5f",
+            "secondary-fixed": "#ffd9e3",
+            "on-secondary-fixed-variant": "#5a3f48",
+            "outline-variant": "#544247",
+            "on-error-container": "#ffdad6",
+            "on-surface-variant": "#d9c0c6",
+            "secondary": "#e2bdc7",
+            "on-secondary-fixed": "#2a151c",
+            "on-primary-container": "#ffccdb",
+            "surface-container-low": "#211a1c",
+            "secondary-fixed-dim": "#e2bdc7",
+            "surface-container-highest": "#3b3335",
+            "surface": "#181214",
+            "surface-bright": "#40373a",
+            "primary-fixed": "#ffd9e3",
+            "on-primary-fixed-variant": "#7d264c"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-2xl": "2rem",
+            "gutter-mobile": "0.75rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "0.75rem",
+            "space-xl": "1.5rem",
+            "space-lg": "1rem",
+            "gutter-tablet": "1rem",
+            "gutter": "0.75rem"
+          },
+          "fontFamily": {
+            "display": ["Inter"],
+            "headline-md": ["Inter"],
+            "caption": ["Inter"],
+            "overline": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "headline-lg": ["Inter"]
+          },
+          "fontSize": {
+            "display": ["1.75rem", { "lineHeight": "2.25rem", "fontWeight": "700" }],
+            "headline-md": ["1.25rem", { "lineHeight": "1.75rem", "fontWeight": "700" }],
+            "caption": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "400" }],
+            "overline": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }],
+            "headline-sm": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "600" }],
+            "headline-lg": ["1.5rem", { "lineHeight": "2rem", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Pure AMOLED deep tones and scrollbar resets */
+    body {
+      background-color: #000000;
+      color: #eddfe2;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .carousel-item {
+      flex: 0 0 136px;
+      width: 136px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black text-on-surface antialiased selection:bg-primary-container selection:text-white min-h-screen pb-28">
+<!-- Sticky Top Glass App Bar -->
+<header class="docked full-width top-0 sticky z-40 bg-surface/60 backdrop-blur-md dark:bg-surface/60 border-b border-outline-variant/30">
+<div class="flex justify-between items-center w-full px-space-lg h-14 max-w-7xl mx-auto">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="menu_book">menu_book</span>
+<div class="flex items-baseline">
+<span class="font-display text-display font-bold text-primary tracking-tight text-xl">Pornhwa DB</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container ml-1 inline-block"></span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button aria-label="Search" class="w-9 h-9 rounded-full bg-surface-container-high/60 border border-outline-variant/40 flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-lg" data-icon="search">search</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Horizontal Genre Pills Filter Row -->
+<section class="w-full bg-black/90 sticky top-14 z-30 py-space-sm border-b border-outline-variant/20 backdrop-blur-sm">
+<div class="max-w-7xl mx-auto px-space-lg flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5">
+<button class="px-3.5 py-1 rounded-full text-xs font-medium bg-primary-container text-white shrink-0 active:scale-95 transition-all">
+        All
+      </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium border border-outline-variant/40 text-on-surface-variant hover:border-primary-container hover:text-on-surface shrink-0 active:scale-95 transition-all">
+        Action
+      </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium border border-outline-variant/40 text-on-surface-variant hover:border-primary-container hover:text-on-surface shrink-0 active:scale-95 transition-all">
+        Harem
+      </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium border border-outline-variant/40 text-on-surface-variant hover:border-primary-container hover:text-on-surface shrink-0 active:scale-95 transition-all">
+        Romance
+      </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium border border-outline-variant/40 text-on-surface-variant hover:border-primary-container hover:text-on-surface shrink-0 active:scale-95 transition-all">
+        Fantasy
+      </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium border border-outline-variant/40 text-on-surface-variant hover:border-primary-container hover:text-on-surface shrink-0 active:scale-95 transition-all">
+        Drama
+      </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium border border-outline-variant/40 text-on-surface-variant hover:border-primary-container hover:text-on-surface shrink-0 active:scale-95 transition-all">
+        College
+      </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium border border-outline-variant/40 text-on-surface-variant hover:border-primary-container hover:text-on-surface shrink-0 active:scale-95 transition-all">
+        Mystery
+      </button>
+<button class="px-3 py-1 rounded-full text-xs font-medium border border-outline-variant/40 text-on-surface-variant hover:border-primary-container hover:text-on-surface shrink-0 active:scale-95 transition-all">
+        Supernatural
+      </button>
+</div>
+</section>
+<!-- Main Content Stack -->
+<main class="max-w-7xl mx-auto space-y-space-xl mt-space-md">
+<!-- 1) Top rated Section -->
+<section class="space-y-space-sm">
+<div class="px-space-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-4 bg-primary-container rounded-full"></span>
+<h2 class="font-headline-md text-headline-md text-white tracking-tight">Top rated</h2>
+</div>
+<a class="text-caption font-caption font-medium text-primary hover:text-primary-fixed transition-colors flex items-center gap-1 group" href="#view-top">
+          View all <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+</a>
+</div>
+<!-- Carousel Row -->
+<div class="flex gap-space-md overflow-x-auto no-scrollbar px-space-lg pt-1 pb-2">
+<!-- Card 1 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Abstract minimal geometric shapes composed of layered dark slate, charcoal, and warm deep rose gradients. The composition features smooth architectural bevels and ambient studio rim lighting that evokes an elegant, high-end comic book aesthetic with zero figurative depictions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANOByTdj53Pbd1ooCiPDcRJqx_H6N4Mdr_7Xm5XUvzgGccGodnbeHLypFJMCgC3MSxflQpb2LZ_2_NO7USS0otO5E3lrZ63wU9DUbyqpViA_m8ddumbcNi7ndOFTAvy7wwCLZQUZcsspxlKzQ68tEbZiftN9NXwcBY2gEroLsi7D6JE-jt_xSKO0RQD6aXP45FZQl7PwNQY3wRFetMdbGbFxDcPvcasub8BcPpymvHmo55r_oJGny9kErrcSrobCvV3FYT89UQies"/>
+<!-- Top badge -->
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<!-- Bottom badge -->
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 148
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.9</span> <span class="text-on-surface-variant font-normal text-[10px]">(3.1k)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Secret Society</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">College</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Modern abstract 3D ribbons of fluid liquid velvet in deep rose and onyx black interacting under subtle cinematic lighting. Clean minimalist visual design with soft atmospheric mist and soft geometric reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkMcQ3DWgImmhPMbH5YoC69dcWWkqryh7eERbP5Vwjuvjx9wmO6pwzwUQdeblKB5tEwbwF5XUa3k745MFrZFD_NcdmnNgQdLgTiUvtBpAT-fQp0KkYR7f67cPMTXjN8mci0Xvx9rPtt6m18x3dSV6TKDtO82F8qxbg6IwJ1zY0z7CGSmUAhjG7PjSFI7EUSEAdQNlVSE9yKVkhu_dmhZslPjIcSGqNN5Ch68WwzBunVH-SddrLL6PiwmFZuIMPN2ZB4LJ0CdEYNmw"/>
+<div class="absolute top-2 left-2">
+<span class="bg-emerald-950/50 backdrop-blur-md text-emerald-400 border border-emerald-800/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Completed</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 86
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.8</span> <span class="text-on-surface-variant font-normal text-[10px]">(2.4k)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Silent War</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Action</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Mystery</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Sophisticated monochromatic dark marble textures accented with vibrant rose gold veins and ambient low-key illumination. Highly detailed digital rendering with balanced shadows and pure dark aesthetic tone." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrbKjd0WFhK5_oxAsayXmE1DC0_dB2yEEG0LnqM6JTSatTFccIDu90fvz4GxOvTw_UtT2DU30X1dkanYdPeRP8BqXrOZ66uPuaeDI_4WrpmBkkcYOg7W6Zu2TxcJGbkbTRpQJ7RsVaAnUVKnva86wDD6vZ_x5Z2BfpZpaqvSRYMu7GiQxJWfRcfLl2p4bKtfQQ6mhZpXNdRLDxZ3SInja1JIeoMOqjkV_b6vj_6JPbQ6tQsGTNmgSjbJ20ZaS1XeSjGKP_zl4MOFc"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 112
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.8</span> <span class="text-on-surface-variant font-normal text-[10px]">(1.8k)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Boarding Diary</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Romance</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Harem</span>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Abstract smoky obsidian and muted crimson crystalline prisms clustered together in dark space. Raytraced highlights catch the sharp geometric edges in an elegant modern graphic style with high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVUfxLSqllVj1jiHQPWSLrklrPrIhMAIoyWr3m5uDpnyHc4xVY2EL2LGvuupWs-gdSKPNrMg03A2DFG0Pg_Fc9oJ24GHvZKDhhfYhLHTvzYEo1Ofyq3iKS_RG5CVS631KAm9-zY8TYgmkJm-137z3LyiIJtZwAIluTs4533hDdOhn7tskCz7o-Fkb0mR-1lIVsSMsorq4OarVfJbmwtND2BYlz-A-8nt6ShHY7OM9cJ3FewaB3XiaFSJaG5dmuIrlIXqHB7RY9KfA"/>
+<div class="absolute top-2 left-2">
+<span class="bg-emerald-950/50 backdrop-blur-md text-emerald-400 border border-emerald-800/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Completed</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 120
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.7</span> <span class="text-on-surface-variant font-normal text-[10px]">(920)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Sweet Guy</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Supernatural</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Romance</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- 2) Trending now Section -->
+<section class="space-y-space-sm">
+<div class="px-space-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-4 bg-primary-container rounded-full"></span>
+<h2 class="font-headline-md text-headline-md text-white tracking-tight">Trending now</h2>
+</div>
+<a class="text-caption font-caption font-medium text-primary hover:text-primary-fixed transition-colors flex items-center gap-1 group" href="#view-trending">
+          View all <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+</a>
+</div>
+<div class="flex gap-space-md overflow-x-auto no-scrollbar px-space-lg pt-1 pb-2">
+<!-- Card 1 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Dense atmospheric dark clouds intertwined with delicate neon magenta light trails against a black cosmic void. Subtle abstract composition that conveys drama and sleek futuristic webtoon aesthetics without characters." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS4f2YuO5vBMzEixbXpIs3yoPL2czP_ACaN2R2E--wKieuW4a7TK8DSbGlQRrfmUM-tBUQ-_fPeu3-q5rwIpnKqADzaSW-R9pOFplC4iGVSU9pnuMTsPKRIyPe8oWTlQcbOQekCeVuYLy3q7aRaEG6uPEhdpVNSTfgfw8KLfcm84HrPuAU-IweTr4vDkKHXUiLONOTm_tTZAQOUOGRxB_tVtvPeOowjWwR331W-2VqbgcgTvzEyKHpccrAV4Exf-E-XN7apLUKuJo"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 64
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.8</span> <span class="text-on-surface-variant font-normal text-[10px]">(1.4k)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Campus Roommates</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">College</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Flowing organic waveforms rendered in matte gunmetal and deep rose violet. Clean high-fidelity vector style with subtle noise texture and dramatic dark vignette borders." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtxmhSfza1UtS1Zmg7ZuKCzSOOdm9rcmUehbPZYS4X6HxfslB3ExuKqKWvy3f55qlrD60gknzBHEJsNWb166tPykgH0RrYF-gkc_Wjs6L_C1NmS5P9b5BFWmJkFf_PvpEQLSypird8CthYC91X0ZypWKT3aJ_F1Pgz8un8_QtJ1Tv4qA0pKy3VGmZaggkLtL1s5__7tH02ATp8xbuj3WG58hBA6kNi_-Zf8xfBaYgqSAEiYviFGYXXHHeWBQP2rgxa_PbLuR5k30Q"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 104
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.7</span> <span class="text-on-surface-variant font-normal text-[10px]">(880)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Touch to Unlock</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Romance</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Mystery</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Curved architectural glass panels illuminated by ambient rose and indigo light against deep shadow. Minimalist structural composition emphasizing glossy reflections and sharp modern angles." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDglOyvm_AxDQiraA2939aLVBFLYKdPxNzskYIv7WqCTfmzusmc9R7RSok5PckBZm36v1kVoURY1zI5rMS03ixlWEKT7P1k9Oyp8pCadNTq16quQkOPtPwzFGGuYv_OI-dq6_BFFbBH1AtJ5CWPRBY9eQOOo7ps-C1dClXQhU7kFo33InYx4ZzPoFrTveAK3eisucW5Rnqku7kXwDrNcuaLPVwbYb2e6d7Yih0luEDO_IEo52rKwULq-SyUEOOPjXcbEH9baZerVoE"/>
+<div class="absolute top-2 left-2">
+<span class="bg-emerald-950/50 backdrop-blur-md text-emerald-400 border border-emerald-800/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Completed</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 75
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.6</span> <span class="text-on-surface-variant font-normal text-[10px]">(620)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Under Observation</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Suspense</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Abstract geometric polygonal lattice rendered in glossy dark metal and subtle dusty rose highlights. High contrast shadow design suggesting luxury, mystery, and technological sophistication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmRGwDcaqVDl3RHDF4AbvWuNWUPwbe2iLj-D8aomHGd7LYgHl59lXiaE9_gcujQmXRG9yxosheh_kXjWJEsU2O5yCgQU-mY3lQEWV1JNUqkrKSQsihJ5cmsOKuwoqAC1fO05Ye9D7mNFHcs6zCAMBw4cz4AZFYWGUiaepltOlCzrA6qyoAG0tVD83iwdRvHLTDbTHcowYEcErcAV_2KpkeDd4YIc7wZzBvJd7kEYjHuuEqK5LgzKjscsHGeubqgsb_37Gq6uan6lI"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 53
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.9</span> <span class="text-on-surface-variant font-normal text-[10px]">(2.1k)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">The Stepmother's Friends</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Harem</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- 3) Fresh arrivals Section -->
+<section class="space-y-space-sm">
+<div class="px-space-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-4 bg-primary-container rounded-full"></span>
+<h2 class="font-headline-md text-headline-md text-white tracking-tight">Fresh arrivals</h2>
+</div>
+<a class="text-caption font-caption font-medium text-primary hover:text-primary-fixed transition-colors flex items-center gap-1 group" href="#view-fresh">
+          View all <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+</a>
+</div>
+<div class="flex gap-space-md overflow-x-auto no-scrollbar px-space-lg pt-1 pb-2">
+<!-- Card 1 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Abstract fluid simulation showing swirling smoke of black slate and luminous soft rose droplets suspended in an empty studio space. Calm yet refined art piece with balanced chiaroscuro." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgYIhWL8EE_ZXmePsc_giOgiDgg7ABk7mm3LzhC4xWwXcNsIvkNbnX8BrmEfko4gPAQI6syorrF3fNyN-OJVvodZ_wkMFrzX2iZk3_84FPbqlWLIxS-KAMZXCxmbO6aTfQWPXOx4g1uo9HkxtHlecrXjbXjpB4BBfXe04iOcRRRfI9eT6hj9rZ3I-hEPJ0w1lhNUytJ0HkHAVAxo9Y0OD1Kaj2KWkGvL9eqQsKKkEVpfxlwebcv4s9y_J_YTC9WaHlbFwS5PZnCW8"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 12
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.6</span> <span class="text-on-surface-variant font-normal text-[10px]">(312)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Late Night Class</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">College</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Romance</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Architectural minimal rendering of spiral dark stairs lit from below with a glowing rose light line. Sophisticated geometric shapes with subtle shadow gradients across charcoal walls." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlD5XFOBxJozuFX1FnrdX92BXnoDsyihDm9wVvVeCq_pBLP-OpFGSTVxi6yh25mUEOsZGGiNjXFDZTIfSG6ZMZ3SOYInrv05YyRHY5Binlxwrz7InK1HZOwYPBnJO67Tn4NrPvUdYY4C-cYVXmLcauyTHXOD3hCa3K_oYRBh2DfC88u_1FcYI7vGs2RvnX7OArraQ5E53Y1_z9Y_L0H7njdxvQYUwqIbXxCN9YBweugTUD7HQysp9hKDhG9cJem6ibqXdwo_ceOU4"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 8
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.5</span> <span class="text-on-surface-variant font-normal text-[10px]">(195)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Private Tutor</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Romance</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Clean abstract rendering of overlapping frosted acrylic sheets refracting deep burgundy and muted silver illumination. Elegant contemporary visual art with subtle specular reflections." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgdDgiuvRubwnYv5aj9aScapJMUve2LyragXZEaRIac6B4WxoPSmVy7z93EAIdrB8ED0_cre71gsu5C-zMDbmn0Q9eZkk8M3giQJ4hF7j_-85Y3kJNVyhox20-j-fO5n2vJ0DgftHVLy46YXRyI_MOXM_h-mhwLXX3a7OGWNc3a7MSFOGs7nskt2HnTzb2t_UyVEpBtRSnsk0Q2m5cH8g72VYAvQE89UDBBGgjq73Q-8sC7rB3eQ4hzmSVkg9u31UgGpZGyy1aUrY"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 14
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.7</span> <span class="text-on-surface-variant font-normal text-[10px]">(402)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Fitness Club</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Harem</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Monolithic black stone pillars under a narrow beam of warm rose spotlight. Minimal dark fantasy aesthetic with finely textured granite surfaces and deep ambient shadow falloff." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvsX4EzVIMvDj-MnbADyAeaZWHCjCHmBqw-LjwXm19PdkaYT022X9q_LJT2KlqMm5EEmb7dtW7xebk76uwn5cmyVLN9b1bJ-FDhoD1OTFRYZpRWM3Ejttb9jAncsD9UahTdQWSqBjDD0UaJ41chAf0SDY0kwHJ6Frn50-l_RUgb3X5EcP3-k8bZ8Anreja25VkqA9KsjVEDK4Y3sf0Ufv1cebPq3u_v2ZbapOoQ87_q-6IBdq0EIDVfpRYcQNtRnuWfXIli79c9L0"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 6
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.4</span> <span class="text-on-surface-variant font-normal text-[10px]">(140)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Deceitful Pact</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Mystery</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Supernatural</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- 4) Recently updated Section -->
+<section class="space-y-space-sm">
+<div class="px-space-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-4 bg-primary-container rounded-full"></span>
+<h2 class="font-headline-md text-headline-md text-white tracking-tight">Recently updated</h2>
+</div>
+<a class="text-caption font-caption font-medium text-primary hover:text-primary-fixed transition-colors flex items-center gap-1 group" href="#view-updated">
+          View all <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+</a>
+</div>
+<div class="flex gap-space-md overflow-x-auto no-scrollbar px-space-lg pt-1 pb-2">
+<!-- Card 1 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Dense atmospheric dark geometric patterns with ambient rose luminescence cutting horizontally across a deep charcoal canvas. Subtle matte texture and razor-sharp modern webtoon composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASY9D_Mt6f--vVlAH_uePesDJXgpIIKOcHhvRhWHsWPayb7IrUaGxgw0ln6tqZHXVaRHBclxv1enrX-QYdU2z_T5Ojtv4YkImpu9QmxxQkMEq7Dg7mZN76z7hVuEG6gBY8fUusfYR96RgwG_YIQ3BLNMeG21FuxwrvL1jPPg_GI1YS2hAkQcbUWEz42vYEChSWrkhJrxvf2flPEwyAD4vHsD_sbOFuwpOcfIIMxqd1GM-IBoEGz6rPLT_2UgEN5SeLDCf7OiBNaW4"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              2h ago
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.7</span> <span class="text-on-surface-variant font-normal text-[10px]">(890)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Shared Secret</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Romance</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Abstract curved glass ribbon echoing soft burgundy ambient reflections under dim cinematic spotlighting. Pure dark backdrop with precise specular edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANbN6YWgZCcYy1r-u_aDUX_W-iYK6aKGzLU7Y1Fs3y9AX85y1MuFpmqAEjRePuzv7HaCArQgYG8MYl_TpkT4iY8aCoiEIf9lf_-02_D6ltHwUkxvHRcFu0Ewv9LpYP014F7qjkFFeVCkG8kbxQ3UEdpxxtHPV7SwiGnUUiSXDl2CYvY1xyyl6q8106HHXReHmNq2PekvWclve0CL6x3LhrkzR7pBFKXfh6W6o8gQTe1YC5g7RImiEsecQuzpzuqGmXT7FnBqG2maQ"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              4h ago
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.8</span> <span class="text-on-surface-variant font-normal text-[10px]">(1.2k)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Overtime Deal</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Office</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Subtle 3D polygon mesh glowing with faint rose energy pulses against an ink-black field. Minimal clean digital art design with deep dark levels and atmospheric bokeh." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB56OVr6runAf4cEjQDQ2pPKBro8awDCMzbNh6iZG785UwkvpKzv-jcN9OSkpldg8FfMbhQumDx-xYwM5ThsJosQQUC87GJ5M9kTTWlP-x6lbLMomkAiZtSKrVvWPHnFDjboII1C7V8ZTSMlkfmwZYs8cSH3lH4dsy_kDLahandkXVrLv2Z-d6x1a6G4aAorTqOv4VO7JwUqhtwwcRD5AS7CAxFWs6IAqS4aByKyMioSPL_4FJfTGnNWpc6HsIG_gr1p7HF3rAVqLA"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              6h ago
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.6</span> <span class="text-on-surface-variant font-normal text-[10px]">(780)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Sister's Neighbor</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Harem</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">College</span>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Minimalist dark composition featuring a solitary crimson sphere reflecting on glossy obsidian surface under dim architectural downlight. Mysterious and sophisticated mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7v7pu4dF4iNyh1fOkoYPOWgusFddAfYVU0vKEvgW9-Y-UWiRydjQ8yplsduPabW9xcpX7wYO5eNTrDDIJnYi2QyHncYlCjecskVMjdLUCjYHOBJTQXrr_w3ey1gWDEeCqnnUloApYJV2Vi_o-mavqIkChfZzSPmgpP1G6DqUdZWqaFGzCRH62gx59-38toDOBkidBF6dQGdlcrTdCZE3mjW8H7eOhgwIgz-VEXEACfe37KAVEXcBGQsDQpm0bEBajt9Dw-LA7TIU"/>
+<div class="absolute top-2 left-2">
+<span class="bg-emerald-950/50 backdrop-blur-md text-emerald-400 border border-emerald-800/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Completed</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 92
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.5</span> <span class="text-on-surface-variant font-normal text-[10px]">(510)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Double Play</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Action</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Mystery</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- 5) Random picks Section -->
+<section class="space-y-space-sm pb-8">
+<div class="px-space-lg flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-4 bg-primary-container rounded-full"></span>
+<h2 class="font-headline-md text-headline-md text-white tracking-tight">Random picks</h2>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium border border-outline-variant/40 bg-surface-container-low text-on-surface-variant hover:text-white hover:border-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm leading-none text-primary" data-icon="refresh">refresh</span>
+<span>Shuffle</span>
+</button>
+<a class="text-caption font-caption font-medium text-primary hover:text-primary-fixed transition-colors flex items-center gap-1 group" href="#view-random">
+            View all <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+</a>
+</div>
+</div>
+<div class="flex gap-space-md overflow-x-auto no-scrollbar px-space-lg pt-1 pb-2">
+<!-- Card 1 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Abstract metallic topography with soft rose ambient illumination highlighting organic geometric ridges in complete darkness. Contemporary digital 3D artwork." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf9pwoUt9CmsgmwHlmniBITi-w7CHQ2o2WEGQjkZ1Ipi8IF8nTxuLct-ya9B5cPK4ferdmYHkX4wi0-Ezg-Jd34IUK5hdjLTvF_CB7Gf9fs8Vslqf0FoMHxFSjfndYsg4kmzTxXn6-NffMTvHC6C5uUVh5osVVtqGNF09o_7WE3pBnyyU4AlEZo7e2_gpeVp2Bab2kXyR_5hDmlG95MRBof9S4GbrndGBPpbqwIvFRaU1M_glYQ4EXr667p-Fj_R7MP-BHBeL1VZY"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 41
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.7</span> <span class="text-on-surface-variant font-normal text-[10px]">(670)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Silent Housemate</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Romance</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">College</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Deep dark prism refracting subtle spectrums of muted mauve and rose pink through frosted crystal cubes. Pure modern minimalist background texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ6CHaFnBSiLUsWcPzguboIm-8dHN5OIbhSNZWmH_ZJnxMR33Wue2hSNbWDVhTH3BZ0C0d6B2mrEZzPFrFuxY-rRUe9VXERKxOQaOpXAywPd6GceastPKs0haztSx-WSMfowDLCU8WxpjFe0MBIkwjJHFXI3OyIhdvvqUlGVp96gx78Uq-IffoDlyf4D9M9YbW69GuHyIo5SmwM6dYt9KT5GErcDG4vLQ7rgd-o3sfg7r17EYxEQfbtpvoHItF-ujXE5vW3tNI4iA"/>
+<div class="absolute top-2 left-2">
+<span class="bg-emerald-950/50 backdrop-blur-md text-emerald-400 border border-emerald-800/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Completed</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 50
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.8</span> <span class="text-on-surface-variant font-normal text-[10px]">(1.1k)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Perfect Connection</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Supernatural</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Monochrome dark waves of liquid mercury illuminated by soft rose rim lighting. Highly realistic architectural aesthetic with zero figures or text." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbRYDRU42jUhGZRRhB8dyT46Pkxm6PVJx3lXoUNhZRswkZlvpZzeaRDGzV0itru9h8MG3l8t9xoSiq8QFuraizvDf4orpDCqKGBmxgJmehkcV4iSGZDur_J5Jugf5T3CHzcr8HkTzmw226BHdBe-wHLhSJrLZAm7B1_ES_Q2NZ8X3Q5S6J58vD9Y5CVj_TLzkvosrkRTjttfgPilgFlewNyMBxalLU_VWQxBxTFxSWkfnU0srZ7B6IY94pfFvTrP67Ato8pGDwHPo"/>
+<div class="absolute top-2 left-2">
+<span class="bg-[#9b3e64]/30 backdrop-blur-md text-[#f472b6] border border-[#9b3e64]/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Ongoing</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 29
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.6</span> <span class="text-on-surface-variant font-normal text-[10px]">(480)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">The Assistant</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Mystery</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Office</span>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="carousel-item flex flex-col group cursor-pointer">
+<div class="relative aspect-[2/3] w-full rounded-xl overflow-hidden bg-surface-container-high border border-outline-variant/30 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Intersecting geometric planes in dark charcoal and subtle rose slate with deep atmospheric depth of field. High-end modern digital graphic art." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwuzUd1-uEoZaIqHDEyLojC3WRg0vGsr-vTQU6rF1-IJE9byQPW_8rM-EnfZXqJpuBOpss-yUMbTHG5C1N3o8gPXR0P5e-6fuyQ1JMWKh4ZtSFoSPzwXyUV0HGxhs3E6y7k-IAXG3nCYTWC3NZYdw4xbmH_50kEIfYqq6u8ORcuG3XpgvDRtJeqmiz6a4bXnxsit2fIzKrY3WACFjdD0iBftDxcZUeRQwtbi54KwXUZl5_ZFDvT4qezP2t0bSofgX7o8mT5VjYDWE"/>
+<div class="absolute top-2 left-2">
+<span class="bg-emerald-950/50 backdrop-blur-md text-emerald-400 border border-emerald-800/50 text-[10px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center shadow-sm">Completed</span>
+</div>
+<div class="absolute bottom-2 right-2 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[9px] font-medium px-1.5 py-0.5 rounded">
+              Ch. 68
+            </div>
+</div>
+<div class="mt-2 space-y-1">
+<div class="flex items-center gap-1 text-[11px] font-medium text-amber-400">
+<span class="text-xs">★</span> <span>4.7</span> <span class="text-on-surface-variant font-normal text-[10px]">(720)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white line-clamp-2 text-sm leading-snug group-hover:text-primary transition-colors">Unknown Caller</h3>
+<div class="flex items-center gap-1 pt-0.5 overflow-hidden">
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Suspense</span>
+<span class="text-[10px] font-caption text-on-surface-variant bg-surface-container-low px-1.5 py-0.5 rounded border border-outline-variant/20">Drama</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- Persistent 5-Destination Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-sm py-space-xs bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/30">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container/20 text-primary dark:text-primary rounded-full px-space-md py-space-xs transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-caption font-caption font-medium text-[11px] mt-0.5">Home</span>
+</a>
+<!-- Browse -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:text-on-surface dark:hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="explore">explore</span>
+<span class="text-caption font-caption font-medium text-[11px] mt-0.5">Browse</span>
+</a>
+<!-- Search -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:text-on-surface dark:hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="search">search</span>
+<span class="text-caption font-caption font-medium text-[11px] mt-0.5">Search</span>
+</a>
+<!-- Library -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:text-on-surface dark:hover:text-on-surface transition-colors active:scale-95 duration-150 relative" href="#">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="local_library">local_library</span>
+<span class="text-caption font-caption font-medium text-[11px] mt-0.5">Library</span>
+<!-- Discrete updated indicator -->
+<span class="absolute top-1.5 right-4 w-1.5 h-1.5 rounded-full bg-primary"></span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:text-on-surface dark:hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined text-2xl leading-none" data-icon="person">person</span>
+<span class="text-caption font-caption font-medium text-[11px] mt-0.5">Profile</span>
+</a>
+</nav>
+</body></html>
