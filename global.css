@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.dark {
+  --background: 0 0 0;
+  --surface: 11 11 11;
+  --card: 20 20 20;
+  --elevated: 28 28 31;
+  --border: 39 39 42;
+  --foreground: 250 250 250;
+  --muted: 161 161 170;
+  --primary: 155 62 100;
+  --primary-hover: 144 60 95;
+  --primary-soft: rgba(155, 62, 100, 0.14);
+  --on-primary: 255 255 255;
+  --destructive: 220 38 38;
+  --success: 5 150 105;
+  --warning: 217 119 6;
+  --info: 37 99 235;
+  --ring: 155 62 100;
+  --status-ongoing-bg: rgba(155, 62, 100, 0.14);
+  --status-ongoing-text: 155 62 100;
+  --status-completed-bg: 220 252 231;
+  --status-completed-text: 21 128 61;
+  --status-hiatus-bg: 254 243 199;
+  --status-hiatus-text: 180 83 9;
+}
+
+.amoled {
+  --background: 0 0 0;
+  --surface: 0 0 0;
+  --card: 10 10 10;
+  --elevated: 23 23 25;
+  --border: 39 39 42;
+  --foreground: 250 250 250;
+  --muted: 161 161 170;
+  --primary: 155 62 100;
+  --primary-hover: 144 60 95;
+  --primary-soft: rgba(155, 62, 100, 0.14);
+  --on-primary: 255 255 255;
+  --destructive: 220 38 38;
+  --success: 5 150 105;
+  --warning: 217 119 6;
+  --info: 37 99 235;
+  --ring: 155 62 100;
+  --status-ongoing-bg: rgba(155, 62, 100, 0.14);
+  --status-ongoing-text: 155 62 100;
+  --status-completed-bg: 220 252 231;
+  --status-completed-text: 21 128 61;
+  --status-hiatus-bg: 254 243 199;
+  --status-hiatus-text: 180 83 9;
+}
+
+.light {
+  --background: 250 241 243;
+  --surface: 255 247 249;
+  --card: 255 250 251;
+  --elevated: 240 224 229;
+  --border: 226 205 212;
+  --foreground: 66 45 56;
+  --muted: 121 85 104;
+  --primary: 155 62 100;
+  --primary-hover: 144 60 95;
+  --primary-soft: rgba(155, 62, 100, 0.1);
+  --on-primary: 255 255 255;
+  --destructive: 220 38 38;
+  --success: 5 150 105;
+  --warning: 217 119 6;
+  --info: 37 99 235;
+  --ring: 155 62 100;
+  --status-ongoing-bg: rgba(155, 62, 100, 0.1);
+  --status-ongoing-text: 155 62 100;
+  --status-completed-bg: 220 252 231;
+  --status-completed-text: 21 128 61;
+  --status-hiatus-bg: 254 243 199;
+  --status-hiatus-text: 180 83 9;
+}
