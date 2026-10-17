@@ -42,30 +42,33 @@ export function TrackingRow({ entry, onPress, onIncrement, onRate, onMenu }: Tra
 
   return (
     <Swipeable renderRightActions={rightActions} overshootRight={false}>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel={entry.series.title}
-        onPress={onPress}
-        disabled={!onPress}
-        className="flex-row items-center gap-md border-b border-border bg-background px-lg py-md active:bg-card"
-      >
-        <CoverThumb uri={entry.series.coverImage} width={64} height={96} />
-        <View className="flex-1 gap-sm">
-          <Text className="text-h3 leading-5 text-foreground" numberOfLines={2}>
-            {entry.series.title}
-          </Text>
-          <ProgressBar
-            ratio={progressRatio(entry.currentChapter, entry.series.totalChapters)}
-            className="mt-xs"
-          />
-          <View className="flex-row items-center justify-between">
-            <Text className="text-caption text-primary">
-              {progressLabel(entry.currentChapter, entry.series.totalChapters)}
+      <View className="flex-row items-center border-b border-border bg-background px-lg py-md">
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={entry.series.title}
+          onPress={onPress}
+          disabled={!onPress}
+          className="flex-1 flex-row items-center gap-md active:opacity-75"
+        >
+          <CoverThumb uri={entry.series.coverImage} width={64} height={96} />
+          <View className="flex-1 gap-sm">
+            <Text className="text-h3 leading-5 text-foreground" numberOfLines={2}>
+              {entry.series.title}
             </Text>
-            <Text className="text-caption text-muted">{TRACKING_STATUS_LABEL[entry.status]}</Text>
+            <ProgressBar
+              ratio={progressRatio(entry.currentChapter, entry.series.totalChapters)}
+              className="mt-xs"
+            />
+            <View className="flex-row items-center justify-between">
+              <Text className="text-caption text-primary">
+                {progressLabel(entry.currentChapter, entry.series.totalChapters)}
+              </Text>
+              <Text className="text-caption text-muted">{TRACKING_STATUS_LABEL[entry.status]}</Text>
+            </View>
           </View>
-        </View>
-        <View className="gap-xs">
+        </Pressable>
+
+        <View className="ml-md items-center gap-xs">
           {entry.priority != null ? (
             <Flag size={16} strokeWidth={iconTokens.stroke} color={colors.primary} />
           ) : null}
@@ -76,7 +79,7 @@ export function TrackingRow({ entry, onPress, onIncrement, onRate, onMenu }: Tra
             size={18}
           />
         </View>
-      </Pressable>
+      </View>
     </Swipeable>
   );
 }
