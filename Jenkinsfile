@@ -22,6 +22,11 @@ pipeline {
             defaultValue: true,
             description: 'Execute lint and TypeScript checks before building'
         )
+        string(
+            name: 'ANDROID_SDK_PATH',
+            defaultValue: '',
+            description: 'Path to Android SDK if not defined in ANDROID_HOME environment variable'
+        )
     }
 
     tools {
@@ -118,10 +123,30 @@ pipeline {
             steps {
                 script {
                     echo "📱 Generating Android native project..."
+                    def sdkPath = params.ANDROID_SDK_PATH ?: env.ANDROID_HOME ?: env.ANDROID_SDK_ROOT ?: ''
+                    
                     if (isUnix()) {
                         sh 'npx expo prebuild --platform android --clean --no-install'
                         dir('android') {
                             sh 'chmod +x gradlew'
+
+                            if (!sdkPath) {
+                                def candidates = ['/var/jenkins_home/android-sdk', '/opt/android-sdk', '/usr/lib/android-sdk', "${env.HOME}/Android/Sdk"]
+                                for (c in candidates) {
+                                    if (fileExists(c)) {
+                                        sdkPath = c
+                                        break
+                                    }
+                                }
+                            }
+
+                            if (sdkPath) {
+                                echo "📍 Using Android SDK at: ${sdkPath}"
+                                writeFile file: 'local.properties', text: "sdk.dir=${sdkPath}\n"
+                            } else {
+                                error "❌ Android SDK not found! Please define ANDROID_HOME in Jenkins (Manage Jenkins -> System -> Global Properties), pass ANDROID_SDK_PATH parameter, or select BUILD_TARGET='web'."
+                            }
+
                             if (params.BUILD_TYPE == 'release') {
                                 sh './gradlew assembleRelease --no-daemon'
                             } else {
@@ -131,6 +156,9 @@ pipeline {
                     } else {
                         bat 'npx expo prebuild --platform android --clean --no-install'
                         dir('android') {
+                            if (sdkPath) {
+                                writeFile file: 'local.properties', text: "sdk.dir=${sdkPath.replace('\\', '/')}\n"
+                            }
                             if (params.BUILD_TYPE == 'release') {
                                 bat 'gradlew.bat assembleRelease --no-daemon'
                             } else {
