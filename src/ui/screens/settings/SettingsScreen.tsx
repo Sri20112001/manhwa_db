@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Alert, Linking, Pressable, ScrollView, Text, View } from 'react-native';
-import { useRouter } from 'expo-router';
 import {
   ArrowLeft,
+  Check,
   ExternalLink,
   HardDrive,
   KeyRound,
@@ -13,24 +13,28 @@ import {
 import { clearCache } from '@/api/cache';
 import { disconnectAccount } from '@/logic/usecases/connectAccount';
 import { useRootStore } from '@/logic/store';
-import type { TextSize, ThemeMode } from '@/shared/types/filters';
+import { useSafeBack } from '@/shared/lib/navigation';
+import type { AccentColor, TextSize, ThemeMode } from '@/shared/types/filters';
 import { Avatar } from '@/ui/components/primitives/Avatar';
 import { GlassHeader } from '@/ui/components/layout/GlassHeader';
 import { IconButton } from '@/ui/components/primitives/IconButton';
 import { Screen } from '@/ui/components/layout/Screen';
 import { Segmented } from '@/ui/components/primitives/Segmented';
 import { useThemeColors } from '@/ui/theme/ThemeProvider';
+import { ACCENT_PALETTES } from '@/ui/theme/tokens';
 
 export function SettingsScreen() {
-  const router = useRouter();
+  const { goBack, router } = useSafeBack();
   const colors = useThemeColors();
 
   const uid = useRootStore((state) => state.uid);
   const username = useRootStore((state) => state.username);
   const themeMode = useRootStore((state) => state.themeMode);
   const textSize = useRootStore((state) => state.textSize);
+  const accentColor = useRootStore((state) => state.accentColor);
   const setThemeMode = useRootStore((state) => state.setThemeMode);
   const setTextSize = useRootStore((state) => state.setTextSize);
+  const setAccentColor = useRootStore((state) => state.setAccentColor);
 
   const [cacheSize, setCacheSize] = useState('12.4 MB');
 
@@ -62,7 +66,7 @@ export function SettingsScreen() {
           <IconButton
             icon={ArrowLeft}
             accessibilityLabel="Back"
-            onPress={() => router.back()}
+            onPress={goBack}
           />
         }
         title="Settings"
@@ -116,6 +120,50 @@ export function SettingsScreen() {
                 value={themeMode}
                 onChange={(val) => setThemeMode(val as ThemeMode)}
               />
+            </View>
+
+            <View className="h-px bg-border" />
+
+            <View className="gap-sm">
+              <View className="flex-row items-center justify-between">
+                <Text className="text-body font-inter-semibold text-foreground">Accent color</Text>
+                <Text className="text-caption font-inter-medium text-muted">
+                  {ACCENT_PALETTES[accentColor]?.label ?? accentColor}
+                </Text>
+              </View>
+              <View className="flex-row flex-wrap gap-sm">
+                {(Object.keys(ACCENT_PALETTES) as AccentColor[]).map((key) => {
+                  const palette = ACCENT_PALETTES[key];
+                  const isSelected = accentColor === key;
+                  return (
+                    <Pressable
+                      key={key}
+                      onPress={() => setAccentColor(key)}
+                      accessibilityRole="button"
+                      accessibilityLabel={`Accent color ${palette.label}`}
+                      accessibilityState={{ selected: isSelected }}
+                      className={`min-w-[30%] flex-1 flex-row items-center gap-xs rounded-md border p-sm active:opacity-75 ${
+                        isSelected ? 'border-primary bg-primary-soft' : 'border-border bg-surface'
+                      }`}
+                    >
+                      <View
+                        className="h-5 w-5 items-center justify-center rounded-full"
+                        style={{ backgroundColor: palette.primary }}
+                      >
+                        {isSelected ? <Check size={12} color={colors.onPrimary} strokeWidth={3} /> : null}
+                      </View>
+                      <Text
+                        className={`text-caption font-inter-medium ${
+                          isSelected ? 'font-inter-semibold text-foreground' : 'text-muted'
+                        }`}
+                        numberOfLines={1}
+                      >
+                        {palette.label}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
             </View>
 
             <View className="h-px bg-border" />

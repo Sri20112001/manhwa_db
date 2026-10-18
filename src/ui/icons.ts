@@ -23,6 +23,7 @@ export {
   ChevronUp,
   Clock,
   Compass,
+  Dices,
   ExternalLink,
   Eye,
   EyeOff,

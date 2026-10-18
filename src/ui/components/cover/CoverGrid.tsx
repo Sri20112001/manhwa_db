@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { useWindowDimensions, View } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 
 import { CoverCard } from './CoverCard';
@@ -27,22 +27,26 @@ export function CoverGrid({
   refreshing,
   onRefresh,
 }: CoverGridProps) {
+  const { width } = useWindowDimensions();
+  // 2 columns for phones (<600px), 3 for tablets/foldables (<900px), 4+ for large web screens
+  const numColumns = width >= 900 ? 4 : width >= 600 ? 3 : 2;
+
   return (
     <FlashList
       data={items}
-      numColumns={2}
+      numColumns={numColumns}
       keyExtractor={(item) => String(item.id)}
       renderItem={({ item }) => (
-        <View className="flex-1 px-sm pb-lg">
+        <View className="flex-1 px-md pb-xl">
           <CoverCard series={item} onPress={onPressItem ? () => onPressItem(item) : undefined} />
         </View>
       )}
-      contentContainerStyle={{ paddingHorizontal: 8, paddingTop: 8 }}
+      contentContainerStyle={{ paddingHorizontal: 4, paddingTop: 4 }}
       ListHeaderComponent={ListHeaderComponent}
       ListEmptyComponent={ListEmptyComponent}
       ListFooterComponent={
         showSkeletons ? (
-          <View className="flex-row gap-md px-sm pb-lg">
+          <View className="flex-row gap-xl px-md pb-xl">
             <View className="flex-1">
               <SkeletonCard />
             </View>

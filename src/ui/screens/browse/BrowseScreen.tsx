@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { ChevronDown, SlidersHorizontal } from '@/ui/icons';
+import { ChevronDown, Dices, SlidersHorizontal } from '@/ui/icons';
 
 import { useBrowse } from '@/logic/hooks/useBrowse';
+import { useRandomSeries } from '@/logic/hooks/useRandomSeries';
 import { useRootStore } from '@/logic/store';
 import { CoverGrid } from '@/ui/components/cover/CoverGrid';
 import { EmptyState } from '@/ui/components/feedback/EmptyState';
@@ -42,6 +43,7 @@ export function BrowseScreen() {
   const activeCount = useRootStore((state) => state.activeFilterCount());
 
   const [sortIndex, setSortIndex] = useState(0);
+  const { surpriseMe, isPickingRandom } = useRandomSeries();
 
   useEffect(() => {
     if (searchParams.genre && !filters.tags.includes(searchParams.genre)) {
@@ -91,12 +93,27 @@ export function BrowseScreen() {
           </View>
         }
         right={
-          <IconButton
-            icon={SlidersHorizontal}
-            accessibilityLabel={`Filters (${activeCount} active)`}
-            variant={activeCount > 0 ? 'primary-soft' : 'plain'}
-            onPress={() => router.push('/filters')}
-          />
+          <View className="flex-row items-center gap-xs">
+            <IconButton
+              icon={Dices}
+              accessibilityLabel="Pick random manhwa"
+              onPress={() =>
+                surpriseMe(
+                  filters.orientation === 'yaoi' || filters.orientation === 'yuri'
+                    ? filters.orientation
+                    : undefined,
+                )
+              }
+              loading={isPickingRandom}
+              size={20}
+            />
+            <IconButton
+              icon={SlidersHorizontal}
+              accessibilityLabel={`Filters (${activeCount} active)`}
+              variant={activeCount > 0 ? 'primary-soft' : 'plain'}
+              onPress={() => router.push('/filters')}
+            />
+          </View>
         }
       />
 

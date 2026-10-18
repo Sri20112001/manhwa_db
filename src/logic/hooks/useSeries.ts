@@ -7,6 +7,7 @@ import {
   getPornhwaReviews,
   getSimilarPornhwa,
 } from '@/api/endpoints/catalogue';
+import { listCharacters } from '@/api/endpoints/characters';
 import { STALE } from '@/shared/constants/query';
 import { toCharacter } from '@/logic/mappers/character';
 import { toSeries, toSeriesDetail } from '@/logic/mappers/pornhwa';
@@ -42,34 +43,45 @@ export function useSeries(slug: string) {
 }
 
 export function useSeriesCharacters(slug: string, enabled: boolean) {
-  const query = useInfiniteQuery({
+  const query = useQuery({
     queryKey: queryKeys.seriesCharacters(slug),
     enabled: enabled && slug.length > 0,
     staleTime: STALE.characters,
-    initialPageParam: 1,
-    queryFn: async ({ pageParam }) => {
-      const page = await getPornhwaCharacters(slug, { page: pageParam, limit: 24 });
+    queryFn: async () => {
       const reference = {
         id: 0,
         title: '',
         slug,
         coverImage: null,
       };
-      return {
-        items: page.data.map((dto) => toCharacter(dto, reference)),
-        pagination: page.pagination,
-      };
+
+      try {
+        const res = await getPornhwaCharacters(slug);
+        const list = Array.isArray(res?.data) ? res.data : [];
+        if (list.length > 0) {
+          return list.map((dto) => toCharacter(dto, reference));
+        }
+      } catch {
+        // Fall back below
+      }
+
+      try {
+        const res = await listCharacters({ pornhwaSlug: slug });
+        const list = Array.isArray(res?.data) ? res.data : [];
+        return list.map((dto) => toCharacter(dto, reference));
+      } catch {
+        return [];
+      }
     },
-    getNextPageParam: (last) => (last.pagination.hasMore ? last.pagination.page + 1 : undefined),
   });
 
   return {
-    items: query.data?.pages.flatMap((page) => page.items) ?? [],
+    items: query.data ?? [],
     isPending: query.isPending,
     isError: query.isError,
-    hasNextPage: Boolean(query.hasNextPage),
-    fetchNextPage: () => void query.fetchNextPage(),
-    isFetchingNextPage: query.isFetchingNextPage,
+    hasNextPage: false,
+    fetchNextPage: () => {},
+    isFetchingNextPage: false,
   };
 }
 

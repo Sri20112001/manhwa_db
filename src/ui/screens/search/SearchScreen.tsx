@@ -3,8 +3,9 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { FlashList } from '@shopify/flash-list';
 import { Image } from 'expo-image';
-import { Star, X } from '@/ui/icons';
+import { Dices, Star, X } from '@/ui/icons';
 
+import { useRandomSeries } from '@/logic/hooks/useRandomSeries';
 import { useSearch } from '@/logic/hooks/useSearch';
 import { useRootStore } from '@/logic/store';
 import type { SearchCharacterResult } from '@/logic/usecases/resolveSearch';
@@ -12,6 +13,7 @@ import { formatRating } from '@/shared/lib/format';
 import { remoteImage } from '@/shared/lib/images';
 import type { Series } from '@/shared/types/models';
 import { Avatar } from '@/ui/components/primitives/Avatar';
+import { Button } from '@/ui/components/primitives/Button';
 import { EmptyState } from '@/ui/components/feedback/EmptyState';
 import { GlassHeader } from '@/ui/components/layout/GlassHeader';
 import { Input } from '@/ui/components/primitives/Input';
@@ -33,6 +35,7 @@ export function SearchScreen() {
   const removeRecentSearch = useRootStore((state) => state.removeRecentSearch);
 
   const [inputVal, setInputVal] = useState(query);
+  const { surpriseMe, isPickingRandom } = useRandomSeries();
 
   const { items, isPending, fetchNextPage, hasNextPage, isFetchingNextPage } = useSearch(
     query,
@@ -81,7 +84,12 @@ export function SearchScreen() {
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Cancel"
-            onPress={() => router.back()}
+            onPress={() => {
+              handleClear();
+              if (router.canGoBack()) {
+                router.back();
+              }
+            }}
             className="px-sm py-xs active:opacity-70"
           >
             <Text className="text-body font-inter-medium text-foreground">Cancel</Text>
@@ -141,17 +149,31 @@ export function SearchScreen() {
           <SkeletonSeriesRow />
         </View>
       ) : !query ? (
-        <View className="flex-1 items-center justify-center p-xl">
+        <View className="flex-1 items-center justify-center p-xl gap-lg">
           <EmptyState
             title="Search Pornhwa DB"
             description="Type a manhwa title, creator, or character name to search."
           />
+          <Button
+            label="Can't decide? Surprise Me"
+            icon={Dices}
+            variant="outline"
+            onPress={() => surpriseMe()}
+            loading={isPickingRandom}
+          />
         </View>
       ) : items.length === 0 ? (
-        <View className="flex-1 items-center justify-center p-xl">
+        <View className="flex-1 items-center justify-center p-xl gap-lg">
           <EmptyState
             title="No results found"
             description={`No ${segment} matched "${query}". Try another search term.`}
+          />
+          <Button
+            label="Try a Random Manhwa"
+            icon={Dices}
+            variant="outline"
+            onPress={() => surpriseMe()}
+            loading={isPickingRandom}
           />
         </View>
       ) : segment === 'series' ? (

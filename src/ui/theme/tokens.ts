@@ -1,3 +1,5 @@
+import type { AccentColor } from '@/shared/types/filters';
+
 export interface ColorTokens {
   background: string;
   surface: string;
@@ -96,6 +98,60 @@ export const icons = { stroke: 1.75, size: { nav: 26, action: 22, inline: 18 } }
 export const iconTokens = icons;
 
 export const glass = { background: 'rgba(0,0,0,0.6)' } as const;
+
+export const ACCENT_PALETTES: Record<
+  AccentColor,
+  { primary: string; primaryHover: string; primarySoft: string; label: string }
+> = {
+  rose: {
+    label: 'Rose',
+    primary: '#9B3E64',
+    primaryHover: '#903C5F',
+    primarySoft: 'rgba(155,62,100,0.14)',
+  },
+  violet: {
+    label: 'Violet',
+    primary: '#8B5CF6',
+    primaryHover: '#7C3AED',
+    primarySoft: 'rgba(139,92,246,0.16)',
+  },
+  sapphire: {
+    label: 'Sapphire',
+    primary: '#2563EB',
+    primaryHover: '#1D4ED8',
+    primarySoft: 'rgba(37,99,235,0.16)',
+  },
+  emerald: {
+    label: 'Emerald',
+    primary: '#10B981',
+    primaryHover: '#059669',
+    primarySoft: 'rgba(16,185,129,0.16)',
+  },
+  amber: {
+    label: 'Amber',
+    primary: '#F59E0B',
+    primaryHover: '#D97706',
+    primarySoft: 'rgba(245,158,11,0.16)',
+  },
+  crimson: {
+    label: 'Crimson',
+    primary: '#E11D48',
+    primaryHover: '#BE123C',
+    primarySoft: 'rgba(225,29,72,0.16)',
+  },
+};
+
+export function getColorsWithAccent(mode: 'dark' | 'amoled' | 'light', accent: AccentColor = 'rose'): ColorTokens {
+  const base = colorModes[mode];
+  const palette = ACCENT_PALETTES[accent] ?? ACCENT_PALETTES.rose;
+  return {
+    ...base,
+    primary: palette.primary,
+    primaryHover: palette.primaryHover,
+    primarySoft: palette.primarySoft,
+    ring: palette.primary,
+  };
+}
 
 export const colorModes = { dark: darkColors, amoled: amoledColors, light: lightColors } as const;
 

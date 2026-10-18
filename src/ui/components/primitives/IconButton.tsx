@@ -1,4 +1,4 @@
-import { Pressable } from 'react-native';
+import { ActivityIndicator, Pressable } from 'react-native';
 import type { LucideIcon } from 'lucide-react-native';
 
 import { cn } from '@/shared/lib/cn';
@@ -13,6 +13,7 @@ interface IconButtonProps {
   strokeWidth?: number;
   variant?: 'plain' | 'surface' | 'primary-soft' | 'primary';
   disabled?: boolean;
+  loading?: boolean;
   className?: string;
 }
 
@@ -24,6 +25,7 @@ export function IconButton({
   strokeWidth = iconTokens.stroke,
   variant = 'plain',
   disabled,
+  loading,
   className,
 }: IconButtonProps) {
   const colors = useThemeColors();
@@ -39,8 +41,8 @@ export function IconButton({
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={accessibilityLabel}
-      accessibilityState={{ disabled: Boolean(disabled) }}
-      disabled={disabled}
+      accessibilityState={{ disabled: Boolean(disabled || loading) }}
+      disabled={disabled || loading}
       hitSlop={8}
       onPress={onPress}
       className={cn(
@@ -48,11 +50,15 @@ export function IconButton({
         variant === 'surface' && 'bg-card border border-border',
         variant === 'primary-soft' && 'bg-primary-soft',
         variant === 'primary' && 'bg-primary',
-        disabled && 'opacity-40',
+        (disabled || loading) && 'opacity-40',
         className,
       )}
     >
-      <Icon size={size} strokeWidth={strokeWidth} color={iconColor} />
+      {loading ? (
+        <ActivityIndicator size="small" color={iconColor} />
+      ) : (
+        <Icon size={size} strokeWidth={strokeWidth} color={iconColor} />
+      )}
     </Pressable>
   );
 }

@@ -89,6 +89,7 @@ export interface ReaderPrefs {
 
 export type ThemeMode = 'dark' | 'amoled' | 'light';
 export type TextSize = 'compact' | 'default' | 'large';
+export type AccentColor = 'rose' | 'violet' | 'sapphire' | 'emerald' | 'amber' | 'crimson';
 
 export interface ToastMessage {
   id: string;

@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
-import { useRouter } from 'expo-router';
-import { ArrowLeft, Bookmark, ChevronRight, Play, Sliders } from '@/ui/icons';
+import { ArrowLeft, Bookmark, Play, Sliders } from '@/ui/icons';
 
 import { useChapters } from '@/logic/hooks/useChapters';
 import { useSeries } from '@/logic/hooks/useSeries';
-import { chapterRange } from '@/shared/lib/format';
+import { useSafeBack } from '@/shared/lib/navigation';
+import { ChapterRow } from '@/ui/components/domain/ChapterRow';
+import { Avatar } from '@/ui/components/primitives/Avatar';
 import { EmptyState } from '@/ui/components/feedback/EmptyState';
 import { ErrorState } from '@/ui/components/feedback/ErrorState';
 import { GlassHeader } from '@/ui/components/layout/GlassHeader';
@@ -20,7 +21,7 @@ interface ReaderScreenProps {
 }
 
 export function ReaderScreen({ slug }: ReaderScreenProps) {
-  const router = useRouter();
+  const { goBack, router } = useSafeBack(slug ? `/pornhwa/${slug}` : '/(tabs)');
   const colors = useThemeColors();
   const [segment, setSegment] = useState<'chapters' | 'scenes'>('chapters');
 
@@ -35,7 +36,7 @@ export function ReaderScreen({ slug }: ReaderScreenProps) {
           <IconButton
             icon={ArrowLeft}
             accessibilityLabel="Back"
-            onPress={() => router.back()}
+            onPress={goBack}
           />
         }
         title={series?.title ?? 'Reader'}
@@ -91,36 +92,11 @@ export function ReaderScreen({ slug }: ReaderScreenProps) {
         ) : segment === 'chapters' ? (
           <View>
             {chapters.map((ch) => (
-              <Pressable
+              <ChapterRow
                 key={ch.id}
-                accessibilityRole="button"
-                accessibilityLabel={`Chapter ${ch.chapterStart}`}
-                className="flex-row items-center gap-md border-b border-border px-lg py-md active:bg-elevated"
-              >
-                <View className="h-12 w-12 items-center justify-center rounded-md bg-primary-soft">
-                  <Text className="text-h3 font-inter-bold text-primary">{ch.chapterStart}</Text>
-                </View>
-                <View className="flex-1 gap-xs">
-                  <Text className="text-body font-inter-semibold text-foreground">
-                    Chapter {chapterRange(ch.chapterStart, ch.chapterEnd)}
-                  </Text>
-                  {ch.description ? (
-                    <Text className="text-caption text-muted" numberOfLines={1}>
-                      {ch.description}
-                    </Text>
-                  ) : null}
-                  {ch.tags.length > 0 ? (
-                    <View className="flex-row flex-wrap gap-xs">
-                      {ch.tags.slice(0, 3).map((tag) => (
-                        <View key={tag} className="rounded-sm bg-elevated px-sm py-[2px]">
-                          <Text className="text-[11px] text-muted">{tag}</Text>
-                        </View>
-                      ))}
-                    </View>
-                  ) : null}
-                </View>
-                <ChevronRight size={18} color={colors.muted} />
-              </Pressable>
+                chapter={ch}
+                showCharacters={true}
+              />
             ))}
           </View>
         ) : (
@@ -128,7 +104,7 @@ export function ReaderScreen({ slug }: ReaderScreenProps) {
             {chapters.map((ch) => (
               <View
                 key={ch.id}
-                className="h-28 w-[31%] items-center justify-center rounded-md border border-border bg-card p-sm"
+                className="min-h-28 w-[31%] sm:w-[23%] md:w-[18%] items-center justify-center rounded-md border border-border bg-card p-sm"
               >
                 <View className="rounded-sm bg-primary-soft px-sm py-xs">
                   <Text className="text-caption font-inter-bold text-primary">
@@ -138,6 +114,21 @@ export function ReaderScreen({ slug }: ReaderScreenProps) {
                 <Text className="mt-xs text-center text-[11px] text-muted" numberOfLines={2}>
                   {ch.description ?? `Scene ${ch.chapterStart}`}
                 </Text>
+                {ch.characters.length > 0 ? (
+                  <View className="mt-xs flex-row flex-wrap items-center justify-center gap-[2px]">
+                    {ch.characters.slice(0, 3).map((character) => (
+                      <Avatar
+                        key={character.id}
+                        uri={character.image}
+                        name={character.name}
+                        size={16}
+                      />
+                    ))}
+                    {ch.characters.length > 3 ? (
+                      <Text className="text-[10px] text-muted">+{ch.characters.length - 3}</Text>
+                    ) : null}
+                  </View>
+                ) : null}
               </View>
             ))}
           </View>

@@ -1,9 +1,9 @@
 import { Pressable, ScrollView, Text, View } from 'react-native';
-import { useRouter } from 'expo-router';
 import { ArrowLeft, Bookmark, ChevronRight, Star } from '@/ui/icons';
 
 import { useCharacter } from '@/logic/hooks/useCharacter';
 import { formatRating } from '@/shared/lib/format';
+import { useSafeBack } from '@/shared/lib/navigation';
 import { Avatar } from '@/ui/components/primitives/Avatar';
 import { Chip } from '@/ui/components/primitives/Chip';
 import { EmptyState } from '@/ui/components/feedback/EmptyState';
@@ -20,7 +20,7 @@ interface CharacterDetailScreenProps {
 }
 
 export function CharacterDetailScreen({ id }: CharacterDetailScreenProps) {
-  const router = useRouter();
+  const { goBack, router } = useSafeBack();
   const colors = useThemeColors();
   const { character, isPending, isError, refetch, averageRating, ratingCount, reviews } =
     useCharacter(id);
@@ -55,7 +55,7 @@ export function CharacterDetailScreen({ id }: CharacterDetailScreenProps) {
           <IconButton
             icon={ArrowLeft}
             accessibilityLabel="Back"
-            onPress={() => router.back()}
+            onPress={goBack}
           />
         }
         right={

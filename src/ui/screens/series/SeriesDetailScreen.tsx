@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Linking, Pressable, ScrollView, Share, Text, View } from 'react-native';
-import { useRouter } from 'expo-router';
 import { Image } from 'expo-image';
 import {
   ArrowLeft,
@@ -23,6 +22,7 @@ import { useChapters } from '@/logic/hooks/useChapters';
 import { useTrackingEntry, useTrackingMutations } from '@/logic/hooks/useTrackingMutations';
 import { formatRating } from '@/shared/lib/format';
 import { remoteImage } from '@/shared/lib/images';
+import { useSafeBack } from '@/shared/lib/navigation';
 import { Avatar } from '@/ui/components/primitives/Avatar';
 import { Button } from '@/ui/components/primitives/Button';
 import { ChapterRow } from '@/ui/components/domain/ChapterRow';
@@ -33,7 +33,7 @@ import { ErrorState } from '@/ui/components/feedback/ErrorState';
 import { IconButton } from '@/ui/components/primitives/IconButton';
 import { RatingStars } from '@/ui/components/domain/RatingStars';
 import { Screen } from '@/ui/components/layout/Screen';
-import { SkeletonSeriesDetail } from '@/ui/components/feedback/Skeleton';
+import { SkeletonSeriesDetail, SkeletonSeriesRow } from '@/ui/components/feedback/Skeleton';
 import { StatusChip } from '@/ui/components/domain/StatusChip';
 import { Tabs } from '@/ui/components/primitives/Tabs';
 import { useThemeColors } from '@/ui/theme/ThemeProvider';
@@ -61,7 +61,7 @@ const TRACKING_OPTIONS: { label: string; value: TrackingStatus }[] = [
 ];
 
 export function SeriesDetailScreen({ slug }: SeriesDetailScreenProps) {
-  const router = useRouter();
+  const { goBack, router } = useSafeBack();
   const colors = useThemeColors();
   const [activeTab, setActiveTab] = useState('info');
   const [showFullSynopsis, setShowFullSynopsis] = useState(false);
@@ -130,7 +130,7 @@ export function SeriesDetailScreen({ slug }: SeriesDetailScreenProps) {
         <IconButton
           icon={ArrowLeft}
           accessibilityLabel="Back"
-          onPress={() => router.back()}
+          onPress={goBack}
           variant="surface"
         />
         <View className="flex-row items-center gap-xs">
@@ -283,9 +283,9 @@ export function SeriesDetailScreen({ slug }: SeriesDetailScreenProps) {
                 <View className="gap-xs">
                   <Text className="text-h3 font-inter-bold text-foreground">Creators</Text>
                   <View className="flex-row flex-wrap gap-sm">
-                    {series.creators.map((c) => (
+                    {series.creators.map((c, index) => (
                       <View
-                        key={c.id}
+                        key={`${c.id}-${c.role}-${index}`}
                         className="rounded-md border border-border bg-card px-md py-xs"
                       >
                         <Text className="text-body font-inter-medium text-foreground">
@@ -333,7 +333,18 @@ export function SeriesDetailScreen({ slug }: SeriesDetailScreenProps) {
 
           {activeTab === 'characters' && (
             <View className="gap-md">
-              {charactersQuery.items.length === 0 && !charactersQuery.isPending ? (
+              {charactersQuery.isPending ? (
+                <View className="gap-md">
+                  <SkeletonSeriesRow />
+                  <SkeletonSeriesRow />
+                  <SkeletonSeriesRow />
+                </View>
+              ) : charactersQuery.isError ? (
+                <ErrorState
+                  title="Could not load characters"
+                  description="Failed to retrieve character profiles."
+                />
+              ) : charactersQuery.items.length === 0 ? (
                 <EmptyState title="No characters" description="No character profiles documented for this series." />
               ) : (
                 charactersQuery.items.map((char) => (
@@ -408,12 +419,12 @@ export function SeriesDetailScreen({ slug }: SeriesDetailScreenProps) {
           )}
 
           {activeTab === 'similar' && (
-            <View className="flex-row flex-wrap gap-md">
+            <View className="flex-row flex-wrap gap-md justify-between">
               {similarQuery.items.length === 0 && !similarQuery.isPending ? (
                 <EmptyState title="No similar series" description="Could not find similar recommendations." />
               ) : (
                 similarQuery.items.map((sim) => (
-                  <View key={sim.id} className="w-[47%]">
+                  <View key={sim.id} className="w-[48%] sm:w-[31%] md:w-[23%] mb-md">
                     <CoverCard series={sim} onPress={() => router.push(`/pornhwa/${sim.slug}`)} />
                   </View>
                 ))

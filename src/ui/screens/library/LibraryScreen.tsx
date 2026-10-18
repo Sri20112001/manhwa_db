@@ -198,9 +198,9 @@ export function LibraryScreen() {
           keyExtractor={(item) => String(item.id)}
           refreshing={isRefetching}
           onRefresh={refetch}
-          contentContainerStyle={{ padding: 8 }}
+          contentContainerStyle={{ padding: 4 }}
           renderItem={({ item }) => (
-            <View className="flex-1 p-xs">
+            <View className="flex-1 px-md pb-xl">
               <CoverCard
                 series={item.series}
                 onPress={() => router.push(`/pornhwa/${item.series.slug}`)}

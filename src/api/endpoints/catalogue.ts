@@ -68,8 +68,11 @@ export function getPornhwaChapters(slug: string, params: QueryParams = {}) {
   return apiRequest<Paginated<ChapterDTO>>({ url: `/pornhwa/${slug}/chapters`, params });
 }
 
-export function getPornhwaCharacters(slug: string, params: QueryParams = {}) {
-  return apiRequest<Paginated<CharacterDTO>>({ url: `/pornhwa/${slug}/characters`, params });
+export function getPornhwaCharacters(slug: string, params?: QueryParams) {
+  return apiRequest<{ data: CharacterDTO[]; pagination?: Paginated<CharacterDTO>['pagination']; requestId: string }>({
+    url: `/pornhwa/${slug}/characters`,
+    ...(params && Object.keys(params).length > 0 ? { params } : {}),
+  });
 }
 
 export function getPornhwaRatings(slug: string) {

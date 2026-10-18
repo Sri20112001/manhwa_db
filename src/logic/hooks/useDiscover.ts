@@ -7,8 +7,10 @@ import {
   getTopRated,
   getTrending,
 } from '@/api/endpoints/discover';
+import { getStats } from '@/api/endpoints/stats';
 import { STALE } from '@/shared/constants/query';
 import { toSeries } from '@/logic/mappers/pornhwa';
+import { toCatalogueStats } from '@/logic/mappers/stats';
 
 import { queryKeys } from '../query/keys';
 
@@ -54,6 +56,12 @@ export function useDiscover() {
     staleTime: 0,
   });
 
+  const stats = useQuery({
+    queryKey: queryKeys.stats,
+    queryFn: async () => toCatalogueStats((await getStats()).data),
+    staleTime: STALE.stats,
+  });
+
   const sections: DiscoverSection[] = [
     {
       key: 'top-rated',
@@ -94,6 +102,8 @@ export function useDiscover() {
     random: random.data ?? [],
     isRandomPending: random.isPending,
     shuffleRandom: () => void random.refetch(),
+    stats: stats.data ?? null,
+    isStatsPending: stats.isPending,
     isPending: topRated.isPending && trending.isPending,
     isError: topRated.isError && trending.isError && recent.isError && fresh.isError,
     refetch: () => {
@@ -101,6 +111,7 @@ export function useDiscover() {
       void trending.refetch();
       void fresh.refetch();
       void recent.refetch();
+      void stats.refetch();
     },
   };
 }

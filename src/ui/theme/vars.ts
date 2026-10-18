@@ -1,13 +1,13 @@
 import { vars } from 'nativewind';
 
-import type { ThemeMode } from '@/shared/types/filters';
+import type { AccentColor, ThemeMode } from '@/shared/types/filters';
 
-import { colorModes, hexToChannels, statusTokens } from './tokens';
+import { getColorsWithAccent, hexToChannels, statusTokens } from './tokens';
 
 type Vars = Record<string, string>;
 
-function build(mode: ThemeMode): Vars {
-  const colors = colorModes[mode];
+export function buildThemeVars(mode: ThemeMode, accent: AccentColor = 'rose'): Vars {
+  const colors = getColorsWithAccent(mode, accent);
   const ongoing = statusTokens.ongoing;
   return vars({
     '--background': hexToChannels(colors.background),
@@ -36,7 +36,7 @@ function build(mode: ThemeMode): Vars {
 }
 
 export const themeVars: Record<ThemeMode, Vars> = {
-  dark: build('dark'),
-  amoled: build('amoled'),
-  light: build('light'),
+  dark: buildThemeVars('dark', 'rose'),
+  amoled: buildThemeVars('amoled', 'rose'),
+  light: buildThemeVars('light', 'rose'),
 };

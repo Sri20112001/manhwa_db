@@ -37,7 +37,7 @@ export function CoverCard({ series, width, onPress, showTags = true, className }
       onPress={onPress}
       disabled={!onPress}
       style={width ? { width } : undefined}
-      className={cn('gap-sm', className)}
+      className={cn('gap-md', className)}
     >
       <View className="overflow-hidden rounded-md border border-border bg-card">
         <Image

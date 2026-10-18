@@ -13,7 +13,7 @@ interface ScrollRowProps<T = unknown> {
   contentClassName?: string;
 }
 
-const Separator = () => <View className="w-md" />;
+const Separator = () => <View className="w-lg" />;
 
 export function ScrollRow<T>({
   children,
@@ -29,7 +29,7 @@ export function ScrollRow<T>({
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 16 }}
+        contentContainerStyle={{ paddingHorizontal: 16, gap: 16 }}
         className={cn('flex-grow-0', className)}
         contentContainerClassName={contentClassName}
       >

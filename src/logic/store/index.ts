@@ -51,6 +51,7 @@ export const useRootStore = create<RootState>()(
         scopes: state.scopes,
         themeMode: state.themeMode,
         textSize: state.textSize,
+        accentColor: state.accentColor,
         browseFilters: state.browseFilters,
         recentSearches: state.recentSearches,
         searchSegment: state.searchSegment,

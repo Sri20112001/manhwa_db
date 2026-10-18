@@ -85,8 +85,9 @@ function RootNavigation() {
   }, [storeHydrated, hasKey, segments, router]);
 
   return (
-    <View className="flex-1 bg-background">
-      <StatusBar style={themeMode === 'light' ? 'dark' : 'light'} />
+    <View className="flex-1 bg-background items-center">
+      <View className="w-full flex-1 max-w-screen-lg">
+        <StatusBar style={themeMode === 'light' ? 'dark' : 'light'} />
       <Stack
         screenOptions={{
           headerShown: false,
@@ -119,6 +120,7 @@ function RootNavigation() {
         <Stack.Screen name="+not-found" options={{ title: 'Oops!' }} />
       </Stack>
       <ToastHost />
+      </View>
     </View>
   );
 }

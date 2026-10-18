@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { RefreshControl, ScrollView, View } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Bell, Search, Shuffle } from '@/ui/icons';
+import { BarChart3, Bell, BookOpen, Dices, Layers, Search, Shuffle, Star, Users } from '@/ui/icons';
 
 import { useDiscover } from '@/logic/hooks/useDiscover';
+import { useRandomSeries } from '@/logic/hooks/useRandomSeries';
 import { LogoMark } from '@/ui/components/brand/LogoMark';
 import { CoverCard } from '@/ui/components/cover/CoverCard';
+import { StatTile } from '@/ui/components/domain/StatTile';
 import { ErrorState } from '@/ui/components/feedback/ErrorState';
 import { SkeletonCoverCard } from '@/ui/components/feedback/Skeleton';
 import { GlassHeader } from '@/ui/components/layout/GlassHeader';
@@ -21,8 +23,9 @@ const GENRES = ['All', 'Action', 'Harem', 'Romance', 'Fantasy', 'Drama', 'Colleg
 export function DiscoverScreen() {
   const router = useRouter();
   const colors = useThemeColors();
-  const { sections, random, isRandomPending, shuffleRandom, isError, refetch } =
+  const { sections, random, isRandomPending, shuffleRandom, stats, isStatsPending, isError, refetch } =
     useDiscover();
+  const { surpriseMe, isPickingRandom } = useRandomSeries();
   const [selectedGenre, setSelectedGenre] = useState('All');
   const [refreshing, setRefreshing] = useState(false);
 
@@ -51,6 +54,13 @@ export function DiscoverScreen() {
         right={
           <>
             <IconButton
+              icon={Dices}
+              accessibilityLabel="Surprise Me (Pick a random manhwa)"
+              onPress={() => surpriseMe()}
+              loading={isPickingRandom}
+              size={20}
+            />
+            <IconButton
               icon={Search}
               accessibilityLabel="Search"
               onPress={() => router.push('/(tabs)/search')}
@@ -78,7 +88,7 @@ export function DiscoverScreen() {
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerClassName="gap-sm px-lg py-md"
+          contentContainerClassName="gap-md px-lg py-md"
         >
           {GENRES.map((genre) => (
             <Chip
@@ -101,7 +111,7 @@ export function DiscoverScreen() {
         ) : null}
 
         {sections.map((section) => (
-          <View key={section.key} className="mt-md">
+          <View key={section.key} className="mt-lg">
             <SectionHeader
               title={section.title}
               onPress={() => router.push('/(tabs)/browse')}
@@ -132,7 +142,7 @@ export function DiscoverScreen() {
           </View>
         ))}
 
-        <View className="mt-md">
+        <View className="mt-lg">
           <SectionHeader
             title="Random picks"
             right={
@@ -166,6 +176,47 @@ export function DiscoverScreen() {
               ))}
             </ScrollRow>
           )}
+        </View>
+
+        {/* Database Statistics */}
+        <View className="mt-xl px-lg">
+          <SectionHeader
+            title="Database Statistics"
+            right={
+              <IconButton
+                icon={BarChart3}
+                accessibilityLabel="View full stats and leaderboards"
+                onPress={() => router.push('/stats')}
+                size={18}
+              />
+            }
+          />
+          <View className="mt-sm gap-md">
+            <View className="flex-row gap-md">
+              <StatTile
+                icon={BookOpen}
+                value={stats?.totalPornhwa ?? (isStatsPending ? '...' : 0)}
+                caption="Manhwa Series"
+              />
+              <StatTile
+                icon={Users}
+                value={stats?.totalCharacters ?? (isStatsPending ? '...' : 0)}
+                caption="Characters"
+              />
+            </View>
+            <View className="flex-row gap-md">
+              <StatTile
+                icon={Layers}
+                value={stats?.totalChapters ?? (isStatsPending ? '...' : 0)}
+                caption="Indexed Chapters"
+              />
+              <StatTile
+                icon={Star}
+                value={stats?.totalRatings ?? (isStatsPending ? '...' : 0)}
+                caption="Ratings"
+              />
+            </View>
+          </View>
         </View>
       </ScrollView>
     </Screen>
