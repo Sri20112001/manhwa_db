@@ -1,12 +1,17 @@
 import { apiRequest } from '../client';
 import type { Paginated, Single } from '../envelope';
-import type { components } from '../schema';
+import type {
+  ChapterDto,
+  CharacterDto,
+  CharacterRatingDto,
+  CharacterReviewDto,
+} from '../generated';
 import type { QueryParams } from './catalogue';
 
-export type CharacterDTO = components['schemas']['Character'];
-export type CharacterRatingDTO = components['schemas']['CharacterRating'];
-export type CharacterReviewDTO = components['schemas']['CharacterReview'];
-export type ChapterDTO = components['schemas']['Chapter'];
+export type CharacterDTO = CharacterDto;
+export type CharacterRatingDTO = CharacterRatingDto;
+export type CharacterReviewDTO = CharacterReviewDto;
+export type ChapterDTO = ChapterDto;
 
 export function listCharacters(params: QueryParams = {}) {
   return apiRequest<Paginated<CharacterDTO>>({ url: '/characters', params });

@@ -23,7 +23,7 @@ SVG. Both are provided in this workspace and are the visual source of truth.
 
 ## 2. HARD CONSTRAINTS & NON-GOALS
 
-- **Target:** Expo **SDK 54**, managed workflow, **TypeScript**, **expo-router**.
+- **Target:** Expo **SDK 57** (upgraded from SDK 54 for modern Expo Go / React 19 / RN 0.86), managed workflow, **TypeScript**, **expo-router**, **Node 20 / Node 22**.
 - **HTTP:** **axios** (do NOT use bare `fetch` for app data).
 - **Styling:** **NativeWind v4** (+ Tailwind) only. No inline hex colors in components.
 - **State:** **Zustand for all client/UI/session/draft state.**
@@ -85,7 +85,7 @@ npx create-expo-app@latest pornhwa-db-mobile --template expo-template-blank-type
 ```
 
 Runtime deps (install with `npx expo install` where an Expo config exists, else `npm i`):
-- `expo` (SDK 54), `expo-router`, `expo-secure-store`, `expo-image`, `expo-font`,
+- `expo` (SDK 57), `expo-router`, `expo-secure-store`, `expo-image`, `expo-font`,
   `expo-constants`, `expo-linking`, `expo-status-bar`, `expo-haptics`
 - `react-native`, `react`, `react-native-safe-area-context`, `react-native-screens`,
   `react-native-svg`, `react-native-reanimated`, `react-native-gesture-handler`
@@ -100,8 +100,8 @@ Runtime deps (install with `npx expo install` where an Expo config exists, else 
 - `date-fns`
 - `zod`, `react-hook-form`, `@hookform/resolvers`
 
-Dev deps:
-- `openapi-typescript`, `typescript`, `eslint`, `prettier`
+Dev deps & test runner:
+- `openapi-typescript`, `typescript`, `eslint`, `prettier`, `tsx` (test runner via Node 22 `node:test`)
 
 Config files to author:
 - `babel.config.js` (add `nativewind/babel`), `metro.config.js` (`withNativeWind`),

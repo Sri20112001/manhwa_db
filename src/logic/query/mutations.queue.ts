@@ -55,6 +55,7 @@ export type QueuedWrite =
 
 export interface QueueItem {
   id: string;
+  accountId: string;
   write: QueuedWrite;
   attempts: number;
   enqueuedAt: number;
@@ -62,6 +63,10 @@ export interface QueueItem {
 }
 
 type Listener = (items: QueueItem[]) => void;
+
+const MAX_QUEUE_ITEMS = 250;
+const LEGACY_UNASSIGNED = 'legacy-unassigned';
+const LEGACY_ITEM_TTL_MS = 7 * 24 * 60 * 60 * 1_000;
 
 const items: QueueItem[] = [];
 const listeners = new Set<Listener>();
@@ -92,6 +97,16 @@ export function pendingWriteCount(): number {
   return items.length;
 }
 
+export function clearAccountQueue(accountId?: string): void {
+  if (!accountId) {
+    items.length = 0;
+  } else {
+    const remaining = items.filter((item) => item.accountId !== accountId);
+    items.splice(0, items.length, ...remaining);
+  }
+  notify();
+}
+
 function scheduleFlush(delayMs = 250): void {
   if (timer) return;
   timer = setTimeout(() => {
@@ -105,16 +120,41 @@ export async function hydrateQueue(): Promise<void> {
   hydrated = true;
   const stored = await readJson<QueueItem[]>(STORAGE_KEYS.writeQueue);
   if (stored && Array.isArray(stored)) {
-    items.splice(0, items.length, ...stored);
+    const now = Date.now();
+    const migrated: QueueItem[] = [];
+    for (const item of stored) {
+      if (item && typeof item === 'object' && item.write) {
+        if (!item.accountId) {
+          migrated.push({ ...item, accountId: LEGACY_UNASSIGNED });
+        } else {
+          migrated.push(item);
+        }
+      }
+    }
+    const bounded = migrated.filter(
+      (item) => item.accountId !== LEGACY_UNASSIGNED || now - item.enqueuedAt < LEGACY_ITEM_TTL_MS,
+    );
+    items.splice(0, items.length, ...bounded.slice(-MAX_QUEUE_ITEMS));
     listeners.forEach((listener) => listener([...items]));
   }
   scheduleFlush(1_000);
 }
 
-export function enqueueWrite(write: QueuedWrite): string {
+export function enqueueWrite(write: QueuedWrite, accountId?: string): string {
+  const currentUid = accountId ?? useRootStore.getState().uid ?? 'anonymous';
   counter += 1;
   const id = `w${Date.now()}-${counter}`;
-  items.push({ id, write, attempts: 0, enqueuedAt: Date.now(), nextAttemptAt: Date.now() });
+  if (items.length >= MAX_QUEUE_ITEMS) {
+    items.shift();
+  }
+  items.push({
+    id,
+    accountId: currentUid,
+    write,
+    attempts: 0,
+    enqueuedAt: Date.now(),
+    nextAttemptAt: Date.now(),
+  });
   notify();
   return id;
 }
@@ -179,18 +219,32 @@ function backoffMs(attempts: number): number {
 
 export async function flushQueue(): Promise<void> {
   if (flushing || items.length === 0) return;
+  const storeState = useRootStore.getState();
+  const currentUid = storeState.uid;
+  const hasKey = storeState.hasKey;
+
+  if (!hasKey || !currentUid) return;
+
   flushing = true;
   try {
-    while (items.length > 0) {
-      const head = items[0];
+    let index = 0;
+    while (index < items.length) {
+      const head = items[index];
       if (!head) break;
+
+      if (head.accountId !== currentUid) {
+        index += 1;
+        continue;
+      }
+
       if (head.nextAttemptAt > Date.now()) {
         scheduleFlush(Math.max(500, head.nextAttemptAt - Date.now()));
+        index += 1;
         break;
       }
       try {
         await execute(head.write);
-        items.shift();
+        items.splice(index, 1);
         useRootStore.getState().pushToast('Synced pending change', 'success');
         void queryClient.invalidateQueries({ queryKey: ['tracking'] });
         void queryClient.invalidateQueries({ queryKey: ['me'] });
@@ -205,15 +259,20 @@ export async function flushQueue(): Promise<void> {
           notify();
           break;
         }
-        if (error instanceof ApiError && error.status >= 400 && error.status < 500 && error.status !== 429) {
-          items.shift();
+        if (
+          error instanceof ApiError &&
+          error.status >= 400 &&
+          error.status < 500 &&
+          error.status !== 429
+        ) {
+          items.splice(index, 1);
           useRootStore.getState().pushToast(error.message, 'error');
           notify();
           continue;
         }
         head.attempts += 1;
         if (head.attempts >= RETRY.queueMaxAttempts) {
-          items.shift();
+          items.splice(index, 1);
           useRootStore.getState().pushToast('A queued change could not be synced.', 'error');
         } else {
           head.nextAttemptAt = Date.now() + backoffMs(head.attempts);

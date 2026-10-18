@@ -1,13 +1,20 @@
 import { apiRequest } from '../client';
 import type { Paginated, Single } from '../envelope';
-import type { components } from '../schema';
+import type {
+  ChapterDto,
+  CharacterDto,
+  PornhwaDetailDto,
+  PornhwaDto,
+  RatingAggregateDto,
+  ReviewDto,
+} from '../generated';
 
-export type PornhwaDTO = components['schemas']['Pornhwa'];
-export type PornhwaDetailDTO = components['schemas']['PornhwaDetail'];
-export type ChapterDTO = components['schemas']['Chapter'];
-export type CharacterDTO = components['schemas']['Character'];
-export type ReviewDTO = components['schemas']['Review'];
-export type RatingAggregateDTO = components['schemas']['RatingAggregate'];
+export type PornhwaDTO = PornhwaDto;
+export type PornhwaDetailDTO = PornhwaDetailDto;
+export type ChapterDTO = ChapterDto;
+export type CharacterDTO = CharacterDto;
+export type ReviewDTO = ReviewDto;
+export type RatingAggregateDTO = RatingAggregateDto;
 
 export type QueryParams = Record<string, string | number | boolean | undefined>;
 

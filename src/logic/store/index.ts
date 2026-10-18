@@ -2,6 +2,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import { create } from 'zustand';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { setAccountIdProvider } from '@/api/client';
 import { STORAGE_KEYS } from '@/shared/lib/storage';
 
 import { createAuthSlice, type AuthSlice } from './auth.slice';
@@ -71,3 +72,5 @@ export const store = {
   setState: useRootStore.setState,
   subscribe: useRootStore.subscribe,
 };
+
+setAccountIdProvider(() => useRootStore.getState().uid);

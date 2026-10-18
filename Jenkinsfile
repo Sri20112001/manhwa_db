@@ -20,7 +20,7 @@ pipeline {
         booleanParam(
             name: 'RUN_TESTS',
             defaultValue: true,
-            description: 'Execute lint and TypeScript checks before building'
+            description: 'Execute lint, TypeScript checks, and unit tests before building'
         )
         string(
             name: 'ANDROID_SDK_PATH',
@@ -93,6 +93,18 @@ pipeline {
                                 sh 'npm run lint'
                             } else {
                                 bat 'npm run lint'
+                            }
+                        }
+                    }
+                }
+                stage('Test') {
+                    steps {
+                        script {
+                            echo "🧪 Running unit & regression tests..."
+                            if (isUnix()) {
+                                sh 'npm test'
+                            } else {
+                                bat 'npm test'
                             }
                         }
                     }

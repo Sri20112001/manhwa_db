@@ -46,26 +46,54 @@ export function useLibrary(statusTab: LibraryStatusTab, sort: LibrarySort) {
   };
 }
 
+export async function fetchLibraryCounts(
+  fetcher: (params: TrackingListParams) => ReturnType<typeof getMyTracking> = getMyTracking,
+): Promise<{ counts: Record<TrackingStatus, number>; total: number }> {
+  const counts: Record<TrackingStatus, number> = {
+    reading: 0,
+    plan_to_read: 0,
+    completed: 0,
+    on_hold: 0,
+    dropped: 0,
+    re_reading: 0,
+  };
+
+  const firstPage = await fetcher({ limit: 100, page: 1 });
+  const total = firstPage.pagination.total;
+
+  for (const entry of firstPage.data) {
+    const status = entry.status;
+    if (status && TRACKING_STATUSES.includes(status as TrackingStatus)) {
+      counts[status as TrackingStatus] += 1;
+    }
+  }
+
+  if (firstPage.pagination.hasMore && total > 100) {
+    let currentPage = 2;
+    let hasMore = true;
+    const maxPages = Math.min(firstPage.pagination.totalPages || Math.ceil(total / 100), 20);
+
+    while (hasMore && currentPage <= maxPages) {
+      const nextPage = await fetcher({ limit: 100, page: currentPage });
+      for (const entry of nextPage.data) {
+        const status = entry.status;
+        if (status && TRACKING_STATUSES.includes(status as TrackingStatus)) {
+          counts[status as TrackingStatus] += 1;
+        }
+      }
+      hasMore = nextPage.pagination.hasMore;
+      currentPage += 1;
+    }
+  }
+
+  return { counts, total };
+}
+
 export function useLibraryCounts() {
   const query = useQuery({
     queryKey: queryKeys.tracking({ counts: true }),
     staleTime: STALE.tracking,
-    queryFn: async () => {
-      const page = await getMyTracking({ limit: 100, page: 1 });
-      const counts: Record<TrackingStatus, number> = {
-        reading: 0,
-        plan_to_read: 0,
-        completed: 0,
-        on_hold: 0,
-        dropped: 0,
-        re_reading: 0,
-      };
-      for (const entry of page.data) {
-        const status = entry.status;
-        if (status && TRACKING_STATUSES.includes(status)) counts[status] += 1;
-      }
-      return { counts, total: page.pagination.total };
-    },
+    queryFn: () => fetchLibraryCounts(),
   });
 
   return {

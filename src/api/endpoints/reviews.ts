@@ -1,9 +1,9 @@
 import { apiRequest } from '../client';
 import type { Paginated, Single } from '../envelope';
-import type { components } from '../schema';
+import type { ReviewDto } from '../generated';
 import type { QueryParams } from './catalogue';
 
-export type ReviewDTO = components['schemas']['Review'];
+export type ReviewDTO = ReviewDto;
 
 export interface WriteReviewInput {
   pornhwaId: number;

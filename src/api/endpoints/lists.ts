@@ -1,10 +1,10 @@
 import { apiRequest } from '../client';
 import type { Paginated, Single } from '../envelope';
-import type { components } from '../schema';
+import type { ListDetailDto, ListSummaryDto } from '../generated';
 import type { QueryParams } from './catalogue';
 
-export type ListSummaryDTO = components['schemas']['ListSummary'];
-export type ListDetailDTO = components['schemas']['ListDetail'];
+export type ListSummaryDTO = ListSummaryDto;
+export type ListDetailDTO = ListDetailDto;
 
 export interface ListQueryParams extends QueryParams {
   page?: number;

@@ -1,11 +1,11 @@
 import { apiRequest } from '../client';
 import type { Paginated, Single } from '../envelope';
-import type { components } from '../schema';
+import type { TrackingEntryDto, TrackingStatusDto, TrackingUpsertInputDto } from '../generated';
 import type { QueryParams } from './catalogue';
 
-export type TrackingEntryDTO = components['schemas']['TrackingEntry'];
-export type TrackingUpsertDTO = components['schemas']['TrackingUpsertInput'];
-export type TrackingStatusValue = components['schemas']['TrackingStatus'];
+export type TrackingEntryDTO = TrackingEntryDto;
+export type TrackingUpsertDTO = TrackingUpsertInputDto;
+export type TrackingStatusValue = TrackingStatusDto;
 
 export interface TrackingListParams extends QueryParams {
   page?: number;

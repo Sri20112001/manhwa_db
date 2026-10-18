@@ -1,18 +1,29 @@
 import { apiRequest } from '../client';
 import type { Paginated, Single } from '../envelope';
-import type { components } from '../schema';
+import type {
+  MyRatingDto,
+  PublicUserProfileDto,
+  UserCharacterRatingDto,
+  UserCharacterReviewDto,
+  UserContributionDto,
+  UserContributionStatsDto,
+  UserFollowUserDto,
+  UserListDto,
+  UserReviewDto,
+  UserTrackingEntryDto,
+} from '../generated';
 import type { QueryParams } from './catalogue';
 
-export type PublicUserProfileDTO = components['schemas']['PublicUserProfile'];
-export type UserContributionStatsDTO = components['schemas']['UserContributionStats'];
-export type UserRatingDTO = components['schemas']['MyRating'];
-export type UserReviewDTO = components['schemas']['UserReview'];
-export type UserCharacterRatingDTO = components['schemas']['UserCharacterRating'];
-export type UserCharacterReviewDTO = components['schemas']['UserCharacterReview'];
-export type UserTrackingDTO = components['schemas']['UserTrackingEntry'];
-export type UserListDTO = components['schemas']['UserList'];
-export type UserContributionDTO = components['schemas']['UserContribution'];
-export type FollowUserDTO = components['schemas']['UserFollowUser'];
+export type PublicUserProfileDTO = PublicUserProfileDto;
+export type UserContributionStatsDTO = UserContributionStatsDto;
+export type UserRatingDTO = MyRatingDto;
+export type UserReviewDTO = UserReviewDto;
+export type UserCharacterRatingDTO = UserCharacterRatingDto;
+export type UserCharacterReviewDTO = UserCharacterReviewDto;
+export type UserTrackingDTO = UserTrackingEntryDto;
+export type UserListDTO = UserListDto;
+export type UserContributionDTO = UserContributionDto;
+export type FollowUserDTO = UserFollowUserDto;
 
 export interface MeDTO {
   uid: string;

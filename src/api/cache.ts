@@ -5,6 +5,7 @@ export interface CacheEntry {
   payload: unknown;
   cachedAt: number;
   maxAge?: number;
+  accountId?: string | null;
 }
 
 const store = new Map<string, CacheEntry>();
@@ -21,8 +22,16 @@ function stableParams(params: unknown): string {
   return entries.map(([k, v]) => `${k}=${String(v)}`).join('&');
 }
 
-export function cacheKey(method: string, url: string, params?: unknown): string {
-  return `${method.toUpperCase()} ${url}?${stableParams(params)}`;
+export function cacheKey(
+  method: string,
+  url: string,
+  params?: unknown,
+  accountId?: string | null,
+): string {
+  const isPrivate =
+    url.includes('/me') || url.includes('/tracking') || url.includes('/notifications');
+  const prefix = isPrivate && accountId ? `[user:${accountId}] ` : isPrivate ? '[user:auth] ' : '';
+  return `${prefix}${method.toUpperCase()} ${url}?${stableParams(params)}`;
 }
 
 export function getCacheEntry(key: string): CacheEntry | undefined {
@@ -30,9 +39,16 @@ export function getCacheEntry(key: string): CacheEntry | undefined {
 }
 
 export function setCacheEntry(key: string, entry: CacheEntry): void {
-  if (store.size >= MAX_ENTRIES) {
-    const oldest = [...store.entries()].sort((a, b) => a[1].cachedAt - b[1].cachedAt)[0];
-    if (oldest) store.delete(oldest[0]);
+  if (!store.has(key) && store.size >= MAX_ENTRIES) {
+    let oldestKey: string | undefined;
+    let oldestAt = Number.POSITIVE_INFINITY;
+    for (const [candidate, value] of store) {
+      if (value.cachedAt < oldestAt) {
+        oldestAt = value.cachedAt;
+        oldestKey = candidate;
+      }
+    }
+    if (oldestKey !== undefined) store.delete(oldestKey);
   }
   store.set(key, entry);
   schedulePersist();
@@ -45,6 +61,20 @@ export function isFresh(entry: CacheEntry): boolean {
 
 export function clearCache(): void {
   store.clear();
+  schedulePersist();
+}
+
+export function clearUserCache(targetAccountId?: string): void {
+  for (const [key, entry] of store.entries()) {
+    const isUserKey = key.startsWith('[user:');
+    const matchesAccount =
+      !targetAccountId ||
+      entry.accountId === targetAccountId ||
+      key.startsWith(`[user:${targetAccountId}]`);
+    if (isUserKey && matchesAccount) {
+      store.delete(key);
+    }
+  }
   schedulePersist();
 }
 
@@ -69,9 +99,23 @@ function schedulePersist(): void {
 export async function hydrateCache(): Promise<void> {
   if (hydrated) return;
   hydrated = true;
-  const snapshot = await readJson<Record<string, CacheEntry>>(STORAGE_KEYS.etagCache);
-  if (!snapshot) return;
-  for (const [key, entry] of Object.entries(snapshot)) store.set(key, entry);
+  try {
+    const snapshot = await readJson<Record<string, CacheEntry>>(STORAGE_KEYS.etagCache);
+    if (!snapshot) return;
+    Object.entries(snapshot)
+      .filter(([, entry]) => entry && typeof entry === 'object')
+      .sort((a, b) => (b[1].cachedAt ?? 0) - (a[1].cachedAt ?? 0))
+      .slice(0, MAX_ENTRIES)
+      .forEach(([key, entry]) => {
+        store.set(key, entry);
+      });
+  } catch {
+    // Degrade gracefully if storage read fails
+  }
+}
+
+export function __resetHydrationForTesting(): void {
+  hydrated = false;
 }
 
 export function parseMaxAge(cacheControl: unknown): number | undefined {

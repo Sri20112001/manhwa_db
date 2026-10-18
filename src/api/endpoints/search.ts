@@ -1,9 +1,9 @@
 import { apiRequest } from '../client';
 import type { Paginated, SearchEnvelope } from '../envelope';
-import type { components } from '../schema';
+import type { ChapterSearchChapterDto } from '../generated';
 import type { QueryParams } from './catalogue';
 
-export type ChapterSearchDTO = components['schemas']['ChapterSearchChapter'];
+export type ChapterSearchDTO = ChapterSearchChapterDto;
 
 export interface GlobalSearchParams extends QueryParams {
   q: string;

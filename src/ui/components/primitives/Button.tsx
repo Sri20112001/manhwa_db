@@ -3,6 +3,7 @@ import type { LucideIcon } from 'lucide-react-native';
 
 import { cn } from '@/shared/lib/cn';
 import { iconTokens } from '@/ui/theme/tokens';
+import { useThemeColors } from '@/ui/theme/ThemeProvider';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive';
 export type ButtonSize = 'sm' | 'md' | 'lg';
@@ -61,7 +62,8 @@ export function Button({
   accessibilityHint,
 }: ButtonProps) {
   const isDisabled = disabled || loading;
-  const iconColor = variant === 'primary' || variant === 'destructive' ? '#FFFFFF' : undefined;
+  const colors = useThemeColors();
+  const iconColor = variant === 'primary' || variant === 'destructive' ? colors.onPrimary : undefined;
 
   return (
     <Pressable
@@ -80,7 +82,7 @@ export function Button({
       )}
     >
       {loading ? (
-        <ActivityIndicator color={iconColor ?? '#FFFFFF'} />
+        <ActivityIndicator color={iconColor ?? colors.onPrimary} />
       ) : (
         <>
           {Icon ? (

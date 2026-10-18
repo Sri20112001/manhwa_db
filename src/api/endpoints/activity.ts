@@ -1,9 +1,9 @@
 import { apiRequest } from '../client';
 import type { Paginated } from '../envelope';
-import type { components } from '../schema';
+import type { ActivityFeedItemDto } from '../generated';
 import type { QueryParams } from './catalogue';
 
-export type ActivityFeedItemDTO = components['schemas']['ActivityFeedItem'];
+export type ActivityFeedItemDTO = ActivityFeedItemDto;
 
 export interface ActivityParams extends QueryParams {
   page?: number;

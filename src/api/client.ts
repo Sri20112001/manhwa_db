@@ -22,10 +22,23 @@ export const http = axios.create({
 
 const configKeys = new WeakMap<object, string>();
 
-let authFailureHandler: (() => void) | null = null;
+let authAbortController = new AbortController();
 
-export function setAuthFailureHandler(handler: (() => void) | null): void {
+export function abortAuthenticatedRequests(): void {
+  authAbortController.abort();
+  authAbortController = new AbortController();
+}
+
+let authFailureHandler: ((failedKey?: string) => void) | null = null;
+
+export function setAuthFailureHandler(handler: ((failedKey?: string) => void) | null): void {
   authFailureHandler = handler;
+}
+
+let accountIdProvider: () => string | null = () => null;
+
+export function setAccountIdProvider(provider: (() => string | null) | null): void {
+  accountIdProvider = provider ?? (() => null);
 }
 
 function headerValue(value: unknown): string | undefined {
@@ -39,12 +52,17 @@ http.interceptors.request.use(async (config) => {
   await throttleRequest(method);
 
   const key = await loadApiKey();
-  if (key) config.headers.set(API_KEY_HEADER, key);
+  if (key) {
+    config.headers.set(API_KEY_HEADER, key);
+    if (!config.signal) {
+      config.signal = authAbortController.signal;
+    }
+  }
 
   const cacheable = method.toUpperCase() === 'GET';
   if (cacheable) {
     const url = `${config.baseURL ?? ''}${config.url ?? ''}`;
-    const requestKey = cacheKey(method, url, config.params);
+    const requestKey = cacheKey(method, url, config.params, accountIdProvider());
     configKeys.set(config, requestKey);
     const cached = getCacheEntry(requestKey);
     if (cached?.etag) config.headers.set('If-None-Match', cached.etag);
@@ -73,6 +91,7 @@ http.interceptors.response.use(
         payload: response.data,
         cachedAt: Date.now(),
         maxAge: parseMaxAge(cacheControl),
+        accountId: accountIdProvider(),
       });
     }
     return response;
@@ -108,7 +127,12 @@ http.interceptors.response.use(
             requestId,
           },
         );
-        if (status === 401) authFailureHandler?.();
+        if (status === 401) {
+          const usedKey =
+            headerValue(axiosError.config?.headers?.[API_KEY_HEADER]) ??
+            (axiosError.config?.headers?.get?.(API_KEY_HEADER) as string | undefined);
+          authFailureHandler?.(usedKey);
+        }
         return Promise.reject(authError);
       }
 

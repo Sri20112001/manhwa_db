@@ -8,11 +8,14 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 
+import { hydrateCache } from '@/api/cache';
 import { setAuthFailureHandler } from '@/api/client';
 import { queryClient } from '@/logic/query/client';
 import { hydrateQueue } from '@/logic/query/mutations.queue';
 import { persistOptions } from '@/logic/query/persistence';
 import { useRootStore } from '@/logic/store';
+import { disconnectAccount, refreshSession } from '@/logic/usecases/connectAccount';
+import { loadApiKey } from '@/shared/lib/secure';
 import { ToastHost } from '@/ui/components/feedback/Toast';
 import { ThemeProvider, useThemeMode } from '@/ui/theme/ThemeProvider';
 
@@ -27,26 +30,59 @@ function RootNavigation() {
   const segments = useSegments();
   const hasKey = useRootStore((state) => state.hasKey);
   const themeMode = useThemeMode();
+  const [storeHydrated, setStoreHydrated] = useState(false);
 
   useEffect(() => {
-    setAuthFailureHandler(() => {
-      useRootStore.getState().clearSession();
-      router.replace('/(auth)/onboarding');
+    setAuthFailureHandler(async (failedKey) => {
+      const currentKey = await loadApiKey();
+      if (!failedKey || !currentKey || failedKey === currentKey) {
+        await disconnectAccount();
+        router.replace('/(auth)/onboarding');
+      }
     });
   }, [router]);
 
   useEffect(() => {
-    void hydrateQueue();
+    void Promise.all([
+      hydrateQueue().catch(() => {}),
+      hydrateCache().catch(() => {}),
+    ]);
   }, []);
 
   useEffect(() => {
+    let mounted = true;
+    const unsub = useRootStore.persist.onFinishHydration(() => {
+      if (mounted) setStoreHydrated(true);
+    });
+
+    void (async () => {
+      try {
+        const key = await loadApiKey();
+        if (key && !useRootStore.getState().hasKey) {
+          await refreshSession();
+        }
+      } catch {
+        // ignore
+      } finally {
+        if (mounted) setStoreHydrated(true);
+      }
+    })();
+
+    return () => {
+      mounted = false;
+      unsub();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!storeHydrated) return;
     const inAuthGroup = segments[0] === '(auth)';
     if (!hasKey && !inAuthGroup) {
       router.replace('/(auth)/onboarding');
     } else if (hasKey && inAuthGroup) {
       router.replace('/(tabs)');
     }
-  }, [hasKey, segments, router]);
+  }, [storeHydrated, hasKey, segments, router]);
 
   return (
     <View className="flex-1 bg-background">

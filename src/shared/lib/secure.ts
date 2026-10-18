@@ -15,18 +15,58 @@ async function canUseSecureStore(): Promise<boolean> {
   }
 }
 
+async function readPlaintextKey(): Promise<string | null> {
+  try {
+    return await AsyncStorage.getItem(API_KEY_SLOT);
+  } catch {
+    return null;
+  }
+}
+
+async function writePlaintextKey(key: string): Promise<void> {
+  try {
+    await AsyncStorage.setItem(API_KEY_SLOT, key);
+  } catch {
+    // The in-memory cache is authoritative for this session.
+  }
+}
+
+async function dropPlaintextKey(): Promise<void> {
+  try {
+    await AsyncStorage.removeItem(API_KEY_SLOT);
+  } catch {
+    // Nothing persisted to remove.
+  }
+}
+
 export async function loadApiKey(): Promise<string | null> {
   if (cached !== undefined) return cached;
-  try {
-    if (await canUseSecureStore()) {
+  cached = null;
+
+  const secure = await canUseSecureStore();
+  if (secure) {
+    try {
       cached = await SecureStore.getItemAsync(API_KEY_SLOT);
-    } else {
-      cached = await AsyncStorage.getItem(API_KEY_SLOT);
+    } catch {
+      cached = null;
     }
-  } catch {
-    cached = null;
   }
-  return cached;
+
+  if (!cached) {
+    cached = await readPlaintextKey();
+    if (cached && secure) {
+      try {
+        await SecureStore.setItemAsync(API_KEY_SLOT, cached, {
+          keychainAccessible: SecureStore.WHEN_UNLOCKED,
+        });
+        await dropPlaintextKey();
+      } catch {
+        // Keep the plaintext copy when migration to the keychain fails.
+      }
+    }
+  }
+
+  return cached ?? null;
 }
 
 export function peekApiKey(): string | null {
@@ -35,22 +75,20 @@ export function peekApiKey(): string | null {
 
 export async function saveApiKey(key: string): Promise<void> {
   cached = key;
-  try {
-    if (await canUseSecureStore()) {
+
+  if (await canUseSecureStore()) {
+    try {
       await SecureStore.setItemAsync(API_KEY_SLOT, key, {
         keychainAccessible: SecureStore.WHEN_UNLOCKED,
       });
+      await dropPlaintextKey();
       return;
+    } catch {
+      // Fall through to the plaintext fallback below.
     }
-  } catch {
-    // If SecureStore fails unexpectedly, fall through to AsyncStorage fallback
   }
 
-  try {
-    await AsyncStorage.setItem(API_KEY_SLOT, key);
-  } catch {
-    // In-memory cache is already updated
-  }
+  await writePlaintextKey(key);
 }
 
 export async function clearApiKey(): Promise<void> {
@@ -63,11 +101,7 @@ export async function clearApiKey(): Promise<void> {
     // ignore
   }
 
-  try {
-    await AsyncStorage.removeItem(API_KEY_SLOT);
-  } catch {
-    // The key may already be gone; clearing memory is sufficient.
-  }
+  await dropPlaintextKey();
 }
 
 export async function hasApiKey(): Promise<boolean> {

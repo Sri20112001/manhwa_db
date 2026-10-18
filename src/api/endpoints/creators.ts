@@ -1,9 +1,9 @@
 import { apiRequest } from '../client';
 import type { Paginated, Single } from '../envelope';
-import type { components } from '../schema';
+import type { CreatorDto } from '../generated';
 import type { QueryParams } from './catalogue';
 
-export type CreatorDTO = components['schemas']['Creator'];
+export type CreatorDTO = CreatorDto;
 
 export function listCreators(params: QueryParams = {}) {
   return apiRequest<Paginated<CreatorDTO>>({ url: '/creators', params });

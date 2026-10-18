@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "expo-router/entry",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tsx --import ./test/setup.ts --test \"test/**/*.test.ts\"",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -11,14 +11,15 @@
     "build:web": "expo export -p web",
     "lint": "expo lint",
     "typecheck": "tsc --noEmit",
+    "check": "npm run lint && npm run typecheck && npm test",
     "format": "prettier --write .",
-    "codegen:api": "openapi-typescript https://pornhwadb.com/openapi.yaml -o src/api/schema.d.ts"
+    "codegen:api": "openapi-typescript https://pornhwadb.com/openapi.yaml -o src/api/generated/schema.d.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
-  "private": "true",
+  "private": true,
   "dependencies": {
     "@hookform/resolvers": "^5.9.2",
     "@react-native-async-storage/async-storage": "2.2.0",
@@ -67,6 +68,7 @@
     "openapi-typescript": "^7.13.0",
     "prettier": "^3.9.10",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "tsx": "^4.23.15",
     "typescript": "~6.0.3"
   }
 }
