@@ -3,7 +3,7 @@ import type { ConfigContext, ExpoConfig } from 'expo/config';
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'Pornhwa DB',
-  slug: 'pornhwa-db-mobile',
+  slug: 'manhwa-db-app',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/images/icon.png',
