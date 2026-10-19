@@ -2,6 +2,7 @@
   "expo": {
     "name": "Pornhwa DB",
     "slug": "pornhwa-db-mobile",
+    "owner": "pugalsriganeshs-team",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -26,6 +27,13 @@
     "web": {
       "bundler": "metro",
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "apiBaseUrl": "https://pornhwadb.com/api/v1",
+      "router": {},
+      "eas": {
+        "projectId": "ff292e84-090c-4743-ac8c-3d6abdce935f"
+      }
     }
   }
 }

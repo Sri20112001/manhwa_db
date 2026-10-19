@@ -59,14 +59,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     enabled: false,
     checkAutomatically: 'NEVER',
   },
+  owner: config.owner ?? 'pugalsriganeshs-team',
   extra: {
+    ...config.extra,
     apiBaseUrl: process.env.EXPO_PUBLIC_API_BASE_URL ?? 'https://pornhwadb.com/api/v1',
-    ...(process.env.EAS_PROJECT_ID
-      ? {
-          eas: {
-            projectId: process.env.EAS_PROJECT_ID,
-          },
-        }
-      : {}),
+    eas: {
+      ...((config.extra as { eas?: Record<string, unknown> } | undefined)?.eas ?? {}),
+      projectId:
+        process.env.EAS_PROJECT_ID ??
+        (config.extra as { eas?: { projectId?: string } } | undefined)?.eas?.projectId ??
+        'ff292e84-090c-4743-ac8c-3d6abdce935f',
+    },
   },
 });
