@@ -6,6 +6,7 @@ import {
   Bookmark,
   ExternalLink,
   Heart,
+  Image as ImageIcon,
   List,
   PlusSquare,
   Share2,
@@ -135,6 +136,17 @@ export function SeriesDetailScreen({ slug }: SeriesDetailScreenProps) {
         />
         <View className="flex-row items-center gap-xs">
           <IconButton
+            icon={ImageIcon}
+            accessibilityLabel="View series gallery"
+            onPress={() =>
+              router.push({
+                pathname: '/gallery',
+                params: { pornhwaId: String(series.id), pornhwaTitle: series.title },
+              })
+            }
+            variant="surface"
+          />
+          <IconButton
             icon={Share2}
             accessibilityLabel="Share series"
             onPress={handleShare}
@@ -221,6 +233,18 @@ export function SeriesDetailScreen({ slug }: SeriesDetailScreenProps) {
             icon={Star}
             accessibilityLabel="Rate and review"
             onPress={() => router.push(`/review/${slug}`)}
+            variant="surface"
+          />
+
+          <IconButton
+            icon={ImageIcon}
+            accessibilityLabel="View series gallery"
+            onPress={() =>
+              router.push({
+                pathname: '/gallery',
+                params: { pornhwaId: String(series.id), pornhwaTitle: series.title },
+              })
+            }
             variant="surface"
           />
         </View>
@@ -373,13 +397,34 @@ export function SeriesDetailScreen({ slug }: SeriesDetailScreenProps) {
               {chaptersQuery.chapters.length === 0 && !chaptersQuery.isPending ? (
                 <EmptyState title="No chapters" description="No chapters found for this series." />
               ) : (
-                chaptersQuery.chapters.map((ch) => (
-                  <ChapterRow
-                    key={ch.id}
-                    chapter={ch}
-                    onPress={() => router.push(`/reader/${slug}`)}
-                  />
-                ))
+                <>
+                  <View className="mb-md flex-row items-center justify-between">
+                    <Text className="text-caption font-inter-semibold text-muted">
+                      {chaptersQuery.chapters.length} CHAPTERS AVAILABLE
+                    </Text>
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel="View chapters and scenes list"
+                      onPress={() => router.push(`/reader/${slug}`)}
+                      className="py-xs active:opacity-70"
+                    >
+                      <Text className="text-caption font-inter-semibold text-primary">
+                        View All / Scenes
+                      </Text>
+                    </Pressable>
+                  </View>
+                  {chaptersQuery.chapters.map((ch) => (
+                    <ChapterRow
+                      key={ch.id}
+                      chapter={ch}
+                      pornhwaId={series.id}
+                      slug={slug}
+                      seriesTitle={series.title}
+                      coverImage={series.coverImage}
+                      onPress={() => router.push(`/read/${slug}/${ch.chapterStart}`)}
+                    />
+                  ))}
+                </>
               )}
             </View>
           )}

@@ -19,6 +19,7 @@ interface ButtonProps {
   loading?: boolean;
   fullWidth?: boolean;
   accessibilityHint?: string;
+  className?: string;
 }
 
 const CONTAINER: Record<ButtonVariant, string> = {
@@ -60,6 +61,7 @@ export function Button({
   loading,
   fullWidth,
   accessibilityHint,
+  className,
 }: ButtonProps) {
   const isDisabled = disabled || loading;
   const colors = useThemeColors();
@@ -79,6 +81,7 @@ export function Button({
         SIZE[size],
         fullWidth && 'w-full',
         isDisabled && 'opacity-50',
+        className,
       )}
     >
       {loading ? (

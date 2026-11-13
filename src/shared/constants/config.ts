@@ -1,5 +1,18 @@
 export const API_BASE_URL =
-  process.env.EXPO_PUBLIC_API_BASE_URL ?? 'https://pornhwadb.com/api/v1';
+  process.env.EXPO_PUBLIC_API_BASE_URL || 'https://pornhwadb.com/api/v1';
+
+/**
+ * Website origin. Used only by read-only site features (e.g. Gallery) that are
+ * not part of the versioned API v1 contract.
+ */
+export const SITE_BASE_URL =
+  process.env.EXPO_PUBLIC_SITE_BASE_URL || 'https://pornhwadb.com';
+
+/**
+ * Reader website origin. Used for fetching reader chapter pages and deep-linking.
+ */
+export const READER_BASE_URL =
+  process.env.EXPO_PUBLIC_READER_BASE_URL || 'https://pornhwareader.com';
 
 export const APP_NAME = 'Pornhwa DB';
 export const APP_SCHEME = 'pornhwadb';

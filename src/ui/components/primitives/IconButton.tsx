@@ -1,4 +1,4 @@
-import { ActivityIndicator, Pressable } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import type { LucideIcon } from 'lucide-react-native';
 
 import { cn } from '@/shared/lib/cn';
@@ -12,6 +12,8 @@ interface IconButtonProps {
   size?: number;
   strokeWidth?: number;
   variant?: 'plain' | 'surface' | 'primary-soft' | 'primary';
+  fill?: string;
+  badge?: number | string;
   disabled?: boolean;
   loading?: boolean;
   className?: string;
@@ -24,6 +26,8 @@ export function IconButton({
   size = iconTokens.size.action,
   strokeWidth = iconTokens.stroke,
   variant = 'plain',
+  fill,
+  badge,
   disabled,
   loading,
   className,
@@ -46,7 +50,7 @@ export function IconButton({
       hitSlop={8}
       onPress={onPress}
       className={cn(
-        'h-11 w-11 items-center justify-center rounded-full active:opacity-70',
+        'relative h-11 w-11 items-center justify-center rounded-full active:opacity-70',
         variant === 'surface' && 'bg-card border border-border',
         variant === 'primary-soft' && 'bg-primary-soft',
         variant === 'primary' && 'bg-primary',
@@ -57,7 +61,19 @@ export function IconButton({
       {loading ? (
         <ActivityIndicator size="small" color={iconColor} />
       ) : (
-        <Icon size={size} strokeWidth={strokeWidth} color={iconColor} />
+        <Icon
+          size={size}
+          strokeWidth={strokeWidth}
+          color={iconColor}
+          fill={fill ?? 'none'}
+        />
+      )}
+      {badge != null && (
+        <View className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] items-center justify-center rounded-full bg-primary px-1">
+          <Text className="text-[10px] font-inter-bold text-on-primary">
+            {typeof badge === 'number' && badge > 99 ? '99+' : badge}
+          </Text>
+        </View>
       )}
     </Pressable>
   );

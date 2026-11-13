@@ -4,8 +4,10 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { ChevronDown, Dices, SlidersHorizontal } from '@/ui/icons';
 
 import { useBrowse } from '@/logic/hooks/useBrowse';
+import { useBrowseCharacters } from '@/logic/hooks/useBrowseCharacters';
 import { useRandomSeries } from '@/logic/hooks/useRandomSeries';
 import { useRootStore } from '@/logic/store';
+import { CharacterGrid } from '@/ui/components/cover/CharacterGrid';
 import { CoverGrid } from '@/ui/components/cover/CoverGrid';
 import { EmptyState } from '@/ui/components/feedback/EmptyState';
 import { ErrorState } from '@/ui/components/feedback/ErrorState';
@@ -15,6 +17,7 @@ import { ScrollRow } from '@/ui/components/layout/ScrollRow';
 import { Chip } from '@/ui/components/primitives/Chip';
 import { IconButton } from '@/ui/components/primitives/IconButton';
 import { Input } from '@/ui/components/primitives/Input';
+import { Segmented } from '@/ui/components/primitives/Segmented';
 import type { CatalogueSort, SeriesStatus } from '@/shared/types/filters';
 import { useThemeColors } from '@/ui/theme/ThemeProvider';
 
@@ -43,6 +46,7 @@ export function BrowseScreen() {
   const activeCount = useRootStore((state) => state.activeFilterCount());
 
   const [sortIndex, setSortIndex] = useState(0);
+  const [segment, setSegment] = useState<'series' | 'characters'>('series');
   const { surpriseMe, isPickingRandom } = useRandomSeries();
 
   useEffect(() => {
@@ -60,7 +64,18 @@ export function BrowseScreen() {
     hasNextPage,
     isFetchingNextPage,
     isRefetching,
-  } = useBrowse(filters);
+  } = useBrowse(filters, segment === 'series');
+
+  const {
+    items: characters,
+    isPending: isCharactersPending,
+    isError: isCharactersError,
+    refetch: refetchCharacters,
+    fetchNextPage: fetchNextCharactersPage,
+    hasNextPage: hasNextCharactersPage,
+    isFetchingNextPage: isFetchingNextCharactersPage,
+    isRefetching: isRefetchingCharacters,
+  } = useBrowseCharacters(segment === 'characters');
 
   const handleNextSort = () => {
     const next = (sortIndex + 1) % SORTS.length;
@@ -117,69 +132,115 @@ export function BrowseScreen() {
         }
       />
 
-      <View className="border-b border-border py-xs">
-        <ScrollRow className="px-lg">
-          {STATUS_FILTERS.map((s) => {
-            const active = filters.status.includes(s.value);
-            return (
-              <Chip
-                key={s.value}
-                label={s.label}
-                active={active}
-                onPress={() => toggleStatus(s.value)}
-              />
-            );
-          })}
-          <Chip
-            label="Yaoi"
-            active={filters.orientation === 'yaoi'}
-            onPress={() => handleToggleOrientation('yaoi')}
-          />
-          <Chip
-            label="Yuri"
-            active={filters.orientation === 'yuri'}
-            onPress={() => handleToggleOrientation('yuri')}
-          />
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel={`Sort: ${SORTS[sortIndex]?.label}`}
-            onPress={handleNextSort}
-            className="flex-row items-center gap-xs rounded-full border border-border bg-card px-md py-xs"
-          >
-            <Text className="text-caption font-inter-medium text-foreground">
-              {SORTS[sortIndex]?.label}
-            </Text>
-            <ChevronDown size={14} color={colors.muted} />
-          </Pressable>
-        </ScrollRow>
+      <View className="border-b border-border px-lg py-sm">
+        <Segmented
+          options={[
+            { label: 'Series', value: 'series' },
+            { label: 'Characters', value: 'characters' },
+          ]}
+          value={segment}
+          onChange={setSegment}
+        />
       </View>
 
-      {isError && items.length === 0 ? (
+      {segment === 'series' ? (
+        <View className="border-b border-border py-xs">
+          <ScrollRow className="px-lg">
+            {STATUS_FILTERS.map((s) => {
+              const active = filters.status.includes(s.value);
+              return (
+                <Chip
+                  key={s.value}
+                  label={s.label}
+                  active={active}
+                  onPress={() => toggleStatus(s.value)}
+                />
+              );
+            })}
+            <Chip
+              label="Yaoi"
+              active={filters.orientation === 'yaoi'}
+              onPress={() => handleToggleOrientation('yaoi')}
+            />
+            <Chip
+              label="Yuri"
+              active={filters.orientation === 'yuri'}
+              onPress={() => handleToggleOrientation('yuri')}
+            />
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={`Sort: ${SORTS[sortIndex]?.label}`}
+              onPress={handleNextSort}
+              className="flex-row items-center gap-xs rounded-full border border-border bg-card px-md py-xs"
+            >
+              <Text className="font-inter-medium text-caption text-foreground">
+                {SORTS[sortIndex]?.label}
+              </Text>
+              <ChevronDown size={14} color={colors.muted} />
+            </Pressable>
+          </ScrollRow>
+        </View>
+      ) : null}
+
+      {segment === 'series' ? (
+        isError && items.length === 0 ? (
+          <View className="flex-1 items-center justify-center p-xl">
+            <ErrorState
+              title="Could not load catalogue"
+              description="Failed to retrieve catalogue series."
+              onRetry={refetch}
+            />
+          </View>
+        ) : (
+          <CoverGrid
+            items={items}
+            onPressItem={(s) => router.push(`/pornhwa/${s.slug}`)}
+            onEndReached={() => {
+              if (hasNextPage && !isFetchingNextPage) {
+                fetchNextPage();
+              }
+            }}
+            showSkeletons={isPending || isFetchingNextPage}
+            refreshing={isRefetching}
+            onRefresh={refetch}
+            ListEmptyComponent={
+              !isPending ? (
+                <View className="py-2xl">
+                  <EmptyState
+                    title="No series found"
+                    description="Try adjusting your status, tags, or orientation filters."
+                  />
+                </View>
+              ) : null
+            }
+          />
+        )
+      ) : isCharactersError && characters.length === 0 ? (
         <View className="flex-1 items-center justify-center p-xl">
           <ErrorState
-            title="Could not load catalogue"
-            description="Failed to retrieve catalogue series."
-            onRetry={refetch}
+            title="Could not load characters"
+            description="Failed to retrieve character profiles."
+            onRetry={refetchCharacters}
           />
         </View>
       ) : (
-        <CoverGrid
-          items={items}
-          onPressItem={(s) => router.push(`/pornhwa/${s.slug}`)}
+        <CharacterGrid
+          items={characters}
+          onPressItem={(c) => router.push(`/character/${c.id}`)}
           onEndReached={() => {
-            if (hasNextPage && !isFetchingNextPage) {
-              fetchNextPage();
+            if (hasNextCharactersPage && !isFetchingNextCharactersPage) {
+              fetchNextCharactersPage();
             }
           }}
-          showSkeletons={isPending || isFetchingNextPage}
-          refreshing={isRefetching}
-          onRefresh={refetch}
+          showSkeletons={isCharactersPending || isFetchingNextCharactersPage}
+          refreshing={isRefetchingCharacters}
+          onRefresh={refetchCharacters}
           ListEmptyComponent={
-            !isPending ? (
+            !isCharactersPending ? (
               <View className="py-2xl">
                 <EmptyState
-                  title="No series found"
-                  description="Try adjusting your status, tags, or orientation filters."
+                  title="No characters found"
+                  description="Character profiles will appear here once they are documented."
                 />
               </View>
             ) : null

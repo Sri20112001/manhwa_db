@@ -27,12 +27,16 @@ export const queryKeys = {
   similar: (slug: string, params?: QueryParamsRecord) =>
     ['series', slug, 'similar', normalize(params)] as const,
 
+  characters: (params?: QueryParamsRecord) => ['characters', normalize(params)] as const,
+  gallery: (params?: QueryParamsRecord) => ['gallery', normalize(params)] as const,
   character: (id: number) => ['character', id] as const,
   characterRatings: (id: number, params?: QueryParamsRecord) =>
     ['character', id, 'ratings', normalize(params)] as const,
   characterReviews: (id: number, params?: QueryParamsRecord) =>
     ['character', id, 'reviews', normalize(params)] as const,
   chapter: (id: number) => ['chapter', id] as const,
+  readerChapter: (slug: string, chapter: number | string) =>
+    ['reader', slug, String(chapter)] as const,
 
   tags: ['tags'] as const,
   tagsByType: (type: string) => ['tags', type] as const,

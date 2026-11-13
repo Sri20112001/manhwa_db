@@ -93,6 +93,23 @@ export interface Chapter {
   characters: Character[];
 }
 
+export interface ChapterBookmark {
+  /** Stable `${pornhwaId}:${chapterStart}` key. */
+  id: string;
+  /** Local account that created the bookmark. */
+  accountId: string | null;
+  pornhwaId: number;
+  slug: string;
+  seriesTitle: string;
+  coverImage: string | null;
+  chapterStart: number;
+  chapterEnd: number | null;
+  chapterTitle: string | null;
+  description: string | null;
+  tags: string[];
+  bookmarkedAt: number;
+}
+
 export interface RatingAggregate {
   averageRating: number | null;
   totalRatings: number;

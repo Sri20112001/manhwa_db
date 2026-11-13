@@ -67,6 +67,30 @@ export type LibraryStatusTab = 'reading' | 'plan_to_read' | 'completed' | 'on_ho
 export type LibrarySort = 'updated' | 'title' | 'priority' | 'rating';
 export type ViewMode = 'grid' | 'list';
 
+export type BookmarkSort = 'recent' | 'oldest' | 'series' | 'chapter_asc' | 'chapter_desc';
+
+export const BOOKMARK_SORT_LABEL: Record<BookmarkSort, string> = {
+  recent: 'Recently bookmarked',
+  oldest: 'Oldest bookmarked',
+  series: 'Series (A–Z)',
+  chapter_asc: 'Chapter (low → high)',
+  chapter_desc: 'Chapter (high → low)',
+};
+
+export interface BookmarkFilters {
+  query: string;
+  /** Series slugs. Empty means every series. */
+  series: string[];
+  /** Chapter tags. Empty means every tag. */
+  tags: string[];
+}
+
+export const DEFAULT_BOOKMARK_FILTERS: BookmarkFilters = {
+  query: '',
+  series: [],
+  tags: [],
+};
+
 export interface ListEditorDraft {
   id?: number;
   title: string;

@@ -1,10 +1,11 @@
 import { Pressable, ScrollView, Text, View } from 'react-native';
-import { ArrowLeft, Bookmark, ChevronRight, Star } from '@/ui/icons';
+import { ArrowLeft, Bookmark, ChevronRight, Image, Star } from '@/ui/icons';
 
 import { useCharacter } from '@/logic/hooks/useCharacter';
 import { formatRating } from '@/shared/lib/format';
 import { useSafeBack } from '@/shared/lib/navigation';
 import { Avatar } from '@/ui/components/primitives/Avatar';
+import { Button } from '@/ui/components/primitives/Button';
 import { Chip } from '@/ui/components/primitives/Chip';
 import { EmptyState } from '@/ui/components/feedback/EmptyState';
 import { ErrorState } from '@/ui/components/feedback/ErrorState';
@@ -59,11 +60,23 @@ export function CharacterDetailScreen({ id }: CharacterDetailScreenProps) {
           />
         }
         right={
-          <IconButton
-            icon={Bookmark}
-            accessibilityLabel="Bookmark character"
-            onPress={() => {}}
-          />
+          <View className="flex-row items-center gap-xs">
+            <IconButton
+              icon={Image}
+              accessibilityLabel="View character gallery"
+              onPress={() =>
+                router.push({
+                  pathname: '/gallery',
+                  params: { characterId: String(character.id), characterName: character.name },
+                })
+              }
+            />
+            <IconButton
+              icon={Bookmark}
+              accessibilityLabel="Bookmark character"
+              onPress={() => {}}
+            />
+          </View>
         }
       />
 
@@ -87,6 +100,19 @@ export function CharacterDetailScreen({ id }: CharacterDetailScreenProps) {
               </Text>
             </Pressable>
           ) : null}
+
+          <Button
+            label="Character Gallery"
+            variant="outline"
+            size="sm"
+            icon={Image}
+            onPress={() =>
+              router.push({
+                pathname: '/gallery',
+                params: { characterId: String(character.id), characterName: character.name },
+              })
+            }
+          />
 
           {character.alternativeNames.length > 0 ? (
             <View className="flex-row flex-wrap justify-center gap-xs">

@@ -6,6 +6,7 @@ import { setAccountIdProvider } from '@/api/client';
 import { STORAGE_KEYS } from '@/shared/lib/storage';
 
 import { createAuthSlice, type AuthSlice } from './auth.slice';
+import { createBookmarksSlice, type BookmarksSlice } from './bookmarks.slice';
 import { createBrowseFiltersSlice, type BrowseFiltersSlice } from './browseFilters.slice';
 import { createLibraryUiSlice, type LibraryUiSlice } from './libraryUi.slice';
 import { createListEditorSlice, type ListEditorSlice } from './listEditor.slice';
@@ -18,6 +19,7 @@ import { createToastSlice, type ToastSlice } from './toast.slice';
 
 export type RootState = AuthSlice &
   SettingsSlice &
+  BookmarksSlice &
   BrowseFiltersSlice &
   SearchSlice &
   LibraryUiSlice &
@@ -32,6 +34,7 @@ export const useRootStore = create<RootState>()(
     (...args) => ({
       ...createAuthSlice(...args),
       ...createSettingsSlice(...args),
+      ...createBookmarksSlice(...args),
       ...createBrowseFiltersSlice(...args),
       ...createSearchSlice(...args),
       ...createLibraryUiSlice(...args),
@@ -52,6 +55,9 @@ export const useRootStore = create<RootState>()(
         themeMode: state.themeMode,
         textSize: state.textSize,
         accentColor: state.accentColor,
+        bookmarks: state.bookmarks,
+        bookmarkSort: state.bookmarkSort,
+        bookmarkFilters: state.bookmarkFilters,
         browseFilters: state.browseFilters,
         recentSearches: state.recentSearches,
         searchSegment: state.searchSegment,

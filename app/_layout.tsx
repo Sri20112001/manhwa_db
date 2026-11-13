@@ -100,6 +100,7 @@ function RootNavigation() {
         <Stack.Screen name="pornhwa/[slug]" options={{ headerShown: false }} />
         <Stack.Screen name="character/[id]" options={{ headerShown: false }} />
         <Stack.Screen name="reader/[slug]" options={{ headerShown: false }} />
+        <Stack.Screen name="bookmarks" options={{ headerShown: false }} />
         <Stack.Screen name="lists/index" options={{ headerShown: false }} />
         <Stack.Screen name="lists/new" options={{ headerShown: false }} />
         <Stack.Screen name="lists/[username]/[slug]" options={{ headerShown: false }} />

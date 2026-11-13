@@ -2,13 +2,9 @@ import { useState } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { FlashList } from '@shopify/flash-list';
-import {
-  ArrowUpDown,
-  LayoutGrid,
-  List as ListIcon,
-  Search,
-} from '@/ui/icons';
+import { ArrowUpDown, Bookmark, LayoutGrid, List as ListIcon, Search } from '@/ui/icons';
 
+import { useBookmarks } from '@/logic/hooks/useBookmarks';
 import { useLibrary, useLibraryCounts } from '@/logic/hooks/useLibrary';
 import { useTrackingMutations } from '@/logic/hooks/useTrackingMutations';
 import { useRootStore } from '@/logic/store';
@@ -61,6 +57,7 @@ export function LibraryScreen() {
   } = useLibrary(activeStatusTab, librarySort);
 
   const { counts } = useLibraryCounts();
+  const { total: bookmarkTotal } = useBookmarks();
   const { incrementChapter } = useTrackingMutations();
 
   const handleCycleSort = () => {
@@ -81,6 +78,12 @@ export function LibraryScreen() {
         title="Library"
         right={
           <>
+            <IconButton
+              icon={Bookmark}
+              accessibilityLabel={`Bookmarked chapters${bookmarkTotal > 0 ? ` (${bookmarkTotal})` : ''}`}
+              badge={bookmarkTotal > 0 ? bookmarkTotal : undefined}
+              onPress={() => router.push('/bookmarks')}
+            />
             <IconButton
               icon={Search}
               accessibilityLabel="Search library"

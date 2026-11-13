@@ -1,6 +1,6 @@
 import { Pressable, Text, View } from 'react-native';
 import { Flag, MoreVertical, Plus, Star } from 'lucide-react-native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
+import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 
 import { progressLabel, progressRatio } from '@/shared/lib/format';
 import { TRACKING_STATUS_LABEL } from '@/shared/constants/status';
@@ -41,7 +41,7 @@ export function TrackingRow({ entry, onPress, onIncrement, onRate, onMenu }: Tra
   );
 
   return (
-    <Swipeable renderRightActions={rightActions} overshootRight={false}>
+    <ReanimatedSwipeable renderRightActions={rightActions} overshootRight={false}>
       <View className="flex-row items-center border-b border-border bg-background px-lg py-md">
         <Pressable
           accessibilityRole="button"
@@ -80,6 +80,6 @@ export function TrackingRow({ entry, onPress, onIncrement, onRate, onMenu }: Tra
           />
         </View>
       </View>
-    </Swipeable>
+    </ReanimatedSwipeable>
   );
 }

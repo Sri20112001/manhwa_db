@@ -24,6 +24,12 @@ export function getTrackingEntry(identifier: string | number) {
   return apiRequest<Single<TrackingEntryDTO>>({ url: `/me/tracking/${identifier}` });
 }
 
+export function getFavorite(identifier: string | number) {
+  return apiRequest<Single<{ favorited: boolean }>>({
+    url: `/me/tracking/${identifier}/favorite`,
+  });
+}
+
 export function upsertTracking(identifier: string | number, body: TrackingUpsertDTO) {
   return apiRequest<Single<TrackingEntryDTO>>({
     url: `/me/tracking/${identifier}`,

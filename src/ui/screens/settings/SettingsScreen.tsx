@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Alert, Linking, Pressable, ScrollView, Text, View } from 'react-native';
+import Constants from 'expo-constants';
 import {
   ArrowLeft,
   Check,
@@ -10,7 +11,7 @@ import {
   Trash2,
 } from '@/ui/icons';
 
-import { clearCache } from '@/api/cache';
+import { cacheEntryCount, clearCache } from '@/api/cache';
 import { disconnectAccount } from '@/logic/usecases/connectAccount';
 import { useRootStore } from '@/logic/store';
 import { useSafeBack } from '@/shared/lib/navigation';
@@ -36,11 +37,16 @@ export function SettingsScreen() {
   const setTextSize = useRootStore((state) => state.setTextSize);
   const setAccentColor = useRootStore((state) => state.setAccentColor);
 
-  const [cacheSize, setCacheSize] = useState('12.4 MB');
+  const [cacheCount, setCacheCount] = useState(() => cacheEntryCount());
+  const [cacheCleared, setCacheCleared] = useState(false);
+
+  const appVersion = Constants.expoConfig?.version ?? '1.0.0';
+  const sdkVersion = Constants.expoConfig?.sdkVersion ?? '—';
 
   const handleClearCache = () => {
     clearCache();
-    setCacheSize('0 KB');
+    setCacheCount(cacheEntryCount());
+    setCacheCleared(true);
     Alert.alert('Cache Cleared', 'HTTP and image cache have been reset.');
   };
 
@@ -212,7 +218,11 @@ export function SettingsScreen() {
               <HardDrive size={20} color={colors.primary} />
               <View>
                 <Text className="text-body font-inter-semibold text-foreground">Cached Data</Text>
-                <Text className="text-caption text-muted">{cacheSize}</Text>
+                <Text className="text-caption text-muted">
+                  {cacheCleared
+                    ? 'Cache cleared on this device'
+                    : `${cacheCount} cached ${cacheCount === 1 ? 'response' : 'responses'}`}
+                </Text>
               </View>
             </View>
             <IconButton
@@ -231,7 +241,9 @@ export function SettingsScreen() {
           <View className="gap-md rounded-md border border-border bg-card p-md">
             <View className="flex-row items-center justify-between">
               <Text className="text-body text-foreground">App Version</Text>
-              <Text className="text-caption font-inter-mono text-muted">v1.0.0 (SDK 54)</Text>
+              <Text className="text-caption font-inter-mono text-muted">
+                v{appVersion} (SDK {sdkVersion})
+              </Text>
             </View>
 
             <View className="h-px bg-border" />

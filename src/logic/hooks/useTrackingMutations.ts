@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { getTrackingEntry } from '@/api/endpoints/tracking';
+import { getFavorite, getTrackingEntry } from '@/api/endpoints/tracking';
 import { STALE } from '@/shared/constants/query';
 import { toTrackingEntry } from '@/logic/mappers/pornhwa';
 import {
@@ -48,6 +48,29 @@ export function useTrackingMutations() {
   }, []);
 
   return { setStatus, remove, favorite, rate, incrementChapter, markCompleted, startRereading };
+}
+
+export function useFavorite(identifier: string) {
+  const queryClient = useQueryClient();
+  const query = useQuery({
+    queryKey: ['tracking', 'favorite', identifier],
+    queryFn: async () => (await getFavorite(identifier)).data.favorited,
+    enabled: identifier.length > 0,
+    staleTime: STALE.tracking,
+  });
+
+  const setFavorited = useCallback(
+    (favorited: boolean) => {
+      queryClient.setQueryData(['tracking', 'favorite', identifier], favorited);
+    },
+    [identifier, queryClient],
+  );
+
+  return {
+    isFavorited: query.data ?? false,
+    isPending: query.isPending,
+    setFavorited,
+  };
 }
 
 export function useTrackingEntry(identifier: string) {
